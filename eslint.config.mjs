@@ -1,3 +1,5 @@
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { FlatCompat } from '@eslint/eslintrc';
@@ -13,14 +15,12 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends(
-    'next/core-web-vitals',
-    'next/typescript',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/recommended',
-    'prettier',
-    'plugin:jsx-a11y/recommended'
-  ),
+  ...nextCoreWebVitals,
+  ...nextTypescript,
+  ...compat.extends("plugin:@typescript-eslint/recommended"),
+  ...compat.extends("plugin:import/recommended"),
+  ...compat.extends("prettier"),
+  ...compat.extends("plugin:jsx-a11y/recommended"),
   {
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
@@ -80,6 +80,9 @@ const eslintConfig = [
   {
     files: ['**/*.ts', '**/*.tsx', 'src/iconify-bundle/*'],
   },
+  {
+    ignores: ["node_modules/**", ".next/**", "out/**", "build/**", "next-env.d.ts"]
+  }
 ];
 
 export default eslintConfig;
