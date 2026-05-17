@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 // Floating Particles Component
 export function FloatingParticles() {
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-xl sm:rounded-2xl">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-xl sm:rounded-2xl motion-reduce:hidden">
       {[...Array(3)].map((_, i) => (
         <motion.div
           key={i}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
@@ -39,16 +39,22 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        setTimeLeft({ days, hours, minutes, seconds });
+        setTimeLeft(prev => {
+          if (prev.days === days && prev.hours === hours && prev.minutes === minutes && prev.seconds === seconds) return prev;
+          return { days, hours, minutes, seconds };
+        });
       } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setTimeLeft(prev => {
+          if (prev.days === 0 && prev.hours === 0 && prev.minutes === 0 && prev.seconds === 0) return prev;
+          return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        });
       }
     }, 1000);
 
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  const timeUnits = [
+  const timeUnits = useMemo(() => [
     {
       label: t('details.day'),
       value: timeLeft.days,
@@ -69,7 +75,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
       value: timeLeft.seconds,
       color: 'from-amethyst-light to-amethyst',
     },
-  ];
+  ], [timeLeft.days, timeLeft.hours, timeLeft.minutes, timeLeft.seconds, t]);
 
   return (
     <div

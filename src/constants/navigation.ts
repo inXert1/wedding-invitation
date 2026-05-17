@@ -29,7 +29,7 @@ export const NAVIGATION_ANIMATIONS = {
   },
 } as const;
 
-export type NavIconId = 'home' | 'heart' | 'calendar' | 'map-pin' | 'mail';
+export type NavIconId = 'home' | 'heart' | 'calendar' | 'map-pin' | 'mail' | 'shirt';
 
 export const NAVIGATION_SECTIONS = [
   {
@@ -55,6 +55,12 @@ export const NAVIGATION_SECTIONS = [
     labelKey: 'navigation.venue',
     iconId: 'map-pin' as NavIconId,
     gradient: 'from-midnight to-amethyst-dark',
+  },
+  {
+    id: 'attire',
+    labelKey: 'navigation.attire',
+    iconId: 'shirt' as NavIconId,
+    gradient: 'from-amethyst to-amethyst-dark',
   },
   {
     id: 'rsvp',

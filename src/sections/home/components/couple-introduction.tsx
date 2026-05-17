@@ -47,7 +47,7 @@ export const CoupleIntroduction = ({
         </motion.div>
 
         {/* Couple Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 relative">
           {/* Groom Card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -56,7 +56,7 @@ export const CoupleIntroduction = ({
             className="text-center lg:text-right"
           >
             <div className="relative inline-block mb-6">
-              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl border-8 border-snow">
+              <div className="w-36 h-36 min-[400px]:w-40 min-[400px]:h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl border-8 border-snow">
                 <Image
                   src="/assets/images/tiryu.jpg"
                   alt={groom.fullName}
@@ -71,7 +71,7 @@ export const CoupleIntroduction = ({
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-cormorant text-midnight mb-2">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-ballet text-midnight mb-2">
               {groom.fullName}
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-midnight-light mb-4 font-medium font-cormorant">
@@ -121,7 +121,7 @@ export const CoupleIntroduction = ({
             className="text-center lg:text-left"
           >
             <div className="relative inline-block mb-6">
-              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl border-8 border-snow">
+              <div className="w-36 h-36 min-[400px]:w-40 min-[400px]:h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl border-8 border-snow">
                 <Image
                   src="/assets/images/juhjuh.jpg"
                   alt={bride.fullName}
@@ -136,7 +136,7 @@ export const CoupleIntroduction = ({
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-cormorant text-midnight mb-2">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-ballet text-midnight mb-2">
               {bride.fullName}
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-amethyst-dark mb-4 font-medium font-cormorant">

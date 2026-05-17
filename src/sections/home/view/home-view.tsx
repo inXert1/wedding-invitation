@@ -10,11 +10,11 @@ import {
   CountdownTimer,
   VenueInformation,
   EventSchedule,
+  AttireGuide,
   RSVP,
   ClosingMessage,
   FloatingNavigation,
-  NavigationFAB,
-  MusicPlayer,
+  UnifiedFAB,
   ScrollProgressIndicator,
 } from '../components';
 import { NAVIGATION_SECTIONS, WEDDING_CONFIG } from '@/constants';
@@ -57,7 +57,7 @@ export default function HomeView() {
     return (
       <LetterAnimation
         onOpen={handleLetterOpen}
-        coupleName={`${WEDDING_CONFIG.bride.name} & ${WEDDING_CONFIG.groom.name}`}
+        coupleName={`${WEDDING_CONFIG.groom.name} & ${WEDDING_CONFIG.bride.name}`}
       />
     );
   }
@@ -102,6 +102,11 @@ export default function HomeView() {
         <EventSchedule />
       </section>
 
+      {/* Attire Guide Section */}
+      <section id="attire" className="relative">
+        <AttireGuide />
+      </section>
+
       {/* RSVP Section */}
       <section id="rsvp" className="relative">
         <RSVP />
@@ -115,11 +120,8 @@ export default function HomeView() {
         />
       </section>
 
-      {/* Music Player */}
-      <MusicPlayer />
-
-      {/* Mobile Navigation FAB */}
-      <NavigationFAB
+      {/* Unified Mobile FAB (Music + Navigation) */}
+      <UnifiedFAB
         activeSection={activeSection}
         onScrollToSection={scrollToSection}
       />

@@ -2,7 +2,7 @@ import { NAVIGATION_ANIMATIONS } from '@/constants/navigation';
 import type { NavigationSection } from '@/types/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
-import { Home, Heart, Calendar, MapPin, Mail } from 'lucide-react';
+import { Home, Heart, Calendar, MapPin, Mail, Shirt } from 'lucide-react';
 import type { NavIconId } from '@/constants/navigation';
 
 const NAV_ICONS: Record<NavIconId, React.ElementType> = {
@@ -11,6 +11,7 @@ const NAV_ICONS: Record<NavIconId, React.ElementType> = {
   calendar: Calendar,
   'map-pin': MapPin,
   mail: Mail,
+  shirt: Shirt,
 };
 
 interface NavigationButtonProps {

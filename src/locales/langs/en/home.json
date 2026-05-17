@@ -14,7 +14,7 @@
     "title": " We Can't Wait to Celebrate",
     "quote": "Your presence in our lives has been a blessing, and having you celebrate this special day with us would make our joy complete. Thank you for being part of our love story.",
     "with-love": "With all our love,",
-    "hashtags": "#JoefrenAndAllyster2025 #LoveWins #ForeverStartsNow",
+    "hashtags": "#AllysterAndJoefren2026 #LoveWins #ForeverStartsNow",
     "contact": "Questions? Contact us at wedding@fihaa.my.id"
   },
   "hero": {
@@ -66,6 +66,13 @@
     "contact": "Contact",
     "our-wedding-day": "Our Wedding Day",
     "join-us": "Join us for our special day!"
+  },
+  "attire": {
+    "title": "Attire Guide",
+    "description": "We would love to see you in your semi-formal or casual wear.",
+    "encouragement": "We encourage you to dress according to our wedding color.",
+    "female-label": "Female Guests",
+    "male-label": "Male Guests"
   },
   "venue": {
     "title": "Venue Information",
@@ -156,7 +163,8 @@
     "details": "Details",
     "venue": "Venue",
     "gallery": "Gallery",
-    "rsvp": "RSVP Now"
+    "rsvp": "RSVP Now",
+    "attire": "Attire"
   },
   "schedule": {
     "title": "Timeline of Events",

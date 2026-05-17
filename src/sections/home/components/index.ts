@@ -7,6 +7,6 @@ export { EventSchedule } from './event-schedule';
 export { RSVP } from './rsvp';
 export { ClosingMessage } from './closing-message';
 export { default as FloatingNavigation } from './floating-navigation';
-export { default as NavigationFAB } from './navigation-fab';
-export { default as MusicPlayer } from './music-player';
+export { default as UnifiedFAB } from './unified-fab';
 export { default as ScrollProgressIndicator } from './scroll-progress-indicator';
+export { AttireGuide } from './attire-guide';

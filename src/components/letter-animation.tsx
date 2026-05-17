@@ -1,10 +1,119 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'next/navigation';
-import { Heart, Mail, Sparkles, MousePointerClick } from 'lucide-react';
+import styles from './letter-animation.module.css';
+
+const CornerOrnament = ({ className }: { className?: string }) => (
+  <svg className={`${styles.cornerOrnament} ${className || ''}`} viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 10 Q80 10 10 80" stroke="#6B2737" strokeWidth="1" fill="none"/>
+    <path d="M10 10 Q60 40 40 90" stroke="#6B2737" strokeWidth="0.7" fill="none"/>
+    <path d="M10 10 Q40 60 90 40" stroke="#6B2737" strokeWidth="0.7" fill="none"/>
+    <circle cx="10" cy="10" r="3" fill="#6B2737"/>
+    <ellipse cx="50" cy="50" rx="18" ry="10" fill="#6B2737" opacity="0.6" transform="rotate(-30 50 50)"/>
+    <ellipse cx="30" cy="70" rx="14" ry="8" fill="#6B2737" opacity="0.5" transform="rotate(-60 30 70)"/>
+    <ellipse cx="70" cy="30" rx="14" ry="8" fill="#6B2737" opacity="0.5" transform="rotate(0 70 30)"/>
+    <circle cx="55" cy="20" r="4" fill="#6B2737" opacity="0.4"/>
+    <circle cx="20" cy="55" r="4" fill="#6B2737" opacity="0.4"/>
+    <circle cx="75" cy="55" r="3" fill="#6B2737" opacity="0.3"/>
+    <circle cx="55" cy="75" r="3" fill="#6B2737" opacity="0.3"/>
+    <path d="M25 80 Q35 65 50 70 Q45 85 25 80Z" fill="#6B2737" opacity="0.5"/>
+    <path d="M80 25 Q65 35 70 50 Q85 45 80 25Z" fill="#6B2737" opacity="0.5"/>
+  </svg>
+);
+
+const Seal = () => (
+  <svg viewBox="0 0 82 82" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sealGrad" cx="38%" cy="35%" r="65%">
+        <stop offset="0%" stopColor="#8B3A4D"/>
+        <stop offset="50%" stopColor="#6B2737"/>
+        <stop offset="100%" stopColor="#3A1020"/>
+      </radialGradient>
+      <radialGradient id="goldRing" cx="50%" cy="50%" r="50%">
+        <stop offset="80%" stopColor="transparent"/>
+        <stop offset="90%" stopColor="#C8A96E" stopOpacity="0.7"/>
+        <stop offset="100%" stopColor="#A88040" stopOpacity="0.5"/>
+      </radialGradient>
+    </defs>
+    {/* Outer decorative ring */}
+    <circle cx="41" cy="41" r="40" fill="none" stroke="#C8A96E" strokeWidth="0.5" opacity="0.6"/>
+    {/* Main seal */}
+    <circle cx="41" cy="41" r="36" fill="url(#sealGrad)"/>
+    {/* Texture ring */}
+    <circle cx="41" cy="41" r="36" fill="url(#goldRing)"/>
+    {/* Inner ring */}
+    <circle cx="41" cy="41" r="29" fill="none" stroke="#C8A96E" strokeWidth="0.5" opacity="0.5"/>
+    {/* Monogram */}
+    <text x="41" y="36" textAnchor="middle" fontFamily="var(--font-ballet)" fontSize="13" fill="#F0D8A0" opacity="0.95">J &amp; A</text>
+    {/* Star ornaments */}
+    <g fill="#C8A96E" opacity="0.5">
+      <polygon points="41,13 42.2,16.6 46,16.6 43,18.8 44.2,22.4 41,20.2 37.8,22.4 39,18.8 36,16.6 39.8,16.6" transform="scale(0.55) translate(33,17)"/>
+    </g>
+    {/* Small dots ring */}
+    <g fill="#C8A96E" opacity="0.45">
+      <circle cx="41" cy="12" r="1.2"/>
+      <circle cx="41" cy="70" r="1.2"/>
+      <circle cx="12" cy="41" r="1.2"/>
+      <circle cx="70" cy="41" r="1.2"/>
+      <circle cx="20" cy="20" r="1"/>
+      <circle cx="62" cy="20" r="1"/>
+      <circle cx="20" cy="62" r="1"/>
+      <circle cx="62" cy="62" r="1"/>
+    </g>
+    {/* Light reflection */}
+    <ellipse cx="32" cy="28" rx="10" ry="6" fill="white" opacity="0.06" transform="rotate(-30 32 28)"/>
+  </svg>
+);
+
+const Petals = () => {
+  const colors = ['#C8A0A8', '#DEB8C0', '#E8C8C0', '#C8A96E', '#EDD8C8'];
+  const count = 22;
+
+  // We only want to generate these once on client mount to avoid hydration mismatch
+  const [petals, setPetals] = useState<any[]>([]);
+
+  useEffect(() => {
+    const generatedPetals = Array.from({ length: count }).map((_, i) => ({
+      id: i,
+      size: 6 + Math.random() * 10,
+      xPos: 20 + Math.random() * 60,
+      dur: 2.5 + Math.random() * 2.5,
+      delay: Math.random() * 0.4 + (i * 0.08),
+      color: colors[Math.floor(Math.random() * colors.length)],
+      borderRadius: Math.random() > 0.5 ? '50% 0 50% 0' : '0 50% 0 50%'
+    }));
+    setPetals(generatedPetals);
+  }, []);
+
+  return (
+    <>
+      {petals.map((petal) => (
+        <motion.div
+          key={petal.id}
+          className={styles.petal}
+          style={{
+            left: `${petal.xPos}%`,
+            top: '30%',
+            width: petal.size,
+            height: petal.size * 0.65,
+            background: petal.color,
+            borderRadius: petal.borderRadius,
+          }}
+          initial={{ y: -20, rotate: 0, opacity: 0.8 }}
+          animate={{ y: '100vh', rotate: 360, opacity: 0 }}
+          transition={{
+            duration: petal.dur,
+            delay: petal.delay,
+            ease: 'linear',
+          }}
+        />
+      ))}
+    </>
+  );
+};
 
 interface LetterAnimationProps {
   onOpen: () => void;
@@ -21,264 +130,108 @@ export const LetterAnimation = ({
   const toName =
     searchParams.get('to') || searchParams.get('toName') || t('letter.guest');
 
-  const [isOpening, setIsOpening] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [showPetals, setShowPetals] = useState(false);
 
-  const handleClick = () => {
-    setIsOpening(true);
+  const handleOpen = () => {
+    if (isOpen) return;
+    setIsOpen(true);
+    
+    setTimeout(() => {
+      setShowPetals(true);
+    }, 400);
+
     setTimeout(() => {
       onOpen();
-    }, 2500);
+    }, 3500); // Give the animation time to play out
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-snow overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-amethyst/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-midnight/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amethyst-light/10 rounded-full blur-3xl"></div>
-      </div>
+    <div className={styles.container}>
+      <CornerOrnament className={styles.tl} />
+      <CornerOrnament className={styles.tr} />
+      <CornerOrnament className={styles.bl} />
+      <CornerOrnament className={styles.br} />
 
-      {/* Floating decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ y: '100%', opacity: 0.2, rotate: 0 }}
-            animate={{
-              y: '-100%',
-              opacity: [0.2, 0.4, 0.2],
-              rotate: [0, 360, 720],
-              x: [0, 50, -50, 0],
-            }}
-            transition={{
-              duration: 8 + i * 2,
-              repeat: Infinity,
-              ease: 'linear',
-              delay: i * 1.5,
-            }}
-            className="absolute text-amethyst/30"
-            style={{
-              left: `${10 + i * 15}%`,
-            }}
-          >
-            <Heart className="w-4 h-4" fill="currentColor" />
-          </motion.div>
-        ))}
-      </div>
+      <header className={styles.pageHeader}>
+        <p className={styles.eyebrow}>{t('letter.invitation-title') || 'Welcome to our wedding'}</p>
+        <div className={styles.titleBlock}>
+          <span className={styles.titleOur}>Our</span>
+          <span className={styles.titleWedding}>Wedding</span>
+        </div>
+        <div className={styles.headerRule}></div>
+        <p className={styles.inviteLine}>
+          {t('letter.dear') || 'Dear'} <strong>{toName}</strong> &mdash; {t('letter.you-are-invited')}
+        </p>
+      </header>
 
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-6">
-        <div className="text-center">
-          {/* Greeting Text */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="mb-8 sm:mb-12"
-          >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bruney text-midnight mb-4">
-              {t('hero.welcome')}
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-midnight/60 max-w-md mx-auto font-cormorant">
-              {toName ? (
-                <>
-                  {t('letter.dear')}{' '}
-                  <span className="font-medium text-amethyst-dark">{toName}</span>
-                  <br />
-                  {t('letter.you-are-invited')}
-                </>
-              ) : (
-                t('letter.you-are-invited')
-              )}
-            </p>
-          </motion.div>
+      <div className={styles.scene}>
+        <div 
+          className={`${styles.envelopeWrap} ${isOpen ? styles.isOpen : ''}`} 
+          id="envelope" 
+          onClick={handleOpen} 
+          role="button" 
+          aria-label="Click to open invitation"
+        >
+          <div className={styles.envelopeBody}>
+            <div className={styles.envBack}></div>
+            <div className={`${styles.envSide} ${styles.left}`}></div>
+            <div className={`${styles.envSide} ${styles.right}`}></div>
+            <div className={styles.envBottom}></div>
 
-          {/* Letter Animation */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="relative mx-auto"
-            style={{ perspective: '1000px' }}
-          >
-            <motion.div
-              className="relative cursor-pointer"
-              onClick={handleClick}
-              onHoverStart={() => setIsHovered(true)}
-              onHoverEnd={() => setIsHovered(false)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {/* Envelope Back */}
-              <motion.div
-                className="w-80 h-56 sm:w-96 sm:h-64 bg-gradient-to-br from-amethyst-light to-amethyst rounded-lg shadow-2xl relative mx-auto"
-                animate={{
-                  rotateY: isOpening ? 15 : 0,
-                  z: isOpening ? -50 : 0,
-                }}
-                transition={{ duration: 0.8 }}
-              >
-                {/* Envelope Pattern */}
-                <div className="absolute inset-4 border-2 border-snow/30 rounded border-dashed"></div>
-
-                {/* Envelope Flap */}
-                <motion.div
-                  className="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-amethyst to-amethyst-dark origin-top"
-                  style={{
-                    clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
-                  }}
-                  animate={{
-                    rotateX: isOpening ? -180 : 0,
-                    z: isOpening ? 50 : 0,
-                  }}
-                  transition={{ duration: 1, delay: isOpening ? 0.2 : 0 }}
-                />
-
-                {/* Wax Seal */}
-                <motion.div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-midnight to-midnight-light rounded-full shadow-lg flex items-center justify-center z-10"
-                  animate={{
-                    scale: isHovered ? 1.1 : 1,
-                    rotate: isHovered ? 5 : 0,
-                    opacity: isOpening ? 0 : 1,
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Mail className="w-6 h-6 text-snow" />
-                </motion.div>
-              </motion.div>
-
-              {/* Letter Inside */}
-              <AnimatePresence>
-                {isOpening && (
-                  <motion.div
-                    initial={{ y: 0, opacity: 0, scale: 0.8 }}
-                    animate={{ y: -40, opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="absolute top-8 left-1/2 -translate-x-1/2 w-72 h-54 sm:w-80 sm:h-58 bg-gradient-to-br from-snow to-snow-warm rounded-lg shadow-xl border border-amethyst/20"
-                  >
-                    <div className="p-6 sm:p-8 h-full flex flex-col justify-center text-center">
-                      <Heart className="w-8 h-8 text-amethyst mx-auto mb-4" fill="currentColor" />
-                      {toName && (
-                        <p className="text-sm sm:text-base text-midnight/60 mb-2 font-dm-sans">
-                          {t('letter.to')}:{' '}
-                          <span className="font-medium text-amethyst-dark">
-                            {toName}
-                          </span>
-                        </p>
-                      )}
-                      <h3 className="text-lg sm:text-xl font-bruney text-midnight mb-2">
-                        {coupleName}
-                      </h3>
-                      <p className="text-sm sm:text-base text-midnight/60 mb-4 font-dm-sans">
-                        {t('letter.invitation-title')}
-                      </p>
-                      <div className="text-xs sm:text-sm text-midnight/40 font-cormorant italic">
-                        &ldquo;{t('letter.invitation-quote')}&rdquo;
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Sparkle Effects */}
-              <AnimatePresence>
-                {isHovered && !isOpening && (
-                  <>
-                    {[...Array(8)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{
-                          opacity: [0, 1, 0],
-                          scale: [0, 1, 0],
-                          x: [0, (Math.random() - 0.5) * 100],
-                          y: [0, (Math.random() - 0.5) * 100],
-                        }}
-                        exit={{ opacity: 0 }}
-                        transition={{
-                          duration: 1.5,
-                          delay: i * 0.1,
-                          repeat: Infinity,
-                          repeatDelay: 2,
-                        }}
-                        className="absolute top-1/2 left-1/2 text-amethyst pointer-events-none"
-                      >
-                        <Sparkles className="w-3 h-3" />
-                      </motion.div>
-                    ))}
-                  </>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          </motion.div>
-
-          {/* Click Instruction */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isOpening ? 0 : 1 }}
-            transition={{ duration: 0.5, delay: 2 }}
-            className="mt-8 sm:mt-12"
-          >
-            <motion.p
-              animate={{
-                y: [0, -8, 0],
-                opacity: [0.7, 1, 0.7],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className="text-sm sm:text-base text-midnight/60 font-medium font-dm-sans"
-            >
-              {isHovered
-                ? t('letter.click-to-open-hover')
-                : t('letter.click-to-open')}
-            </motion.p>
-            <div className="flex justify-center mt-4">
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 10, -10, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="text-amethyst-dark"
-              >
-                <MousePointerClick className="w-6 h-6" />
-              </motion.div>
+            {/* Flap */}
+            <div className={styles.flapWrap} id="flap">
+              <div className={styles.envFlap}></div>
+              <div className={styles.envFlapInner}></div>
             </div>
-          </motion.div>
+
+            {/* Wax seal */}
+            <div className={styles.sealWrap} id="seal">
+              <div className={styles.seal}>
+                <Seal />
+              </div>
+            </div>
+
+            {/* Card slot */}
+            <div className={styles.cardSlot}>
+              <div className={styles.inviteCard} id="card">
+                <div className={styles.cardOrnament}>
+                  <div className={styles.cardOrnamentDot}></div>
+                  <div className={styles.cardOrnamentLine}></div>
+                  <div className={styles.cardOrnamentDot}></div>
+                </div>
+
+                <div className={styles.cardTo}>{t('letter.to') || 'to'}: {toName}</div>
+
+                <div className={styles.cardNames}>{coupleName}</div>
+
+                <div className={styles.cardDivider}>
+                  <div className={styles.cardDividerLine}></div>
+                  <div className={styles.cardDividerDiamond}></div>
+                  <div className={styles.cardDividerLine}></div>
+                </div>
+
+                <p className={styles.cardTagline}>{t('letter.invitation-title') || 'Inviting you to share in the joy of our wedding day'}</p>
+
+                <p className={styles.cardQuote}>&ldquo;{t('letter.invitation-quote') || 'You changed my world the moment I met you...'}&rdquo;</p>
+
+                <div className={styles.cardOrnament}>
+                  <div className={styles.cardOrnamentDot}></div>
+                  <div className={styles.cardOrnamentLine}></div>
+                  <div className={styles.cardOrnamentDot}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={`${styles.clickHint} ${isOpen ? styles.hidden : ''}`} id="hint">
+          <span className={styles.clickHintText}>{t('letter.click-to-open')}</span>
+          <div className={styles.clickHintChevron}></div>
         </div>
       </div>
 
-      {/* Loading overlay when opening */}
-      <AnimatePresence>
-        {isOpening && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1 }}
-            className="absolute inset-0 bg-snow/80 backdrop-blur-sm flex items-center justify-center"
-          >
-            <div className="text-center">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-                className="w-12 h-12 border-4 border-amethyst-light border-t-amethyst rounded-full mx-auto mb-4"
-              />
-              <p className="text-midnight/70 text-lg font-medium font-dm-sans">
-                {t('letter.opening-the-invitation')}
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {showPetals && <Petals />}
     </div>
   );
 };

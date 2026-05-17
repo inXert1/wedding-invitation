@@ -33,9 +33,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'The Wedding of Joefren & Allyster — July 27, 2026',
+  title: 'The Wedding of Allyster & Joefren — July 27, 2026',
   description:
-    'You are cordially invited to celebrate the union of Joefren and Allyster. Discover our love story, wedding details, and RSVP.',
+    'You are cordially invited to celebrate the union of Allyster and Joefren. Discover our love story, wedding details, and RSVP.',
 };
 
 export default function RootLayout({

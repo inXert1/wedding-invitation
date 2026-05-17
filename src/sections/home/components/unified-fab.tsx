@@ -1,16 +1,32 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Music, Settings, Volume2 } from 'lucide-react';
+import { Music, Settings, Volume2, Heart, Plus, X, ChevronUp } from 'lucide-react';
 
-interface MusicPlayerProps {
+interface UnifiedFABProps {
+  activeSection: string;
+  onScrollToSection: (sectionId: string) => void;
   className?: string;
 }
 
-export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
+const sections = [
+  'hero',
+  'couple',
+  'details',
+  'venue',
+  'rsvp',
+  'closing',
+];
+
+export default function UnifiedFAB({
+  activeSection,
+  onScrollToSection,
+  className = '',
+}: UnifiedFABProps) {
   const { t } = useTranslation('home');
+  const [isOpen, setIsOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -65,7 +81,7 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
       audio.removeEventListener('ended', handleEnded);
       clearTimeout(timer);
     };
-  }, []); // Empty dependency array is correct here
+  }, []);
 
   const togglePlayPause = async () => {
     const audio = audioRef.current;
@@ -101,7 +117,14 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
     setShowWelcomeMessage(true);
   };
 
-  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+  const handleNextSection = () => {
+    const currentIndex = sections.indexOf(activeSection);
+    const nextSection = sections[(currentIndex + 1) % sections.length];
+    onScrollToSection(nextSection);
+    setIsOpen(false);
+  };
+
+  const scrollProgress = (sections.indexOf(activeSection) + 1) / sections.length;
 
   return (
     <>
@@ -111,7 +134,7 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-midnight/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-midnight/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -195,7 +218,7 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -20, scale: 0.9 }}
-          className="fixed bottom-44 right-6 z-50 bg-midnight text-snow px-4 py-3 rounded-lg shadow-xl backdrop-blur-sm max-w-xs"
+          className="fixed bottom-36 right-6 z-50 bg-midnight text-snow px-4 py-3 rounded-lg shadow-xl backdrop-blur-sm max-w-xs"
         >
           <div className="flex items-center space-x-2">
             <motion.div
@@ -222,16 +245,17 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
         </motion.div>
       )}
 
+      {/* FAB Container */}
       <motion.div
         initial={{ opacity: 0, scale: 0, y: 100 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{
           duration: 0.6,
-          delay: 1.0,
+          delay: 0.8,
           type: 'spring',
           stiffness: 200,
         }}
-        className={`fixed bottom-24 right-6 z-50 ${className}`}
+        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)] z-50 flex flex-col items-center gap-3 ${className}`}
       >
         {/* Hidden audio element */}
         <audio
@@ -246,51 +270,83 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
             src="/assets/audio/boom-tarat-tarat.mp3"
             label="No captions available"
           />
-          Your browser does not support the audio element.
         </audio>
 
-        {/* Progress Ring */}
+        {/* Expanding Menu Items */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.8 }}
+              transition={{ duration: 0.2, staggerChildren: 0.1 }}
+              className="flex flex-col gap-3"
+            >
+              {/* Music Button */}
+              <div className="relative group">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={togglePlayPause}
+                  className="w-12 h-12 rounded-full bg-snow/95 backdrop-blur-md border border-amethyst/20 shadow-lg flex items-center justify-center text-amethyst-dark cursor-pointer overflow-hidden relative"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-amethyst/5 to-midnight/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  {isPlaying ? (
+                    <div className="flex items-center space-x-0.5 relative z-10">
+                      <motion.div animate={{ scaleY: [1, 1.5, 1, 2, 1] }} transition={{ duration: 1.5, repeat: Infinity }} className="w-1 h-3 bg-gradient-to-t from-amethyst to-amethyst-dark rounded-full" />
+                      <motion.div animate={{ scaleY: [1, 2, 1, 1.5, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }} className="w-1 h-4 bg-gradient-to-t from-amethyst-dark to-midnight rounded-full" />
+                      <motion.div animate={{ scaleY: [1, 1.5, 2, 1, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }} className="w-1 h-3 bg-gradient-to-t from-midnight to-amethyst rounded-full" />
+                    </div>
+                  ) : (
+                    <Music className="w-5 h-5 relative z-10" />
+                  )}
+                </motion.button>
+                {/* Tooltip */}
+                <div className="absolute right-full top-1/2 -translate-y-1/2 mr-3 bg-midnight/90 text-snow text-xs px-2 py-1 rounded shadow-lg backdrop-blur-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none font-dm-sans flex items-center gap-1">
+                  <Volume2 className="w-3 h-3" />
+                  {isPlaying ? t('music.playing') : t('music.paused')}
+                </div>
+              </div>
+
+              {/* Next Section Button */}
+              <div className="relative group">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleNextSection}
+                  className="w-12 h-12 rounded-full bg-snow/95 backdrop-blur-md border border-amethyst/20 shadow-lg flex items-center justify-center text-amethyst-dark cursor-pointer overflow-hidden relative"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-amethyst/5 to-midnight/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <Heart className="w-5 h-5 relative z-10" fill="currentColor" />
+                </motion.button>
+                {/* Tooltip */}
+                <div className="absolute right-full top-1/2 -translate-y-1/2 mr-3 bg-midnight/90 text-snow text-xs px-2 py-1 rounded shadow-lg backdrop-blur-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none font-dm-sans">
+                  Next: <span className="capitalize">{sections[(sections.indexOf(activeSection) + 1) % sections.length] === 'hero' ? 'Home' : sections[(sections.indexOf(activeSection) + 1) % sections.length]}</span>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Main Expanding Button */}
         <div className="relative">
-          <svg
-            className="w-14 h-14 transform -rotate-90 absolute inset-0"
-            viewBox="0 0 64 64"
-          >
-            {/* Background circle */}
-            <circle
-              cx="32"
-              cy="32"
-              r="28"
-              fill="none"
-              stroke="rgba(192, 135, 176, 0.1)"
-              strokeWidth="2"
-            />
-            {/* Progress circle */}
+          <svg className="w-14 h-14 transform -rotate-90 absolute inset-0" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="none" stroke="rgba(192, 135, 176, 0.1)" strokeWidth="2" />
             <motion.circle
               cx="32"
               cy="32"
               r="28"
               fill="none"
-              stroke="url(#musicGradient)"
+              stroke="url(#gradientMain)"
               strokeWidth="2"
               strokeLinecap="round"
               initial={{ pathLength: 0 }}
-              animate={{
-                pathLength: progress / 100,
-              }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              style={{
-                strokeDasharray: '175.93',
-                strokeDashoffset: 0,
-              }}
+              animate={{ pathLength: scrollProgress }}
+              transition={{ duration: 0.8, ease: 'easeInOut' }}
+              style={{ strokeDasharray: '175.93', strokeDashoffset: 0 }}
             />
             <defs>
-              <linearGradient
-                id="musicGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
+              <linearGradient id="gradientMain" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#C087B0" />
                 <stop offset="50%" stopColor="#A06B94" />
                 <stop offset="100%" stopColor="#31081F" />
@@ -298,182 +354,27 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
             </defs>
           </svg>
 
-          {/* Main Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => setIsOpen(!isOpen)}
             className={`relative w-14 h-14 bg-snow/95 backdrop-blur-md border border-amethyst/20 rounded-full shadow-2xl hover:shadow-amethyst/20 transition-all duration-300 group overflow-hidden cursor-pointer ${
-              autoplayBlocked && !hasInteracted ? 'animate-pulse' : ''
+              autoplayBlocked && !hasInteracted && !isOpen ? 'animate-pulse' : ''
             }`}
-            onClick={togglePlayPause}
           >
-            {/* Button background gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-amethyst/5 to-midnight/5 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-            {/* Animated background effect */}
-            <motion.div
-              className="absolute inset-0 rounded-full"
-              animate={{
-                background:
-                  autoplayBlocked && !hasInteracted
-                    ? [
-                        'linear-gradient(45deg, rgba(192, 135, 176, 0.3), rgba(160, 107, 148, 0.3), rgba(49, 8, 31, 0.2))',
-                        'linear-gradient(135deg, rgba(49, 8, 31, 0.2), rgba(192, 135, 176, 0.3), rgba(160, 107, 148, 0.3))',
-                        'linear-gradient(225deg, rgba(160, 107, 148, 0.3), rgba(49, 8, 31, 0.2), rgba(192, 135, 176, 0.3))',
-                        'linear-gradient(315deg, rgba(192, 135, 176, 0.3), rgba(160, 107, 148, 0.3), rgba(49, 8, 31, 0.2))',
-                      ]
-                    : [
-                        'linear-gradient(45deg, rgba(192, 135, 176, 0.1), rgba(160, 107, 148, 0.1), rgba(49, 8, 31, 0.05))',
-                        'linear-gradient(135deg, rgba(49, 8, 31, 0.05), rgba(192, 135, 176, 0.1), rgba(160, 107, 148, 0.1))',
-                        'linear-gradient(225deg, rgba(160, 107, 148, 0.1), rgba(49, 8, 31, 0.05), rgba(192, 135, 176, 0.1))',
-                        'linear-gradient(315deg, rgba(192, 135, 176, 0.1), rgba(160, 107, 148, 0.1), rgba(49, 8, 31, 0.05))',
-                      ],
-              }}
-              transition={{
-                duration: autoplayBlocked && !hasInteracted ? 2 : 4,
-                repeat: Infinity,
-                ease: 'linear',
-              }}
-            />
-
-            {/* Icon container */}
-            <div className="relative z-10 flex items-center justify-center w-full h-full">
-              {isPlaying ? (
-                // Pause icon with animated sound waves
-                <div className="flex items-center space-x-0.5">
-                  <motion.div
-                    animate={{
-                      scaleY: [1, 1.5, 1, 2, 1],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }}
-                    className="w-1 h-3 bg-gradient-to-t from-amethyst to-amethyst-dark rounded-full"
-                  />
-                  <motion.div
-                    animate={{
-                      scaleY: [1, 2, 1, 1.5, 1],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                      delay: 0.2,
-                    }}
-                    className="w-1 h-4 bg-gradient-to-t from-amethyst-dark to-midnight rounded-full"
-                  />
-                  <motion.div
-                    animate={{
-                      scaleY: [1, 1.5, 2, 1, 1],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                      delay: 0.4,
-                    }}
-                    className="w-1 h-3 bg-gradient-to-t from-midnight to-amethyst rounded-full"
-                  />
-                </div>
-              ) : (
-                // Play icon
-                <motion.div
-                  animate={{
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  className="text-amethyst-dark"
-                >
-                  <Music className="w-5 h-5" />
-                </motion.div>
-              )}
-            </div>
-
-            {/* Ripple effect on click */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-amethyst/30 to-midnight/20 rounded-full"
-              initial={{ scale: 0, opacity: 0 }}
-              whileTap={{ scale: 2, opacity: [0, 0.3, 0] }}
-              transition={{ duration: 0.4 }}
-            />
-          </motion.button>
-
-          {/* Music info tooltip */}
-          <motion.div
-            initial={{ opacity: 0, x: 10 }}
-            whileHover={{ opacity: 1, x: 0 }}
-            className="absolute right-full top-1/2 -translate-y-1/2 mr-4 bg-midnight/90 text-snow text-xs px-3 py-2 rounded-lg shadow-lg backdrop-blur-sm whitespace-nowrap pointer-events-none"
-          >
-            <div className="font-medium flex items-center gap-1 font-dm-sans">
-              <Volume2 className="w-3 h-3" />
-              {isPlaying
-                ? t('music.playing')
-                : autoplayBlocked && !hasInteracted
-                ? t('music.click-to-start')
-                : t('music.paused')}
-            </div>
-            <div className="text-snow/70 text-xs font-dm-sans">
-              {autoplayBlocked && !hasInteracted
-                ? `${t('music.wedding-music')} (Autoplay Blocked)`
-                : t('music.wedding-music')}
-            </div>
-
-            {/* Tooltip arrow */}
-            <div className="absolute left-full top-1/2 -translate-y-1/2 border-l-4 border-l-midnight/90 border-y-4 border-y-transparent"></div>
-          </motion.div>
-
-          {/* Volume indicator for when playing */}
-          {isPlaying && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-amethyst to-amethyst-dark rounded-full flex items-center justify-center shadow-lg"
-            >
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="w-2 h-2 bg-snow rounded-full"
-              />
-            </motion.div>
-          )}
-
-          {/* Click indicator when autoplay is blocked */}
-          {autoplayBlocked && !hasInteracted && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-amethyst-dark to-midnight rounded-full flex items-center justify-center shadow-lg"
-            >
-              <motion.div
-                animate={{
-                  scale: [1, 1.3, 1],
-                  rotate: [0, 15, -15, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="text-snow text-xs font-bold"
-              >
-                !
+            <div className="relative z-10 flex items-center justify-center w-full h-full text-amethyst-dark">
+              <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                {isOpen ? <X className="w-6 h-6" /> : <ChevronUp className="w-6 h-6" />}
               </motion.div>
-            </motion.div>
-          )}
+            </div>
+            
+            {/* Warning indicator if autoplay blocked */}
+            {autoplayBlocked && !hasInteracted && !isOpen && (
+              <div className="absolute top-0 right-0 w-3 h-3 bg-amethyst-dark rounded-full border-2 border-snow"></div>
+            )}
+          </motion.button>
         </div>
       </motion.div>
     </>

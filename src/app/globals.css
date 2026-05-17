@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
+
 
 :root {
   --color-snow: #FBF5F3;
@@ -23,6 +25,8 @@
   --color-amethyst-dark: #8A5A60;
   --color-midnight: #551c25;
   --color-midnight-light: #7A2A38;
+
+  --font-ballet: 'Dancing Script', cursive;
   --font-bruney: var(--font-bruney);
   --font-playfair: var(--font-playfair);
   --font-cormorant: var(--font-cormorant);
@@ -31,6 +35,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {

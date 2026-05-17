@@ -48,7 +48,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           <div className="text-base sm:text-lg text-midnight/50 font-dm-sans">
             {t('closing-message.with-love')}
           </div>
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bruney text-amethyst-dark mt-2">
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-ballet text-amethyst-dark mt-2">
             {groom} & {bride}
           </div>
         </motion.div>
@@ -84,7 +84,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           </div>
 
           <p className="text-sm sm:text-base text-midnight/40 font-dm-sans">
-            #JoefrenAndAllyster2026 #LoveWins #ForeverStartsNow
+            {t('closing-message.hashtags')}
           </p>
         </motion.div>
 
@@ -96,7 +96,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           className="mt-16 pt-8 border-t border-amethyst/10"
         >
           <p className="text-xs sm:text-sm text-midnight/40 font-dm-sans">
-            Questions? Contact us at your-email@example.com
+            {t('closing-message.contact')}
           </p>
         </motion.div>
       </div>

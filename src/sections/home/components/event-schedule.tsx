@@ -79,7 +79,7 @@ export const EventSchedule = () => {
       ref={ref}
       className="py-16 px-4 bg-gradient-to-b from-snow to-snow-warm"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto overflow-hidden px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
@@ -120,7 +120,7 @@ export const EventSchedule = () => {
                       isEven
                         ? 'md:text-right md:pr-8'
                         : 'md:text-left md:pl-8'
-                    } pl-12 md:pl-0`}
+                    } pl-10 sm:pl-12 md:pl-0`}
                   >
                     <div className="bg-snow rounded-2xl p-6 shadow-lg border border-amethyst/10">
                       <div className="flex items-center mb-2">

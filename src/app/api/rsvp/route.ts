@@ -165,7 +165,7 @@ return `
     <!-- Footer -->
     <div style="background: #f5ede0; padding: 30px 48px; text-align: center; border: 1px solid #e2d5c5; border-top: none;">
       <p style="color: #c9a96e; font-size: 9px; letter-spacing: 5px; text-transform: uppercase; margin: 0 0 9px;">
-        Joefren &amp; Allyster
+        Allyster &amp; Joefren
       </p>
       <p style="color: #a89888; font-size: 11px; margin: 0; font-style: italic;">
         This notification was generated from the official wedding invitation website.
@@ -204,7 +204,7 @@ function buildGoogleCalendarLink(): string {
   const end = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 
   const params = new URLSearchParams({
-    text: `Wedding of ${WEDDING.bride} & ${WEDDING.groom}`,
+    text: `Wedding of ${WEDDING.groom} & ${WEDDING.bride}`,
     dates: `${start}/${end}`,
     details: `Ceremony at ${WEDDING.ceremony.name} (${WEDDING.ceremony.time}), Reception at ${WEDDING.reception.name} (${WEDDING.reception.time})`,
     location: `${WEDDING.ceremony.name}, ${WEDDING.ceremony.address}`,
@@ -229,7 +229,7 @@ function buildGuestConfirmationHtml(data: RsvpPayload): string {
 
       <!-- Couple names in gold spaced caps -->
       <p style="color: #c9a96e; font-size: 11px; letter-spacing: 5px; margin: 0 0 20px; text-transform: uppercase; font-weight: 400;">
-        ${WEDDING.bride} &amp; ${WEDDING.groom}
+        ${WEDDING.groom} &amp; ${WEDDING.bride}
       </p>
 
       <!-- Ornamental rule with diamond -->
@@ -408,7 +408,7 @@ function buildGuestConfirmationHtml(data: RsvpPayload): string {
     <!-- Footer -->
     <div style="background: #f5ede0; padding: 30px 48px; text-align: center; border: 1px solid #e2d5c5; border-top: none;">
       <p style="color: #c9a96e; font-size: 9px; letter-spacing: 5px; text-transform: uppercase; margin: 0 0 9px;">
-        ${WEDDING.bride} &amp; ${WEDDING.groom}
+        ${WEDDING.groom} &amp; ${WEDDING.bride}
       </p>
       <p style="color: #a89888; font-size: 11px; margin: 0; font-style: italic;">
         July 27, 2026 &bull; Pulilan, Bulacan

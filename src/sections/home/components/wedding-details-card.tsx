@@ -81,7 +81,7 @@ export const WeddingDetailsCard = ({
             </div>
 
             {/* Date Display */}
-            <div className="flex flex-col sm:flex-row items-stretch justify-center gap-6 sm:gap-8 md:gap-12 mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-12 mb-8">
               {/* Day */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -90,7 +90,7 @@ export const WeddingDetailsCard = ({
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
-                <div className="bg-midnight text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
+                <div className="bg-midnight text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-0 min-[400px]:min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
                   <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-none font-playfair-display">
                     {date.getDate()}
                   </div>
@@ -108,7 +108,7 @@ export const WeddingDetailsCard = ({
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
-                <div className="bg-amethyst-dark text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
+                <div className="bg-amethyst-dark text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-0 min-[400px]:min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
                   <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium leading-none mb-1 font-playfair-display">
                     {date
                       .toLocaleDateString(currentLang.numberFormat.code, {
@@ -133,7 +133,7 @@ export const WeddingDetailsCard = ({
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
-                <div className="bg-amethyst text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
+                <div className="bg-amethyst text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-0 min-[400px]:min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
                   <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-none font-playfair-display">
                     {formatWeddingTime(date, currentLang.numberFormat.code)}
                   </div>

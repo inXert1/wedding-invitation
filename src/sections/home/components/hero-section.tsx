@@ -21,7 +21,7 @@ export const HeroSection = ({
   return (
     <div className="h-screen bg-snow relative overflow-hidden">
       {/* Subtle background accents */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 hidden md:block">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-amethyst/8 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-midnight/5 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amethyst-light/8 rounded-full blur-3xl"></div>
@@ -60,7 +60,7 @@ export const HeroSection = ({
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 mb-4 sm:mb-6">
                 {/* Groom Name */}
                 <div className="text-center flex-shrink-0">
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bruney text-midnight">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-ballet text-midnight">
                     {couple.groom.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-amethyst-dark font-cormorant italic mt-1">
@@ -75,7 +75,7 @@ export const HeroSection = ({
 
                 {/* Bride Name */}
                 <div className="text-center flex-shrink-0">
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bruney text-midnight">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-ballet text-midnight">
                     {couple.bride.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-amethyst-dark font-cormorant italic mt-1">
