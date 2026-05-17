@@ -8,7 +8,7 @@ export function FloatingParticles() {
       {[...Array(3)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-0.5 sm:w-1 h-0.5 sm:h-1 bg-rose-400/30 rounded-full"
+          className="absolute w-0.5 sm:w-1 h-0.5 sm:h-1 bg-amethyst/30 rounded-full"
           animate={{
             x: [0, 100, 0],
             y: [0, -20, 0],

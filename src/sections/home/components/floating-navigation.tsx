@@ -20,14 +20,14 @@ export default function FloatingNavigation({
 }: FloatingNavigationProps) {
   return (
     <motion.nav
-      initial={NAVIGATION_ANIMATIONS.navigation.initial}
-      animate={NAVIGATION_ANIMATIONS.navigation.animate}
-      transition={NAVIGATION_ANIMATIONS.navigation.transition}
+      initial={{ ...NAVIGATION_ANIMATIONS.navigation.initial }}
+      animate={{ ...NAVIGATION_ANIMATIONS.navigation.animate }}
+      transition={{ ...NAVIGATION_ANIMATIONS.navigation.transition }}
       className="fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300"
     >
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="bg-white/90 backdrop-blur-xl rounded-xl sm:rounded-2xl px-1.5 sm:px-2 py-1.5 sm:py-2 shadow-xl border border-white/40 hover:shadow-2xl transition-all duration-300"
+        className="bg-snow/90 backdrop-blur-xl rounded-xl sm:rounded-2xl px-1.5 sm:px-2 py-1.5 sm:py-2 shadow-xl border border-amethyst/10 hover:shadow-2xl transition-all duration-300"
       >
         <div className="flex items-center space-x-0.5 sm:space-x-1">
           {NAVIGATION_SECTIONS.map((section, index) => (
@@ -41,7 +41,7 @@ export default function FloatingNavigation({
           ))}
 
           {/* Language Toggle */}
-          <div className="w-px h-6 bg-gray-200 mx-1 sm:mx-2"></div>
+          <div className="w-px h-6 bg-midnight/10 mx-1 sm:mx-2"></div>
           <LanguageToggle />
         </div>
 

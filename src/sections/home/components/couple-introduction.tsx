@@ -4,7 +4,7 @@ import type { WeddingConfigType } from '@/types';
 import { motion } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
-import Image from 'next/image';
+import { Heart, Crown } from 'lucide-react';
 
 interface CoupleIntroductionProps {
   bride: WeddingConfigType['bride'];
@@ -26,7 +26,7 @@ export const CoupleIntroduction = ({
   return (
     <div
       ref={ref}
-      className="py-20 px-4 bg-gradient-to-b from-white to-rose-50/30"
+      className="py-20 px-4 bg-gradient-to-b from-snow to-snow-warm"
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
@@ -36,11 +36,11 @@ export const CoupleIntroduction = ({
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-gray-800 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair text-midnight mb-4">
             {t('couple.our-story')}
           </h2>
-          <div className="w-24 h-px bg-rose-400 mx-auto"></div>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 mt-6 max-w-2xl mx-auto">
+          <div className="w-24 h-px bg-amethyst mx-auto"></div>
+          <p className="text-base sm:text-lg md:text-xl text-midnight/60 mt-6 max-w-2xl mx-auto font-cormorant">
             {t('couple.story-text')}
           </p>
         </motion.div>
@@ -55,36 +55,31 @@ export const CoupleIntroduction = ({
             className="text-center lg:text-right"
           >
             <div className="relative inline-block mb-6">
-              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-rose-100 to-pink-200 rounded-full flex items-center justify-center text-6xl sm:text-7xl md:text-8xl lg:text-9xl shadow-2xl border-8 border-white">
-                <Image
-                  src={bride.photo}
-                  alt={`${bride.fullName}'s photo`}
-                  width={256}
-                  height={256}
-                  className="rounded-full object-cover"
-                  loading="lazy"
-                />
+              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-amethyst-light/30 to-amethyst/20 rounded-full flex items-center justify-center shadow-2xl border-8 border-snow">
+                <span className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-playfair text-amethyst-dark select-none">
+                  {bride.name.charAt(0)}
+                </span>
               </div>
-              <div className="absolute -bottom-4 -right-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-rose-400 rounded-full flex items-center justify-center shadow-lg">
-                <span className="text-white text-xl sm:text-2xl">👸</span>
+              <div className="absolute -bottom-4 -right-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-amethyst rounded-full flex items-center justify-center shadow-lg">
+                <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-snow" />
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-gray-800 mb-2">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-playfair text-midnight mb-2">
               {bride.fullName}
             </h3>
-            <p className="text-base sm:text-lg md:text-xl text-rose-600 mb-4 font-medium">
+            <p className="text-base sm:text-lg md:text-xl text-amethyst-dark mb-4 font-medium font-cormorant">
               {t('couple.the-bride')}
             </p>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed max-w-md mx-auto lg:mx-0 lg:ml-auto">
+            <p className="text-sm sm:text-base md:text-lg text-midnight/60 leading-relaxed max-w-md mx-auto lg:mx-0 lg:ml-auto font-dm-sans">
               {t('couple.bride-description')}
             </p>
 
             {/* Decorative Elements */}
             <div className="mt-6 flex justify-center lg:justify-end space-x-2">
-              <div className="w-2 h-2 bg-rose-300 rounded-full"></div>
-              <div className="w-2 h-2 bg-rose-400 rounded-full"></div>
-              <div className="w-2 h-2 bg-rose-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-amethyst-light rounded-full"></div>
+              <div className="w-2 h-2 bg-amethyst rounded-full"></div>
+              <div className="w-2 h-2 bg-amethyst-dark rounded-full"></div>
             </div>
           </motion.div>
 
@@ -94,11 +89,9 @@ export const CoupleIntroduction = ({
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: inView ? 1 : 0, rotate: inView ? 0 : -180 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-rose-100"
+              className="w-16 h-16 bg-snow rounded-full flex items-center justify-center shadow-xl border-4 border-amethyst/20"
             >
-              <span className="text-xl sm:text-2xl md:text-3xl animate-pulse">
-                💖
-              </span>
+              <Heart className="w-6 h-6 text-amethyst animate-pulse" fill="currentColor" />
             </motion.div>
           </div>
 
@@ -108,11 +101,9 @@ export const CoupleIntroduction = ({
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: inView ? 1 : 0, rotate: inView ? 0 : -180 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-rose-100"
+              className="w-12 h-12 bg-snow rounded-full flex items-center justify-center shadow-xl border-4 border-amethyst/20"
             >
-              <span className="text-lg sm:text-xl md:text-2xl animate-pulse">
-                💖
-              </span>
+              <Heart className="w-5 h-5 text-amethyst animate-pulse" fill="currentColor" />
             </motion.div>
           </div>
 
@@ -124,35 +115,31 @@ export const CoupleIntroduction = ({
             className="text-center lg:text-left"
           >
             <div className="relative inline-block mb-6">
-              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-blue-100 to-indigo-200 rounded-full flex items-center justify-center text-6xl sm:text-7xl md:text-8xl lg:text-9xl shadow-2xl border-8 border-white">
-                <Image
-                  src={groom.photo}
-                  alt={`${groom.fullName}'s photo`}
-                  width={256}
-                  height={256}
-                  className="rounded-full object-cover"
-                />
+              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-midnight/10 to-midnight-light/15 rounded-full flex items-center justify-center shadow-2xl border-8 border-snow">
+                <span className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-playfair text-midnight/70 select-none">
+                  {groom.name.charAt(0)}
+                </span>
               </div>
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-blue-400 rounded-full flex items-center justify-center shadow-lg">
-                <span className="text-white text-xl sm:text-2xl">🤴</span>
+              <div className="absolute -bottom-4 -left-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-midnight rounded-full flex items-center justify-center shadow-lg">
+                <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-snow" />
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-gray-800 mb-2">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-playfair text-midnight mb-2">
               {groom.fullName}
             </h3>
-            <p className="text-base sm:text-lg md:text-xl text-blue-600 mb-4 font-medium">
+            <p className="text-base sm:text-lg md:text-xl text-midnight-light mb-4 font-medium font-cormorant">
               {t('couple.the-groom')}
             </p>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed max-w-md mx-auto lg:mx-0">
+            <p className="text-sm sm:text-base md:text-lg text-midnight/60 leading-relaxed max-w-md mx-auto lg:mx-0 font-dm-sans">
               {t('couple.groom-description')}
             </p>
 
             {/* Decorative Elements */}
             <div className="mt-6 flex justify-center lg:justify-start space-x-2">
-              <div className="w-2 h-2 bg-blue-300 rounded-full"></div>
-              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-midnight/30 rounded-full"></div>
+              <div className="w-2 h-2 bg-midnight/50 rounded-full"></div>
+              <div className="w-2 h-2 bg-midnight/70 rounded-full"></div>
             </div>
           </motion.div>
         </div>
@@ -164,11 +151,11 @@ export const CoupleIntroduction = ({
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-16"
         >
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto shadow-lg border border-white/40">
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-gray-700 italic mb-4">
+          <div className="bg-snow-warm/60 rounded-2xl p-8 max-w-2xl mx-auto shadow-lg border border-amethyst/10">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-cormorant text-midnight/80 italic mb-4">
               {t('couple.love-quote')}
             </p>
-            <p className="text-gray-500 text-xs sm:text-sm">— Clannad</p>
+            <p className="text-midnight/40 text-xs sm:text-sm font-dm-sans">— Clannad</p>
           </div>
         </motion.div>
       </div>

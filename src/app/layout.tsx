@@ -1,19 +1,34 @@
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { Playfair_Display, Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import './globals.css';
 import { LangProvider, LocalizationProvider } from '@/locales';
 import { Toaster } from 'sonner';
 
-const poppins = Poppins({
-  variable: '--font-poppins',
+const playfair = Playfair_Display({
+  variable: '--font-playfair',
   subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: '--font-cormorant',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  variable: '--font-dm-sans',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'The Wedding of Fiqri & Beloved',
+  title: 'The Wedding of Fiqri & Mio — July 27, 2026',
   description:
-    'Join us in celebrating the union of Fiqri and his beloved. Discover our love story, wedding details, and more.',
+    'You are cordially invited to celebrate the union of Fiqri and Mio. Discover our love story, wedding details, and RSVP.',
 };
 
 export default function RootLayout({
@@ -23,7 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} antialiased`}>
+      <body
+        className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} antialiased`}
+      >
         <LangProvider>
           <LocalizationProvider>
             {children}

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
+import { CheckCircle, Heart, Clock, Phone, Mail, Gift } from 'lucide-react';
 
 export const RSVP = () => {
   const { t } = useTranslation('home');
@@ -26,10 +27,8 @@ export const RSVP = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
     setIsSubmitted(true);
 
-    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
@@ -56,24 +55,26 @@ export const RSVP = () => {
 
   if (isSubmitted) {
     return (
-      <div className="py-20 px-4 bg-gradient-to-br from-rose-50 to-pink-100">
+      <div className="py-20 px-4 bg-gradient-to-br from-snow to-snow-warm">
         <div className="max-w-2xl mx-auto text-center">
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-3xl p-12 shadow-xl border border-rose-100"
+            className="bg-snow rounded-3xl p-12 shadow-xl border border-amethyst/10"
           >
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <span className="text-4xl">✅</span>
+            <div className="w-20 h-20 bg-amethyst/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <CheckCircle className="w-10 h-10 text-amethyst-dark" />
             </div>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-gray-800 mb-4">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-playfair text-midnight mb-4">
               {t('rsvp.thank-you')}
             </h3>
-            <p className="text-gray-600 text-base sm:text-lg md:text-xl">
+            <p className="text-midnight/60 text-base sm:text-lg md:text-xl font-cormorant">
               {t('rsvp.thank-you-received')}
             </p>
-            <div className="mt-6 text-2xl">💕</div>
+            <div className="mt-6">
+              <Heart className="w-6 h-6 text-amethyst mx-auto" fill="currentColor" />
+            </div>
           </motion.div>
         </div>
       </div>
@@ -83,7 +84,7 @@ export const RSVP = () => {
   return (
     <div
       ref={ref}
-      className="py-20 px-4 bg-gradient-to-br from-rose-50 to-pink-100"
+      className="py-20 px-4 bg-gradient-to-br from-snow to-snow-warm"
     >
       <div className="max-w-4xl mx-auto">
         {/* Header */}
@@ -93,11 +94,11 @@ export const RSVP = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-gray-800 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair text-midnight mb-4">
             {t('rsvp.title')}
           </h2>
-          <div className="w-24 h-px bg-rose-400 mx-auto mb-6"></div>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+          <div className="w-24 h-px bg-amethyst mx-auto mb-6"></div>
+          <p className="text-base sm:text-lg md:text-xl text-midnight/60 max-w-2xl mx-auto font-cormorant">
             {t('rsvp.subtitle')}
           </p>
         </motion.div>
@@ -109,8 +110,8 @@ export const RSVP = () => {
             animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-rose-100">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-gray-800 mb-6 text-center">
+            <div className="bg-snow rounded-3xl p-8 shadow-xl border border-amethyst/10">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-playfair text-midnight mb-6 text-center">
                 {t('rsvp.confirm-attendance')}
               </h3>
 
@@ -119,7 +120,7 @@ export const RSVP = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-xs sm:text-sm font-medium text-gray-700 mb-2"
+                    className="block text-xs sm:text-sm font-medium text-midnight/70 mb-2 font-dm-sans"
                   >
                     {t('rsvp.full-name')} *
                   </label>
@@ -130,7 +131,7 @@ export const RSVP = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 border border-amethyst/20 rounded-xl focus:ring-2 focus:ring-amethyst focus:border-transparent outline-none transition-all duration-300 bg-snow-warm font-dm-sans"
                     placeholder={t('rsvp.full-name')}
                   />
                 </div>
@@ -138,7 +139,7 @@ export const RSVP = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-xs sm:text-sm font-medium text-gray-700 mb-2"
+                    className="block text-xs sm:text-sm font-medium text-midnight/70 mb-2 font-dm-sans"
                   >
                     {t('rsvp.email-address')} *
                   </label>
@@ -149,7 +150,7 @@ export const RSVP = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 border border-amethyst/20 rounded-xl focus:ring-2 focus:ring-amethyst focus:border-transparent outline-none transition-all duration-300 bg-snow-warm font-dm-sans"
                     placeholder={t('rsvp.email-address')}
                   />
                 </div>
@@ -157,7 +158,7 @@ export const RSVP = () => {
                 <div>
                   <label
                     htmlFor="attendance"
-                    className="block text-xs sm:text-sm font-medium text-gray-700 mb-2"
+                    className="block text-xs sm:text-sm font-medium text-midnight/70 mb-2 font-dm-sans"
                   >
                     {t('rsvp.will-attend')} *
                   </label>
@@ -167,7 +168,7 @@ export const RSVP = () => {
                     value={formData.attendance}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 border border-amethyst/20 rounded-xl focus:ring-2 focus:ring-amethyst focus:border-transparent outline-none transition-all duration-300 bg-snow-warm font-dm-sans"
                   >
                     <option value="">{t('rsvp.please-select')}</option>
                     <option value="yes">{t('rsvp.yes-there')}</option>
@@ -179,7 +180,7 @@ export const RSVP = () => {
                   <div>
                     <label
                       htmlFor="guests"
-                      className="block text-xs sm:text-sm font-medium text-gray-700 mb-2"
+                      className="block text-xs sm:text-sm font-medium text-midnight/70 mb-2 font-dm-sans"
                     >
                       {t('rsvp.number-guests')}
                     </label>
@@ -188,7 +189,7 @@ export const RSVP = () => {
                       name="guests"
                       value={formData.guests}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all duration-300"
+                      className="w-full px-4 py-3 border border-amethyst/20 rounded-xl focus:ring-2 focus:ring-amethyst focus:border-transparent outline-none transition-all duration-300 bg-snow-warm font-dm-sans"
                     >
                       <option value="1">1 {t('rsvp.guest-count')}</option>
                       <option value="2">2 {t('rsvp.guests-count')}</option>
@@ -202,7 +203,7 @@ export const RSVP = () => {
                   <div>
                     <label
                       htmlFor="dietaryRestrictions"
-                      className="block text-xs sm:text-sm font-medium text-gray-700 mb-2"
+                      className="block text-xs sm:text-sm font-medium text-midnight/70 mb-2 font-dm-sans"
                     >
                       {t('rsvp.dietary-restrictions')}
                     </label>
@@ -212,7 +213,7 @@ export const RSVP = () => {
                       name="dietaryRestrictions"
                       value={formData.dietaryRestrictions}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all duration-300"
+                      className="w-full px-4 py-3 border border-amethyst/20 rounded-xl focus:ring-2 focus:ring-amethyst focus:border-transparent outline-none transition-all duration-300 bg-snow-warm font-dm-sans"
                       placeholder={t('rsvp.dietary-placeholder')}
                     />
                   </div>
@@ -221,7 +222,7 @@ export const RSVP = () => {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-xs sm:text-sm font-medium text-gray-700 mb-2"
+                    className="block text-xs sm:text-sm font-medium text-midnight/70 mb-2 font-dm-sans"
                   >
                     {t('rsvp.message-couple')}
                   </label>
@@ -231,7 +232,7 @@ export const RSVP = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 border border-amethyst/20 rounded-xl focus:ring-2 focus:ring-amethyst focus:border-transparent outline-none transition-all duration-300 resize-none bg-snow-warm font-dm-sans"
                     placeholder={t('rsvp.message-placeholder')}
                   />
                 </div>
@@ -239,7 +240,7 @@ export const RSVP = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-rose-400 to-pink-500 text-white py-4 px-6 rounded-xl font-medium text-base sm:text-lg hover:from-rose-500 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="w-full bg-midnight text-snow py-4 px-6 rounded-xl font-medium text-base sm:text-lg hover:bg-midnight-light transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-dm-sans cursor-pointer"
                 >
                   {t('rsvp.send-rsvp')}
                 </button>
@@ -255,72 +256,78 @@ export const RSVP = () => {
             className="space-y-8"
           >
             {/* RSVP Deadline */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-rose-100">
+            <div className="bg-snow rounded-2xl p-6 shadow-lg border border-amethyst/10">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-rose-600 text-xl">⏰</span>
+                <div className="w-12 h-12 bg-amethyst/10 rounded-full flex items-center justify-center mr-4">
+                  <Clock className="w-5 h-5 text-amethyst-dark" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800 text-sm sm:text-base">
+                  <h4 className="font-semibold text-midnight text-sm sm:text-base font-dm-sans">
                     {t('rsvp.deadline')}
                   </h4>
-                  <p className="text-gray-600 text-xs sm:text-sm">
+                  <p className="text-midnight/60 text-xs sm:text-sm font-dm-sans">
                     {t('rsvp.deadline-date')}
                   </p>
                 </div>
               </div>
-              <p className="text-gray-600 text-xs sm:text-sm">
+              <p className="text-midnight/60 text-xs sm:text-sm font-dm-sans">
                 {t('rsvp.deadline-help')}
               </p>
             </div>
 
             {/* Contact Info */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-rose-100">
+            <div className="bg-snow rounded-2xl p-6 shadow-lg border border-amethyst/10">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-blue-600 text-xl">📞</span>
+                <div className="w-12 h-12 bg-midnight/10 rounded-full flex items-center justify-center mr-4">
+                  <Phone className="w-5 h-5 text-midnight" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800 text-sm sm:text-base">
+                  <h4 className="font-semibold text-midnight text-sm sm:text-base font-dm-sans">
                     {t('rsvp.questions')}
                   </h4>
-                  <p className="text-gray-600 text-xs sm:text-sm">
+                  <p className="text-midnight/60 text-xs sm:text-sm font-dm-sans">
                     {t('rsvp.questions-help')}
                   </p>
                 </div>
               </div>
-              <div className="space-y-2 text-xs sm:text-sm text-gray-600">
-                <p>📧 wedding@fihaa.my.id</p>
-                <p>📱 (555) 123-4567</p>
+              <div className="space-y-2 text-xs sm:text-sm text-midnight/60 font-dm-sans">
+                <p className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-amethyst" />
+                  your-email@example.com
+                </p>
+                <p className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-amethyst" />
+                  +63 XXX XXX XXXX
+                </p>
               </div>
             </div>
 
             {/* Gift Registry */}
-            <div className="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 shadow-lg border border-amber-100">
+            <div className="bg-snow-warm rounded-2xl p-6 shadow-lg border border-amethyst/10">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-amber-600 text-xl">🎁</span>
+                <div className="w-12 h-12 bg-amethyst/10 rounded-full flex items-center justify-center mr-4">
+                  <Gift className="w-5 h-5 text-amethyst-dark" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800 text-sm sm:text-base">
+                  <h4 className="font-semibold text-midnight text-sm sm:text-base font-dm-sans">
                     {t('rsvp.gift-registry')}
                   </h4>
-                  <p className="text-gray-600 text-xs sm:text-sm">
+                  <p className="text-midnight/60 text-xs sm:text-sm font-dm-sans">
                     {t('rsvp.presence-present')}
                   </p>
                 </div>
               </div>
-              <p className="text-gray-600 text-xs sm:text-sm mb-4">
+              <p className="text-midnight/60 text-xs sm:text-sm mb-4 font-dm-sans">
                 {t('rsvp.registry-text')}
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-white/60 px-3 py-1 rounded-full text-xs font-medium text-gray-700">
+                <span className="bg-snow/60 px-3 py-1 rounded-full text-xs font-medium text-midnight/70 font-dm-sans border border-amethyst/10">
                   Gank Now
                 </span>
-                <span className="bg-white/60 px-3 py-1 rounded-full text-xs font-medium text-gray-700">
+                <span className="bg-snow/60 px-3 py-1 rounded-full text-xs font-medium text-midnight/70 font-dm-sans border border-amethyst/10">
                   Fantia
                 </span>
-                <span className="bg-white/60 px-3 py-1 rounded-full text-xs font-medium text-gray-700">
+                <span className="bg-snow/60 px-3 py-1 rounded-full text-xs font-medium text-midnight/70 font-dm-sans border border-amethyst/10">
                   Trakteer
                 </span>
               </div>

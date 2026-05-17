@@ -11,7 +11,6 @@ import {
   VenueInformation,
   EventSchedule,
   RSVP,
-  GalleryPreview,
   ClosingMessage,
   FloatingNavigation,
   NavigationFAB,
@@ -64,7 +63,7 @@ export default function HomeView() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50">
+    <div className="min-h-screen bg-snow">
       <FloatingNavigation
         activeSection={activeSection}
         onScrollToSection={scrollToSection}
@@ -101,11 +100,6 @@ export default function HomeView() {
       <section id="venue" className="relative">
         <VenueInformation venue={WEDDING_CONFIG.venue} />
         <EventSchedule />
-      </section>
-
-      {/* Gallery Preview */}
-      <section id="gallery" className="relative">
-        <GalleryPreview />
       </section>
 
       {/* RSVP Section */}

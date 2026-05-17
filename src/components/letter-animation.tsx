@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'next/navigation';
+import { Heart, Mail, Sparkles, MousePointerClick } from 'lucide-react';
 
 interface LetterAnimationProps {
   onOpen: () => void;
@@ -31,23 +32,23 @@ export const LetterAnimation = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-gradient-to-br from-rose-100 via-pink-50 to-purple-100 overflow-hidden">
-      {/* Background Decorations */}
+    <div className="fixed inset-0 z-50 bg-snow overflow-hidden">
+      {/* Subtle background pattern */}
       <div className="absolute inset-0">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-rose-200/30 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200/30 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-amethyst/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-midnight/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amethyst-light/10 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Floating Hearts */}
+      {/* Floating decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            initial={{ y: '100%', opacity: 0.3, rotate: 0 }}
+            initial={{ y: '100%', opacity: 0.2, rotate: 0 }}
             animate={{
               y: '-100%',
-              opacity: [0.3, 0.7, 0.3],
+              opacity: [0.2, 0.4, 0.2],
               rotate: [0, 360, 720],
               x: [0, 50, -50, 0],
             }}
@@ -57,12 +58,12 @@ export const LetterAnimation = ({
               ease: 'linear',
               delay: i * 1.5,
             }}
-            className="absolute text-rose-300"
+            className="absolute text-amethyst/30"
             style={{
               left: `${10 + i * 15}%`,
             }}
           >
-            💕
+            <Heart className="w-4 h-4" fill="currentColor" />
           </motion.div>
         ))}
       </div>
@@ -76,14 +77,14 @@ export const LetterAnimation = ({
             transition={{ duration: 1, delay: 0.5 }}
             className="mb-8 sm:mb-12"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-gray-800 mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-playfair text-midnight mb-4">
               {t('hero.welcome')}
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-md mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-midnight/60 max-w-md mx-auto font-cormorant">
               {toName ? (
                 <>
                   {t('letter.dear')}{' '}
-                  <span className="font-medium text-rose-600">{toName}</span>
+                  <span className="font-medium text-amethyst-dark">{toName}</span>
                   <br />
                   {t('letter.you-are-invited')}
                 </>
@@ -111,7 +112,7 @@ export const LetterAnimation = ({
             >
               {/* Envelope Back */}
               <motion.div
-                className="w-80 h-56 sm:w-96 sm:h-64 bg-gradient-to-br from-rose-200 to-pink-300 rounded-lg shadow-2xl relative mx-auto"
+                className="w-80 h-56 sm:w-96 sm:h-64 bg-gradient-to-br from-amethyst-light to-amethyst rounded-lg shadow-2xl relative mx-auto"
                 animate={{
                   rotateY: isOpening ? 15 : 0,
                   z: isOpening ? -50 : 0,
@@ -119,23 +120,23 @@ export const LetterAnimation = ({
                 transition={{ duration: 0.8 }}
               >
                 {/* Envelope Pattern */}
-                <div className="absolute inset-4 border-2 border-rose-300/30 rounded border-dashed"></div>
+                <div className="absolute inset-4 border-2 border-snow/30 rounded border-dashed"></div>
 
                 {/* Wax Seal */}
                 <motion.div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-full shadow-lg flex items-center justify-center"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-midnight to-midnight-light rounded-full shadow-lg flex items-center justify-center"
                   animate={{
                     scale: isHovered ? 1.1 : 1,
                     rotate: isHovered ? 5 : 0,
                   }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="text-white text-xl font-bold">💌</div>
+                  <Mail className="w-6 h-6 text-snow" />
                 </motion.div>
 
                 {/* Envelope Flap */}
                 <motion.div
-                  className="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-rose-300 to-pink-400 origin-top"
+                  className="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-amethyst to-amethyst-dark origin-top"
                   style={{
                     clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
                   }}
@@ -154,27 +155,25 @@ export const LetterAnimation = ({
                     initial={{ y: 0, opacity: 0, scale: 0.8 }}
                     animate={{ y: -40, opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className="absolute top-8 left-1/2 -translate-x-1/2 w-72 h-54 sm:w-80 sm:h-58 bg-gradient-to-br from-yellow-50 to-white rounded-lg shadow-xl border border-rose-200"
+                    className="absolute top-8 left-1/2 -translate-x-1/2 w-72 h-54 sm:w-80 sm:h-58 bg-gradient-to-br from-snow to-snow-warm rounded-lg shadow-xl border border-amethyst/20"
                   >
                     <div className="p-6 sm:p-8 h-full flex flex-col justify-center text-center">
-                      <div className="text-rose-500 text-2xl sm:text-3xl mb-4">
-                        💕
-                      </div>
+                      <Heart className="w-8 h-8 text-amethyst mx-auto mb-4" fill="currentColor" />
                       {toName && (
-                        <p className="text-sm sm:text-base text-gray-600 mb-2">
+                        <p className="text-sm sm:text-base text-midnight/60 mb-2 font-dm-sans">
                           {t('letter.to')}:{' '}
-                          <span className="font-medium text-rose-600">
+                          <span className="font-medium text-amethyst-dark">
                             {toName}
                           </span>
                         </p>
                       )}
-                      <h3 className="text-lg sm:text-xl font-serif text-gray-800 mb-2">
+                      <h3 className="text-lg sm:text-xl font-playfair text-midnight mb-2">
                         {coupleName}
                       </h3>
-                      <p className="text-sm sm:text-base text-gray-600 mb-4">
+                      <p className="text-sm sm:text-base text-midnight/60 mb-4 font-dm-sans">
                         {t('letter.invitation-title')}
                       </p>
-                      <div className="text-xs sm:text-sm text-gray-500 font-serif italic">
+                      <div className="text-xs sm:text-sm text-midnight/40 font-cormorant italic">
                         &ldquo;{t('letter.invitation-quote')}&rdquo;
                       </div>
                     </div>
@@ -203,9 +202,9 @@ export const LetterAnimation = ({
                           repeat: Infinity,
                           repeatDelay: 2,
                         }}
-                        className="absolute top-1/2 left-1/2 text-yellow-400 text-sm pointer-events-none"
+                        className="absolute top-1/2 left-1/2 text-amethyst pointer-events-none"
                       >
-                        ✨
+                        <Sparkles className="w-3 h-3" />
                       </motion.div>
                     ))}
                   </>
@@ -231,7 +230,7 @@ export const LetterAnimation = ({
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className="text-sm sm:text-base text-gray-600 font-medium"
+              className="text-sm sm:text-base text-midnight/60 font-medium font-dm-sans"
             >
               {isHovered
                 ? t('letter.click-to-open-hover')
@@ -248,9 +247,9 @@ export const LetterAnimation = ({
                   repeat: Infinity,
                   ease: 'easeInOut',
                 }}
-                className="text-2xl"
+                className="text-amethyst-dark"
               >
-                👆
+                <MousePointerClick className="w-6 h-6" />
               </motion.div>
             </div>
           </motion.div>
@@ -264,15 +263,15 @@ export const LetterAnimation = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 1 }}
-            className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center"
+            className="absolute inset-0 bg-snow/80 backdrop-blur-sm flex items-center justify-center"
           >
             <div className="text-center">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-                className="w-12 h-12 border-4 border-rose-200 border-t-rose-500 rounded-full mx-auto mb-4"
+                className="w-12 h-12 border-4 border-amethyst-light border-t-amethyst rounded-full mx-auto mb-4"
               />
-              <p className="text-gray-600 text-lg font-medium">
+              <p className="text-midnight/70 text-lg font-medium font-dm-sans">
                 {t('letter.opening-the-invitation')}
               </p>
             </div>

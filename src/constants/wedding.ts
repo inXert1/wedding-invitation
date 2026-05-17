@@ -1,25 +1,23 @@
 export const WEDDING_CONFIG = {
-  date: new Date('2025-10-15T16:00:00'),
+  date: new Date('2026-07-27T16:00:00'),
   bride: {
-    name: 'Mio',
-    fullName: 'Akiyama Mio',
-    photo: '/assets/images/bride-circle.png',
+    name: 'Joefren',
+    fullName: 'Maris Joefren',
   },
   groom: {
-    name: 'Fiqri',
-    fullName: 'M Fiqri Haikhar Anwar',
-    photo: '/assets/images/groom-circle.png',
+    name: 'Alyster',
+    fullName: 'Alyster Rey',
   },
   venue: {
     ceremony: {
-      name: 'Masjid Songkok Recca Bone',
-      address: 'Jl. Jend. Ahmad Yani',
-      time: '4:00 PM',
+      name: 'Santo Cristo Parish Church',
+      address: 'Pulilan, Bulacan',
+      time: '2:00 PM',
     },
     reception: {
-      name: 'Hotel Novena Bone',
-      address: 'Jl. Jend. Ahmad Yani No.25',
-      time: '6:30 PM',
+      name: 'Casa Alpedro',
+      address: 'Pulilan, Bulacan',
+      time: '4:00 PM',
     },
   },
 };
