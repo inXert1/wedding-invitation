@@ -23,6 +23,7 @@
   --color-amethyst-dark: #8A5A60;
   --color-midnight: #551c25;
   --color-midnight-light: #7A2A38;
+  --font-bruney: var(--font-bruney);
   --font-playfair: var(--font-playfair);
   --font-cormorant: var(--font-cormorant);
   --font-dm-sans: var(--font-dm-sans);
@@ -42,3 +43,4 @@ body {
   background-color: #B57F86;
   color: #FBF5F3;
 }
+

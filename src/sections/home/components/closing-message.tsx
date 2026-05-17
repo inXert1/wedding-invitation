@@ -30,7 +30,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair text-midnight mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-6">
             {t('closing-message.title')}
           </h2>
           <div className="w-24 h-px bg-amethyst mx-auto mb-8"></div>
@@ -48,7 +48,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           <div className="text-base sm:text-lg text-midnight/50 font-dm-sans">
             {t('closing-message.with-love')}
           </div>
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-playfair text-amethyst-dark mt-2">
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bruney text-amethyst-dark mt-2">
             {groom} & {bride}
           </div>
         </motion.div>

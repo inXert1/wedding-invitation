@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
 import { Heart, Crown } from 'lucide-react';
+import Image from 'next/image';
 
 interface CoupleIntroductionProps {
   bride: WeddingConfigType['bride'];
@@ -36,7 +37,7 @@ export const CoupleIntroduction = ({
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair text-midnight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-4">
             {t('couple.our-story')}
           </h2>
           <div className="w-24 h-px bg-amethyst mx-auto"></div>
@@ -55,17 +56,22 @@ export const CoupleIntroduction = ({
             className="text-center lg:text-right"
           >
             <div className="relative inline-block mb-6">
-              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-midnight/10 to-midnight-light/15 rounded-full flex items-center justify-center shadow-2xl border-8 border-snow">
-                <span className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-playfair text-midnight/70 select-none">
-                  {groom.name.charAt(0)}
-                </span>
+              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl border-8 border-snow">
+                <Image
+                  src="/assets/images/tiryu.jpg"
+                  alt={groom.fullName}
+                  width={256}
+                  height={256}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-midnight rounded-full flex items-center justify-center shadow-lg">
                 <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-snow" />
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-playfair text-midnight mb-2">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-cormorant text-midnight mb-2">
               {groom.fullName}
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-midnight-light mb-4 font-medium font-cormorant">
@@ -115,17 +121,22 @@ export const CoupleIntroduction = ({
             className="text-center lg:text-left"
           >
             <div className="relative inline-block mb-6">
-              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-amethyst-light/30 to-amethyst/20 rounded-full flex items-center justify-center shadow-2xl border-8 border-snow">
-                <span className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-playfair text-amethyst-dark select-none">
-                  {bride.name.charAt(0)}
-                </span>
+              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl border-8 border-snow">
+                <Image
+                  src="/assets/images/juhjuh.jpg"
+                  alt={bride.fullName}
+                  width={256}
+                  height={256}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </div>
               <div className="absolute -bottom-4 -left-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-amethyst rounded-full flex items-center justify-center shadow-lg">
                 <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-snow" />
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-playfair text-midnight mb-2">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-cormorant text-midnight mb-2">
               {bride.fullName}
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-amethyst-dark mb-4 font-medium font-cormorant">

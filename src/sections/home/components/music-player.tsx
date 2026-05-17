@@ -133,7 +133,7 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
                 >
                   <Music className="w-10 h-10 mx-auto" />
                 </motion.div>
-                <h3 className="text-xl font-bold text-midnight mb-2 font-playfair">
+                <h3 className="text-xl font-bold text-midnight mb-2 font-bruney">
                   {t('music.enable-music')}
                 </h3>
                 <p className="text-midnight/60 text-sm font-dm-sans">

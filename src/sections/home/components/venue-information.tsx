@@ -29,7 +29,7 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair text-midnight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-4">
             {t('venue.location-title')}
           </h2>
           <div className="w-24 h-px bg-amethyst mx-auto"></div>
@@ -50,7 +50,7 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
               <div className="w-20 h-20 bg-amethyst-dark rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <Church className="w-8 h-8 text-snow" />
               </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-playfair text-midnight mb-2">
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bruney text-midnight mb-2">
                 {t('venue.ceremony-time')}
               </h3>
               <div className="w-16 h-px bg-amethyst mx-auto"></div>
@@ -58,7 +58,7 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
 
             <div className="space-y-6">
               <div className="text-center">
-                <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-midnight mb-2 font-playfair">
+                <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-midnight mb-2 font-bruney">
                   {venue.ceremony.name}
                 </h4>
                 <p className="text-sm sm:text-base md:text-lg text-midnight/60 mb-4 font-dm-sans">
@@ -106,7 +106,7 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
               <div className="w-20 h-20 bg-midnight rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <Wine className="w-8 h-8 text-snow" />
               </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-playfair text-midnight mb-2">
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bruney text-midnight mb-2">
                 {t('venue.reception-time')}
               </h3>
               <div className="w-16 h-px bg-midnight/30 mx-auto"></div>
@@ -114,7 +114,7 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
 
             <div className="space-y-6">
               <div className="text-center">
-                <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-midnight mb-2 font-playfair">
+                <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-midnight mb-2 font-bruney">
                   {venue.reception.name}
                 </h4>
                 <p className="text-sm sm:text-base md:text-lg text-midnight/60 mb-4 font-dm-sans">
@@ -160,7 +160,7 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
           className="mt-16 text-center"
         >
           <div className="bg-snow-warm rounded-2xl p-8 max-w-3xl mx-auto border border-amethyst/10">
-            <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-midnight mb-4 flex items-center justify-center font-playfair">
+            <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-midnight mb-4 flex items-center justify-center font-bruney">
               <Bus className="w-5 h-5 mr-2 text-amethyst" />
               {t('venue.transportation')}
             </h4>

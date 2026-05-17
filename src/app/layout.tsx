@@ -1,8 +1,15 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Cormorant_Garamond, DM_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import { LangProvider, LocalizationProvider } from '@/locales';
 import { Toaster } from 'sonner';
+
+const bruney = localFont({
+  src: '../../fonts/ss-bruney.otf',
+  variable: '--font-bruney',
+  display: 'swap',
+});
 
 const playfair = Playfair_Display({
   variable: '--font-playfair',
@@ -39,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} antialiased`}
+        className={`${bruney.variable} ${playfair.variable} ${cormorant.variable} ${dmSans.variable} antialiased`}
       >
         <LangProvider>
           <LocalizationProvider>
@@ -51,3 +58,4 @@ export default function RootLayout({
     </html>
   );
 }
+

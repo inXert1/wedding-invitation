@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
-import { CheckCircle, Heart, Clock, Phone, Mail, Gift } from 'lucide-react';
+import { CheckCircle, Heart, Clock, Phone, Mail, Gift, Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 export const RSVP = () => {
   const { t } = useTranslation('home');
@@ -19,27 +20,51 @@ export const RSVP = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsLoading(true);
 
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        attendance: '',
-        guests: '1',
-        dietaryRestrictions: '',
-        message: '',
+    try {
+      const response = await fetch('/api/rsvp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-    }, 3000);
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Something went wrong');
+      }
+
+      setIsSubmitted(true);
+
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          attendance: '',
+          guests: '1',
+          dietaryRestrictions: '',
+          message: '',
+        });
+      }, 4000);
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : 'Failed to send RSVP. Please try again.',
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (
@@ -66,7 +91,7 @@ export const RSVP = () => {
             <div className="w-20 h-20 bg-amethyst/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-10 h-10 text-amethyst-dark" />
             </div>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-playfair text-midnight mb-4">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bruney text-midnight mb-4">
               {t('rsvp.thank-you')}
             </h3>
             <p className="text-midnight/60 text-base sm:text-lg md:text-xl font-cormorant">
@@ -94,7 +119,7 @@ export const RSVP = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair text-midnight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-4">
             {t('rsvp.title')}
           </h2>
           <div className="w-24 h-px bg-amethyst mx-auto mb-6"></div>
@@ -111,7 +136,7 @@ export const RSVP = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="bg-snow rounded-3xl p-8 shadow-xl border border-amethyst/10">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-playfair text-midnight mb-6 text-center">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bruney text-midnight mb-6 text-center">
                 {t('rsvp.confirm-attendance')}
               </h3>
 
@@ -175,29 +200,7 @@ export const RSVP = () => {
                     <option value="no">{t('rsvp.no-cant')}</option>
                   </select>
                 </div>
-                {/* Number of Guests */}
-                {formData.attendance === 'yes' && (
-                  <div>
-                    <label
-                      htmlFor="guests"
-                      className="block text-xs sm:text-sm font-medium text-midnight/70 mb-2 font-dm-sans"
-                    >
-                      {t('rsvp.number-guests')}
-                    </label>
-                    <select
-                      id="guests"
-                      name="guests"
-                      value={formData.guests}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-amethyst/20 rounded-xl focus:ring-2 focus:ring-amethyst focus:border-transparent outline-none transition-all duration-300 bg-snow-warm font-dm-sans"
-                    >
-                      <option value="1">1 {t('rsvp.guest-count')}</option>
-                      <option value="2">2 {t('rsvp.guests-count')}</option>
-                      <option value="3">3 {t('rsvp.guests-count')}</option>
-                      <option value="4">4 {t('rsvp.guests-count')}</option>
-                    </select>
-                  </div>
-                )}
+              
                 {/* Dietary Restrictions */}
                 {formData.attendance === 'yes' && (
                   <div>
@@ -240,9 +243,17 @@ export const RSVP = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full bg-midnight text-snow py-4 px-6 rounded-xl font-medium text-base sm:text-lg hover:bg-midnight-light transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-dm-sans cursor-pointer"
+                  disabled={isLoading}
+                  className="w-full bg-midnight text-snow py-4 px-6 rounded-xl font-medium text-base sm:text-lg hover:bg-midnight-light transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-dm-sans cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-3"
                 >
-                  {t('rsvp.send-rsvp')}
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      {t('rsvp.sending')}
+                    </>
+                  ) : (
+                    t('rsvp.send-rsvp')
+                  )}
                 </button>
               </form>
             </div>

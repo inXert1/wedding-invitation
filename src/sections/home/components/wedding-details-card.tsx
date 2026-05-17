@@ -42,7 +42,7 @@ export const WeddingDetailsCard = ({
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair text-midnight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-4">
             {t('details.title')}
           </h2>
           <div className="w-24 h-px bg-amethyst mx-auto mb-6"></div>
@@ -91,7 +91,7 @@ export const WeddingDetailsCard = ({
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
                 <div className="bg-midnight text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
-                  <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-none font-playfair">
+                  <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-none font-playfair-display">
                     {date.getDate()}
                   </div>
                 </div>
@@ -109,7 +109,7 @@ export const WeddingDetailsCard = ({
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
                 <div className="bg-amethyst-dark text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
-                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-none mb-1 font-playfair">
+                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium leading-none mb-1 font-playfair-display">
                     {date
                       .toLocaleDateString(currentLang.numberFormat.code, {
                         month: 'short',
@@ -120,7 +120,7 @@ export const WeddingDetailsCard = ({
                     {date.getFullYear()}
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm font-medium text-midnight/50 uppercase tracking-wider mt-3 font-dm-sans">
+                <p className="text-xs sm:text-sm font-medium text-midnight/50 uppercase tracking-wider mt-3 font-playfair-display">
                   {t('details.month')} & {t('details.year')}
                 </p>
               </motion.div>
@@ -134,7 +134,7 @@ export const WeddingDetailsCard = ({
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
                 <div className="bg-amethyst text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
-                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-none font-playfair">
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-none font-playfair-display">
                     {formatWeddingTime(date, currentLang.numberFormat.code)}
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export const WeddingDetailsCard = ({
                 <div className="relative z-10">
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-3">
                     <CalendarDays className="w-6 h-6 sm:w-7 sm:h-7 text-amethyst" />
-                    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-playfair text-midnight font-bold text-center leading-tight">
+                    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bruney text-midnight font-bold text-center leading-tight">
                       {date.toLocaleDateString(currentLang.numberFormat.code, {
                         weekday: 'long',
                       })}
@@ -230,7 +230,7 @@ export const WeddingDetailsCard = ({
               <div className="inline-block bg-amethyst/10 rounded-full p-4 mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Church className="w-8 h-8 text-amethyst-dark" />
               </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-midnight mb-2 font-playfair">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-midnight mb-2 font-bruney">
                 {t('details.ceremony')}
               </h3>
               <div className="w-16 h-px bg-amethyst mx-auto"></div>
@@ -280,7 +280,7 @@ export const WeddingDetailsCard = ({
               <div className="inline-block bg-midnight/10 rounded-full p-4 mb-4 group-hover:scale-110 transition-transform duration-300">
                 <PartyPopper className="w-8 h-8 text-midnight" />
               </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-midnight mb-2 font-playfair">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-midnight mb-2 font-bruney">
                 {t('details.reception')}
               </h3>
               <div className="w-16 h-px bg-midnight/30 mx-auto"></div>
@@ -328,7 +328,7 @@ export const WeddingDetailsCard = ({
           className="mt-12 text-center"
         >
           <div className="bg-snow-warm rounded-2xl p-8 border border-amethyst/10">
-            <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-midnight mb-4 font-playfair">
+            <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-midnight mb-4 font-bruney">
               {t('details.please-note')}
             </h4>
             <div className="grid md:grid-cols-3 gap-6 text-xs sm:text-sm text-midnight/60 font-dm-sans">

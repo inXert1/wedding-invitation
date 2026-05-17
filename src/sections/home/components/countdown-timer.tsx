@@ -84,7 +84,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-playfair text-midnight mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bruney text-midnight mb-4">
             {t('details.countdown-title')}
           </h2>
           <div className="w-24 h-px bg-amethyst mx-auto mb-4"></div>
@@ -121,7 +121,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
                 {/* Content */}
                 <div className="relative z-10">
                   <div
-                    className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-br ${unit.color} bg-clip-text text-transparent mb-2 font-playfair`}
+                    className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-br ${unit.color} bg-clip-text text-transparent mb-2 font-bruney`}
                   >
                     {unit.value.toString().padStart(2, '0')}
                   </div>

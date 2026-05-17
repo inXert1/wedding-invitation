@@ -77,7 +77,7 @@ export const LetterAnimation = ({
             transition={{ duration: 1, delay: 0.5 }}
             className="mb-8 sm:mb-12"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-playfair text-midnight mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bruney text-midnight mb-4">
               {t('hero.welcome')}
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-midnight/60 max-w-md mx-auto font-cormorant">
@@ -168,7 +168,7 @@ export const LetterAnimation = ({
                           </span>
                         </p>
                       )}
-                      <h3 className="text-lg sm:text-xl font-playfair text-midnight mb-2">
+                      <h3 className="text-lg sm:text-xl font-bruney text-midnight mb-2">
                         {coupleName}
                       </h3>
                       <p className="text-sm sm:text-base text-midnight/60 mb-4 font-dm-sans">
