@@ -122,18 +122,6 @@ export const LetterAnimation = ({
                 {/* Envelope Pattern */}
                 <div className="absolute inset-4 border-2 border-snow/30 rounded border-dashed"></div>
 
-                {/* Wax Seal */}
-                <motion.div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-midnight to-midnight-light rounded-full shadow-lg flex items-center justify-center"
-                  animate={{
-                    scale: isHovered ? 1.1 : 1,
-                    rotate: isHovered ? 5 : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Mail className="w-6 h-6 text-snow" />
-                </motion.div>
-
                 {/* Envelope Flap */}
                 <motion.div
                   className="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-amethyst to-amethyst-dark origin-top"
@@ -146,6 +134,19 @@ export const LetterAnimation = ({
                   }}
                   transition={{ duration: 1, delay: isOpening ? 0.2 : 0 }}
                 />
+
+                {/* Wax Seal */}
+                <motion.div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-midnight to-midnight-light rounded-full shadow-lg flex items-center justify-center z-10"
+                  animate={{
+                    scale: isHovered ? 1.1 : 1,
+                    rotate: isHovered ? 5 : 0,
+                    opacity: isOpening ? 0 : 1,
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Mail className="w-6 h-6 text-snow" />
+                </motion.div>
               </motion.div>
 
               {/* Letter Inside */}

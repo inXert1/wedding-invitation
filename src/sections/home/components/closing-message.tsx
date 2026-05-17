@@ -84,7 +84,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           </div>
 
           <p className="text-sm sm:text-base text-midnight/40 font-dm-sans">
-            #JoefrenAndAlyster2026 #LoveWins #ForeverStartsNow
+            #JoefrenAndAllyster2026 #LoveWins #ForeverStartsNow
           </p>
         </motion.div>
 

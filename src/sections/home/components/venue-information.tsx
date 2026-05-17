@@ -86,7 +86,7 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
 
               <button
                 onClick={() =>
-                  window.open(generateMapLink(venue.ceremony.name), '_blank')
+                  window.open(venue.ceremony.link, '_blank')
                 }
                 className="w-full bg-midnight text-snow py-3 px-6 rounded-xl font-medium hover:bg-midnight-light transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base cursor-pointer font-dm-sans"
               >
@@ -142,7 +142,7 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
 
               <button
                 onClick={() =>
-                  window.open(generateMapLink(venue.reception.name), '_blank')
+                  window.open(venue.reception.link, '_blank')
                 }
                 className="w-full bg-amethyst-dark text-snow py-3 px-6 rounded-xl font-medium hover:bg-amethyst transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base cursor-pointer font-dm-sans"
               >

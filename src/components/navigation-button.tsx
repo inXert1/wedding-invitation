@@ -94,10 +94,7 @@ export function NavigationButton({
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3, delay: 0.1 * index }}
       >
-        {
-          // @ts-expect-error - err
-          t(section.labelKey)
-        }
+        {t(section.labelKey as any)}
       </motion.span>
 
       {/* Active Indicator Dot with Pulse */}

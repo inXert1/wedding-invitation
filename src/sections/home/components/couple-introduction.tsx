@@ -47,7 +47,7 @@ export const CoupleIntroduction = ({
 
         {/* Couple Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Bride Card */}
+          {/* Groom Card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -50 }}
@@ -55,31 +55,31 @@ export const CoupleIntroduction = ({
             className="text-center lg:text-right"
           >
             <div className="relative inline-block mb-6">
-              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-amethyst-light/30 to-amethyst/20 rounded-full flex items-center justify-center shadow-2xl border-8 border-snow">
-                <span className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-playfair text-amethyst-dark select-none">
-                  {bride.name.charAt(0)}
+              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-midnight/10 to-midnight-light/15 rounded-full flex items-center justify-center shadow-2xl border-8 border-snow">
+                <span className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-playfair text-midnight/70 select-none">
+                  {groom.name.charAt(0)}
                 </span>
               </div>
-              <div className="absolute -bottom-4 -right-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-amethyst rounded-full flex items-center justify-center shadow-lg">
+              <div className="absolute -bottom-4 -right-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-midnight rounded-full flex items-center justify-center shadow-lg">
                 <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-snow" />
               </div>
             </div>
 
             <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-playfair text-midnight mb-2">
-              {bride.fullName}
+              {groom.fullName}
             </h3>
-            <p className="text-base sm:text-lg md:text-xl text-amethyst-dark mb-4 font-medium font-cormorant">
-              {t('couple.the-bride')}
+            <p className="text-base sm:text-lg md:text-xl text-midnight-light mb-4 font-medium font-cormorant">
+              {t('couple.the-groom')}
             </p>
             <p className="text-sm sm:text-base md:text-lg text-midnight/60 leading-relaxed max-w-md mx-auto lg:mx-0 lg:ml-auto font-dm-sans">
-              {t('couple.bride-description')}
+              {t('couple.groom-description')}
             </p>
 
             {/* Decorative Elements */}
             <div className="mt-6 flex justify-center lg:justify-end space-x-2">
-              <div className="w-2 h-2 bg-amethyst-light rounded-full"></div>
-              <div className="w-2 h-2 bg-amethyst rounded-full"></div>
-              <div className="w-2 h-2 bg-amethyst-dark rounded-full"></div>
+              <div className="w-2 h-2 bg-midnight/30 rounded-full"></div>
+              <div className="w-2 h-2 bg-midnight/50 rounded-full"></div>
+              <div className="w-2 h-2 bg-midnight/70 rounded-full"></div>
             </div>
           </motion.div>
 
@@ -107,7 +107,7 @@ export const CoupleIntroduction = ({
             </motion.div>
           </div>
 
-          {/* Groom Card */}
+          {/* Bride Card */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : 50 }}
@@ -115,31 +115,31 @@ export const CoupleIntroduction = ({
             className="text-center lg:text-left"
           >
             <div className="relative inline-block mb-6">
-              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-midnight/10 to-midnight-light/15 rounded-full flex items-center justify-center shadow-2xl border-8 border-snow">
-                <span className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-playfair text-midnight/70 select-none">
-                  {groom.name.charAt(0)}
+              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-amethyst-light/30 to-amethyst/20 rounded-full flex items-center justify-center shadow-2xl border-8 border-snow">
+                <span className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-playfair text-amethyst-dark select-none">
+                  {bride.name.charAt(0)}
                 </span>
               </div>
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-midnight rounded-full flex items-center justify-center shadow-lg">
+              <div className="absolute -bottom-4 -left-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-amethyst rounded-full flex items-center justify-center shadow-lg">
                 <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-snow" />
               </div>
             </div>
 
             <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-playfair text-midnight mb-2">
-              {groom.fullName}
+              {bride.fullName}
             </h3>
-            <p className="text-base sm:text-lg md:text-xl text-midnight-light mb-4 font-medium font-cormorant">
-              {t('couple.the-groom')}
+            <p className="text-base sm:text-lg md:text-xl text-amethyst-dark mb-4 font-medium font-cormorant">
+              {t('couple.the-bride')}
             </p>
             <p className="text-sm sm:text-base md:text-lg text-midnight/60 leading-relaxed max-w-md mx-auto lg:mx-0 font-dm-sans">
-              {t('couple.groom-description')}
+              {t('couple.bride-description')}
             </p>
 
             {/* Decorative Elements */}
             <div className="mt-6 flex justify-center lg:justify-start space-x-2">
-              <div className="w-2 h-2 bg-midnight/30 rounded-full"></div>
-              <div className="w-2 h-2 bg-midnight/50 rounded-full"></div>
-              <div className="w-2 h-2 bg-midnight/70 rounded-full"></div>
+              <div className="w-2 h-2 bg-amethyst-light rounded-full"></div>
+              <div className="w-2 h-2 bg-amethyst rounded-full"></div>
+              <div className="w-2 h-2 bg-amethyst-dark rounded-full"></div>
             </div>
           </motion.div>
         </div>

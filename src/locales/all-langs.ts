@@ -6,15 +6,15 @@ export const allLangs = [
   {
     value: 'en',
     label: 'English',
-    countryCode: 'EN',
+    countryCode: 'US',
     adapterLocale: 'en',
-    numberFormat: { code: 'id-ID', currency: 'IDR' },
+    numberFormat: { code: 'en-US', currency: 'USD' },
   },
   {
-    value: 'id',
-    label: 'Indonesia',
-    countryCode: 'ID',
-    adapterLocale: 'id',
-    numberFormat: { code: 'id-ID', currency: 'IDR' },
+    value: 'tl',
+    label: 'Tagalog',
+    countryCode: 'PH',
+    adapterLocale: 'tl',
+    numberFormat: { code: 'en-PH', currency: 'PHP' },
   },
 ];

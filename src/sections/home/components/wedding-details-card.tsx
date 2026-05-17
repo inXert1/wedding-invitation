@@ -256,7 +256,7 @@ export const WeddingDetailsCard = ({
               </div>
 
               <motion.a
-                href={generateMapLink(venue.ceremony.name)}
+                href={venue.ceremony.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -306,7 +306,7 @@ export const WeddingDetailsCard = ({
               </div>
 
               <motion.a
-                href={generateMapLink(venue.reception.name)}
+                href={venue.reception.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}

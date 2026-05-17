@@ -58,13 +58,13 @@ export const HeroSection = ({
               className="mb-6 sm:mb-8"
             >
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 mb-4 sm:mb-6">
-                {/* Bride Name */}
+                {/* Groom Name */}
                 <div className="text-center flex-shrink-0">
                   <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-playfair text-midnight">
-                    {couple.bride.name}
+                    {couple.groom.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-amethyst-dark font-cormorant italic mt-1">
-                    {couple.bride.fullName}
+                    {couple.groom.fullName}
                   </p>
                 </div>
 
@@ -73,13 +73,13 @@ export const HeroSection = ({
                   <Heart className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 mx-auto" fill="currentColor" />
                 </div>
 
-                {/* Groom Name */}
+                {/* Bride Name */}
                 <div className="text-center flex-shrink-0">
                   <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-playfair text-midnight">
-                    {couple.groom.name}
+                    {couple.bride.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-amethyst-dark font-cormorant italic mt-1">
-                    {couple.groom.fullName}
+                    {couple.bride.fullName}
                   </p>
                 </div>
               </div>

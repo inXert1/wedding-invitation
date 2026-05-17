@@ -2,15 +2,15 @@
 
 :root {
   --color-snow: #FBF5F3;
-  --color-amethyst: #C087B0;
-  --color-amethyst-light: #D4A8C6;
-  --color-amethyst-dark: #A06B94;
-  --color-midnight: #31081F;
-  --color-midnight-light: #4A1A34;
+  --color-amethyst: #B57F86;
+  --color-amethyst-light: #D1A7AC;
+  --color-amethyst-dark: #8A5A60;
+  --color-midnight: #551c25;
+  --color-midnight-light: #7A2A38;
   --color-snow-warm: #F5EDE9;
 
   --background: #FBF5F3;
-  --foreground: #31081F;
+  --foreground: #551c25;
 }
 
 @theme inline {
@@ -18,11 +18,11 @@
   --color-foreground: var(--foreground);
   --color-snow: #FBF5F3;
   --color-snow-warm: #F5EDE9;
-  --color-amethyst: #C087B0;
-  --color-amethyst-light: #D4A8C6;
-  --color-amethyst-dark: #A06B94;
-  --color-midnight: #31081F;
-  --color-midnight-light: #4A1A34;
+  --color-amethyst: #B57F86;
+  --color-amethyst-light: #D1A7AC;
+  --color-amethyst-dark: #8A5A60;
+  --color-midnight: #551c25;
+  --color-midnight-light: #7A2A38;
   --font-playfair: var(--font-playfair);
   --font-cormorant: var(--font-cormorant);
   --font-dm-sans: var(--font-dm-sans);
@@ -39,6 +39,6 @@ body {
 }
 
 ::selection {
-  background-color: #C087B0;
+  background-color: #B57F86;
   color: #FBF5F3;
 }
