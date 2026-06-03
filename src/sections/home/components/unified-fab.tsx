@@ -262,12 +262,12 @@ export default function UnifiedFAB({
           ref={audioRef}
           loop
           preload="auto"
-          src="/assets/audio/boom-tarat-tarat.mp3"
+          src="/assets/audio/jabili.mp3"
           aria-label="Wedding background music"
         >
           <track
             kind="captions"
-            src="/assets/audio/boom-tarat-tarat.mp3"
+            src="/assets/audio/jabili.mp3"
             label="No captions available"
           />
         </audio>
@@ -358,9 +358,8 @@ export default function UnifiedFAB({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(!isOpen)}
-            className={`relative w-14 h-14 bg-snow/95 backdrop-blur-md border border-amethyst/20 rounded-full shadow-2xl hover:shadow-amethyst/20 transition-all duration-300 group overflow-hidden cursor-pointer ${
-              autoplayBlocked && !hasInteracted && !isOpen ? 'animate-pulse' : ''
-            }`}
+            className={`relative w-14 h-14 bg-snow/95 backdrop-blur-md border border-amethyst/20 rounded-full shadow-2xl hover:shadow-amethyst/20 transition-all duration-300 group overflow-hidden cursor-pointer ${autoplayBlocked && !hasInteracted && !isOpen ? 'animate-pulse' : ''
+              }`}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-amethyst/5 to-midnight/5 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
 
@@ -369,7 +368,7 @@ export default function UnifiedFAB({
                 {isOpen ? <X className="w-6 h-6" /> : <ChevronUp className="w-6 h-6" />}
               </motion.div>
             </div>
-            
+
             {/* Warning indicator if autoplay blocked */}
             {autoplayBlocked && !hasInteracted && !isOpen && (
               <div className="absolute top-0 right-0 w-3 h-3 bg-amethyst-dark rounded-full border-2 border-snow"></div>

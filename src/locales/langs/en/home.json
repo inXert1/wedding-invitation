@@ -18,7 +18,7 @@
     "contact": "Questions? Contact us at wedding@fihaa.my.id"
   },
   "hero": {
-    "welcome": "Welcome to Our Wedding",
+    "welcome": "Together with our Families",
     "together": "Together",
     "scroll-down": "Scroll Down",
     "scroll-to-explore": "Scroll to explore our love story",
@@ -71,14 +71,15 @@
     "title": "Attire Guide",
     "description": "We would love to see you in your semi-formal or casual wear.",
     "encouragement": "We encourage you to dress according to our wedding color.",
-    "female-label": "Female Guests",
-    "male-label": "Male Guests"
+    "female-label": "Ladies",
+    "female-description": "Elegant long dress or evening gown in shades of plum, amethyst, or wine red.",
+    "male-label": "Gentlemen",
+    "male-description": "Tan or beige suit, or a white long-sleeve shirt with a bow tie and suspenders."
   },
   "venue": {
     "title": "Venue Information",
     "ceremony": "Ceremony",
     "reception": "Reception",
-    "get-directions": "Get Directions",
     "schedule-title": "Event Schedule",
     "preparation": "Preparation",
     "ceremony-time": "Wedding Ceremony",
@@ -97,6 +98,8 @@
     "dancing": "Dancing & live music",
     "valet": "Valet parking available",
     "view-map": "View on Map",
+    "close": "Close",
+    "get-directions": "Get Directions",
     "transportation": "Transportation",
     "shuttle-service": "Complimentary shuttle service will be provided between the ceremony and reception venues.",
     "shuttle-schedule": "Shuttle Schedule",

@@ -68,11 +68,19 @@
     "our-wedding-day": "Araw ng Aming Kasal",
     "join-us": "Samahan kami sa aming espesyal na araw!"
   },
+  "attire": {
+    "title": "Gabay sa Kasuotan",
+    "description": "Nais naming makita kayo sa inyong pormal o semi-pormal na kasuotan.",
+    "encouragement": "Hinihikayat namin kayong magsuot ng naaayon sa kulay ng aming kasal.",
+    "female-label": "Mga Babaeng Bisita",
+    "female-description": "Eleganteng mahabang gown o dress sa mga kulay ng plum, amethyst, o wine red.",
+    "male-label": "Mga Lalaking Bisita",
+    "male-description": "Tan o beige na suit, o puting long-sleeve shirt na may bow tie at suspenders."
+  },
   "venue": {
     "title": "Impormasyon sa Lugar",
     "ceremony": "Seremonya",
     "reception": "Reception",
-    "get-directions": "Kumuha ng Direksyon",
     "schedule-title": "Iskedyul ng mga Event",
     "preparation": "Paghahanda",
     "ceremony-time": "Seremonya",
@@ -91,6 +99,8 @@
     "dancing": "Pagsasayaw at live na musika",
     "valet": "May valet parking",
     "view-map": "Tingnan sa Mapa",
+    "close": "Isara",
+    "get-directions": "Kumuha ng Direksyon",
     "transportation": "Transportasyon",
     "shuttle-service": "May libreng shuttle service sa pagitan ng seremonya at reception.",
     "shuttle-schedule": "Iskedyul ng Shuttle",
