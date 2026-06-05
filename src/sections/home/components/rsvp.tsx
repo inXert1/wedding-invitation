@@ -91,7 +91,7 @@ export const RSVP = () => {
             <div className="w-20 h-20 bg-amethyst/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-10 h-10 text-amethyst-dark" />
             </div>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bruney text-midnight mb-4">
+            <h3 className="text-4xl sm:text-6xl md:text-8xl font-bruney text-midnight mb-4">
               {t('rsvp.thank-you')}
             </h3>
             <p className="text-midnight/60 text-base sm:text-lg md:text-xl font-cormorant">
@@ -136,7 +136,7 @@ export const RSVP = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="bg-snow rounded-3xl p-8 shadow-xl border border-amethyst/10">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bruney text-midnight mb-6 text-center">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bruney text-midnight mb-6 text-center">
                 {t('rsvp.confirm-attendance')}
               </h3>
 
@@ -200,7 +200,7 @@ export const RSVP = () => {
                     <option value="no">{t('rsvp.no-cant')}</option>
                   </select>
                 </div>
-              
+
                 {/* Dietary Restrictions */}
                 {formData.attendance === 'yes' && (
                   <div>

@@ -48,7 +48,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           <div className="text-base sm:text-lg text-midnight/50 font-dm-sans">
             {t('closing-message.with-love')}
           </div>
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-ballet text-amethyst-dark mt-2">
+          <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-ballet text-amethyst-dark mt-2">
             {groom} & {bride}
           </div>
         </motion.div>

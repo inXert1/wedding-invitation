@@ -11,6 +11,24 @@ const bruney = localFont({
   display: 'swap',
 });
 
+const darleston = localFont({
+  src: '../../fonts/Darleston.otf',
+  variable: '--font-darleston',
+  display: 'swap',
+});
+
+const veryVogueDisplay = localFont({
+  src: '../../fonts/Very_Vogue_Font/Webfonts/VeryVogueDisplay.woff2',
+  variable: '--font-very-vogue-display',
+  display: 'swap',
+});
+
+const veryVogueText = localFont({
+  src: '../../fonts/Very_Vogue_Font/Webfonts/VeryVogueText.woff2',
+  variable: '--font-very-vogue-text',
+  display: 'swap',
+});
+
 const playfair = Playfair_Display({
   variable: '--font-playfair',
   subsets: ['latin'],
@@ -46,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bruney.variable} ${playfair.variable} ${cormorant.variable} ${dmSans.variable} antialiased`}
+        className={`${bruney.variable} ${darleston.variable} ${veryVogueDisplay.variable} ${veryVogueText.variable} ${playfair.variable} ${cormorant.variable} ${dmSans.variable} antialiased`}
       >
         <LangProvider>
           <LocalizationProvider>

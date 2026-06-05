@@ -116,7 +116,7 @@ export const EventSchedule = () => {
                           {item.time}
                         </span>
                       </div>
-                      <h4 className="text-base sm:text-lg md:text-xl font-semibold text-midnight mb-1 font-bruney">
+                      <h4 className="text-xl sm:text-2xl md:text-3xl text-midnight mb-1 font-bruney">
                         {item.event}
                       </h4>
                       <p className="text-midnight/60 text-xs sm:text-sm md:text-base font-dm-sans">

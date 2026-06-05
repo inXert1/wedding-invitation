@@ -48,7 +48,7 @@ const Seal = () => (
     {/* Inner ring */}
     <circle cx="41" cy="41" r="29" fill="none" stroke="#C8A96E" strokeWidth="0.5" opacity="0.5" />
     {/* Monogram */}
-    <text x="41" y="36" textAnchor="middle" fontFamily="var(--font-ballet)" fontSize="13" fill="#F0D8A0" opacity="0.95">J &amp; A</text>
+    <text x="40" y="45" textAnchor="middle" fontFamily="var(--font-darleston)" fontSize="18" fill="#F0D8A0" opacity="0.95">A &amp; J</text>
     {/* Star ornaments */}
     <g fill="#C8A96E" opacity="0.5">
       <polygon points="41,13 42.2,16.6 46,16.6 43,18.8 44.2,22.4 41,20.2 37.8,22.4 39,18.8 36,16.6 39.8,16.6" transform="scale(0.55) translate(33,17)" />
@@ -150,7 +150,7 @@ export const LetterAnimation = ({
   return (
     <div className={styles.container}>
       {/* Decorative corner flowers */}
-      <div className="absolute top-0 left-0 pointer-events-none z-10 w-[80px] sm:w-[130px] md:w-[300px]">
+      <div className="absolute top-0 left-0 pointer-events-none z-10" style={{ width: 'clamp(160px, 40vw, 300px)' }}>
         <Image
           src="/assets/images/RSVP-upper-left.png"
           alt="Flower ornament top left"
@@ -160,7 +160,7 @@ export const LetterAnimation = ({
           priority
         />
       </div>
-      <div className="absolute top-0 right-0 pointer-events-none z-10 w-[80px] sm:w-[130px] md:w-[300px]">
+      <div className="absolute top-0 right-0 pointer-events-none z-10" style={{ width: 'clamp(160px, 40vw, 300px)' }}>
         <Image
           src="/assets/images/RSVP-upper-right.png"
           alt="Flower ornament top right"
@@ -170,7 +170,7 @@ export const LetterAnimation = ({
           priority
         />
       </div>
-      <div className="absolute bottom-0 left-0 pointer-events-none z-10 w-[110px] sm:w-[180px] md:w-[480px]">
+      <div className="absolute bottom-0 left-0 pointer-events-none z-10" style={{ width: 'clamp(240px, 60vw, 480px)' }}>
         <Image
           src="/assets/images/home-left.png"
           alt="Flower ornament bottom left"
@@ -180,7 +180,7 @@ export const LetterAnimation = ({
           priority
         />
       </div>
-      <div className="absolute bottom-0 right-0 pointer-events-none z-10 w-[110px] sm:w-[180px] md:w-[480px]">
+      <div className="absolute bottom-0 right-0 pointer-events-none z-10" style={{ width: 'clamp(240px, 60vw, 480px)' }}>
         <Image
           src="/assets/images/home-right.png"
           alt="Flower ornament bottom right"

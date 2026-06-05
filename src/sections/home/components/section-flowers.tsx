@@ -37,7 +37,7 @@ export const SectionFlowers = ({ flowers }: SectionFlowersProps) => {
           <div
             key={index}
             className={`${positionClasses} z-10 pointer-events-none ${flower.className || ''}`}
-            style={flower.className ? undefined : { width: flower.width || 'clamp(240px, 25vw, 400px)' }}
+            style={flower.className ? undefined : { width: flower.width || 'clamp(260px, 25vw, 400px)' }}
           >
             <Image
               src={flower.src}

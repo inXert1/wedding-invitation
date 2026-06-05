@@ -230,7 +230,7 @@ export const WeddingDetailsCard = ({
               <div className="inline-block bg-amethyst/10 rounded-full p-4 mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Church className="w-8 h-8 text-amethyst-dark" />
               </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-midnight mb-2 font-bruney">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl text-midnight mb-2 font-bruney">
                 {t('details.ceremony')}
               </h3>
               <div className="w-16 h-px bg-amethyst mx-auto"></div>
@@ -280,7 +280,7 @@ export const WeddingDetailsCard = ({
               <div className="inline-block bg-midnight/10 rounded-full p-4 mb-4 group-hover:scale-110 transition-transform duration-300">
                 <PartyPopper className="w-8 h-8 text-midnight" />
               </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-midnight mb-2 font-bruney">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl text-midnight mb-2 font-bruney">
                 {t('details.reception')}
               </h3>
               <div className="w-16 h-px bg-midnight/30 mx-auto"></div>

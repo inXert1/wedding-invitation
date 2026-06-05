@@ -59,133 +59,134 @@ export default function HomeView() {
     <div className="min-h-screen bg-snow relative">
       <NavigationOverlay onScrollToSection={scrollToSection}>
         {/* Hero Section */}
-      <section id="hero" className="relative overflow-hidden">
-        <SectionFlowers
-          flowers={[
-            {
-              src: '/assets/images/home-left.png',
-              alt: 'Decorative roses',
-              position: 'bottom-left',
-              width: 'clamp(140px, 50vw, 650px)',
-              priority: true,
-            },
-            {
-              src: '/assets/images/home-right.png',
-              alt: 'Decorative flowers',
-              position: 'bottom-right',
-              width: 'clamp(140px, 50vw, 600px)',
-              priority: true,
-            },
-          ]}
-        />
-        <HeroSection
-          isLoaded={isLoaded}
-          couple={WEDDING_CONFIG}
-          onScrollToSection={scrollToSection}
-        />
-      </section>
+        <section id="hero" className="relative overflow-hidden">
+          <SectionFlowers
+            flowers={[
+              {
+                src: '/assets/images/home-left.png',
+                alt: 'Decorative roses',
+                position: 'bottom-left',
+                width: 'clamp(50vh, 50vw, 650px)',
+                priority: true,
+              },
+              {
+                src: '/assets/images/home-right.png',
+                alt: 'Decorative flowers',
+                position: 'bottom-right',
+                width: 'clamp(50vh, 50vw, 600px)',
+                priority: true,
+              },
+            ]}
+          />
+          <HeroSection
+            isLoaded={isLoaded}
+            couple={WEDDING_CONFIG}
+            onScrollToSection={scrollToSection}
+          />
+        </section>
 
-      {/* Couple Introduction */}
-      <section id="couple" className="relative overflow-hidden">
-        <SectionFlowers
-          flowers={[
-            {
-              src: '/assets/images/couple-left.png',
-              alt: 'Decorative vintage flowers',
-              position: 'bottom-left',
-              width: 'clamp(140px, 55vw, 750px)',
-            },
-            {
-              src: '/assets/images/couple-right.png',
-              alt: 'Decorative purple flowers with butterfly',
-              position: 'bottom-right',
-              width: 'clamp(140px,60vw, 780px)',
-            },
-          ]}
-        />
-        <CoupleIntroduction
-          bride={WEDDING_CONFIG.bride}
-          groom={WEDDING_CONFIG.groom}
-          isVisible={isLoaded}
-        />
-      </section>
+        {/* Couple Introduction */}
+        <section id="couple" className="relative overflow-hidden">
+          <SectionFlowers
+            flowers={[
+              {
+                src: '/assets/images/couple-left.png',
+                alt: 'Decorative vintage flowers',
+                position: 'top-left',
+                width: 'clamp(300px, 80vw, 700px)',
+                className: 'top-[30%] md:top-[40%] md:-left-[1%] rotate-[20deg] ',
+              },
+              {
+                src: '/assets/images/couple-right.png',
+                alt: 'Decorative purple flowers with butterfly',
+                position: 'bottom-right',
+                width: 'clamp(35vh, 45vw, 650px)',
+              },
+            ]}
+          />
+          <CoupleIntroduction
+            bride={WEDDING_CONFIG.bride}
+            groom={WEDDING_CONFIG.groom}
+            isVisible={isLoaded}
+          />
+        </section>
 
-      {/* Wedding Details */}
-      <section id="details" className="relative">
-        <WeddingDetailsCard
-          date={WEDDING_CONFIG.date}
-          venue={WEDDING_CONFIG.venue}
-        />
-        <CountdownTimer targetDate={WEDDING_CONFIG.date} />
-      </section>
+        {/* Wedding Details */}
+        <section id="details" className="relative">
+          <WeddingDetailsCard
+            date={WEDDING_CONFIG.date}
+            venue={WEDDING_CONFIG.venue}
+          />
+          <CountdownTimer targetDate={WEDDING_CONFIG.date} />
+        </section>
 
-      {/* Venue Information */}
-      <section id="venue" className="relative">
-        <VenueInformation venue={WEDDING_CONFIG.venue} />
-        <EventSchedule />
-      </section>
+        {/* Venue Information */}
+        <section id="venue" className="relative">
+          <VenueInformation venue={WEDDING_CONFIG.venue} />
+          <EventSchedule />
+        </section>
 
-      {/* Attire Guide Section */}
-      <section id="attire" className="relative overflow-hidden">
-        <SectionFlowers
-          flowers={[
-            {
-              src: '/assets/images/attire-left.png',
-              alt: 'Decorative purple watercolor flowers',
-              position: 'bottom-left',
-              width: 'clamp(140px, 55vw, 750px)',
-            },
-            {
-              src: '/assets/images/attire-right.png',
-              alt: 'Decorative peach flowers',
-              position: 'bottom-right',
-              width: 'clamp(140px, 50vw, 700px)',
-            },
-          ]}
-        />
-        <AttireGuide />
-      </section>
+        {/* Attire Guide Section */}
+        <section id="attire" className="relative overflow-hidden">
+          <SectionFlowers
+            flowers={[
+              {
+                src: '/assets/images/attire-left.png',
+                alt: 'Decorative purple watercolor flowers',
+                position: 'bottom-left',
+                width: 'clamp(250px, 50vw, 400px)',
+              },
+              {
+                src: '/assets/images/attire-right.png',
+                alt: 'Decorative peach flowers',
+                position: 'bottom-right',
+                width: 'clamp(200px, 25vw, 400px)',
+              },
+            ]}
+          />
+          <AttireGuide />
+        </section>
 
-      {/* RSVP Section */}
-      <section id="rsvp" className="relative overflow-hidden">
-        <SectionFlowers
-          flowers={[
-            {
-              src: '/assets/images/RSVP-upper-left.png',
-              alt: 'Decorative gold flowers top left',
-              position: 'top-left',
-              width: 'clamp(100px, 50vw, 500px)',
-            },
-            {
-              src: '/assets/images/RSVP-upper-right.png',
-              alt: 'Decorative gold leaves top right',
-              position: 'top-right',
-              width: 'clamp(100px, 30vw, 450px)',
-            },
-            {
-              src: '/assets/images/RSVP-left.png',
-              alt: 'Decorative gold botanical left',
-              position: 'bottom-left',
-              width: 'clamp(100px, 20vw, 300px)',
-            },
-            {
-              src: '/assets/images/RSVP-right.png',
-              alt: 'Decorative gold botanical right',
-              position: 'bottom-right',
-              width: 'clamp(100px, 40vw, 450px)',
-            },
-          ]}
-        />
-        <RSVP />
-      </section>
+        {/* RSVP Section */}
+        <section id="rsvp" className="relative overflow-hidden">
+          <SectionFlowers
+            flowers={[
+              {
+                src: '/assets/images/RSVP-upper-left.png',
+                alt: 'Decorative gold flowers top left',
+                position: 'top-left',
+                width: 'clamp(180px, 20vw, 350px)',
+              },
+              {
+                src: '/assets/images/RSVP-upper-right.png',
+                alt: 'Decorative gold leaves top right',
+                position: 'top-right',
+                width: 'clamp(150px, 15vw, 300px)',
+              },
+              {
+                src: '/assets/images/RSVP-left.png',
+                alt: 'Decorative gold botanical left',
+                position: 'bottom-left',
+                width: 'clamp(150px, 20vw, 300px)',
+              },
+              {
+                src: '/assets/images/RSVP-right.png',
+                alt: 'Decorative gold botanical right',
+                position: 'bottom-right',
+                width: 'clamp(180px, 25vw, 350px)',
+              },
+            ]}
+          />
+          <RSVP />
+        </section>
 
-      {/* Closing Message */}
-      <section id="closing" className="relative">
-        <ClosingMessage
-          bride={WEDDING_CONFIG.bride.fullName}
-          groom={WEDDING_CONFIG.groom.fullName}
-        />
-      </section>
+        {/* Closing Message */}
+        <section id="closing" className="relative">
+          <ClosingMessage
+            bride={WEDDING_CONFIG.bride.fullName}
+            groom={WEDDING_CONFIG.groom.fullName}
+          />
+        </section>
 
       </NavigationOverlay>
     </div>

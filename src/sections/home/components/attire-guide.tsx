@@ -77,7 +77,7 @@ export const AttireGuide = () => {
               {/* Label & Colors */}
               <div className="px-6 sm:px-8 pb-8 pt-4 text-center flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bruney text-midnight mb-2">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bruney text-midnight mb-2">
                     {t('attire.female-label')}
                   </h3>
                   <p className="text-sm sm:text-base text-midnight/70 font-cormorant mb-6 leading-relaxed max-w-xs mx-auto">
@@ -136,7 +136,7 @@ export const AttireGuide = () => {
               {/* Label & Colors */}
               <div className="px-6 sm:px-8 pb-8 pt-4 text-center flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bruney text-midnight mb-2">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bruney text-midnight mb-2">
                     {t('attire.male-label')}
                   </h3>
                   <p className="text-sm sm:text-base text-midnight/70 font-cormorant mb-6 leading-relaxed max-w-xs mx-auto">

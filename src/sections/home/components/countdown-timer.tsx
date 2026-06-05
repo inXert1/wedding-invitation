@@ -131,7 +131,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
                 {/* Content */}
                 <div className="relative z-10">
                   <div
-                    className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold ${unit.textColor} mb-2 font-bruney`}
+                    className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold ${unit.textColor} mb-2 font-playfair`}
                   >
                     {unit.value.toString().padStart(2, '0')}
                   </div>
