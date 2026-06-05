@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useScrollSpy } from '@/hooks/use-scroll-spy';
 import { LetterAnimation } from '@/components';
 import {
   HeroSection,
@@ -13,20 +12,14 @@ import {
   AttireGuide,
   RSVP,
   ClosingMessage,
-  FloatingNavigation,
-  UnifiedFAB,
-  ScrollProgressIndicator,
+  NavigationOverlay,
+  SectionFlowers,
 } from '../components';
-import { NAVIGATION_SECTIONS, WEDDING_CONFIG } from '@/constants';
+import { WEDDING_CONFIG } from '@/constants';
 
 export default function HomeView() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showLetter, setShowLetter] = useState(true);
-
-  // Auto-detect active section using scroll spy
-  const activeSection = useScrollSpy(
-    NAVIGATION_SECTIONS.map((section) => section.id)
-  );
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 300);
@@ -63,14 +56,28 @@ export default function HomeView() {
   }
 
   return (
-    <div className="min-h-screen bg-snow">
-      <FloatingNavigation
-        activeSection={activeSection}
-        onScrollToSection={scrollToSection}
-      />
-
-      {/* Hero Section */}
-      <section id="hero" className="relative">
+    <div className="min-h-screen bg-snow relative">
+      <NavigationOverlay onScrollToSection={scrollToSection}>
+        {/* Hero Section */}
+      <section id="hero" className="relative overflow-hidden">
+        <SectionFlowers
+          flowers={[
+            {
+              src: '/assets/images/home-left.png',
+              alt: 'Decorative roses',
+              position: 'bottom-left',
+              width: 'clamp(140px, 50vw, 650px)',
+              priority: true,
+            },
+            {
+              src: '/assets/images/home-right.png',
+              alt: 'Decorative flowers',
+              position: 'bottom-right',
+              width: 'clamp(140px, 50vw, 600px)',
+              priority: true,
+            },
+          ]}
+        />
         <HeroSection
           isLoaded={isLoaded}
           couple={WEDDING_CONFIG}
@@ -79,7 +86,23 @@ export default function HomeView() {
       </section>
 
       {/* Couple Introduction */}
-      <section id="couple" className="relative">
+      <section id="couple" className="relative overflow-hidden">
+        <SectionFlowers
+          flowers={[
+            {
+              src: '/assets/images/couple-left.png',
+              alt: 'Decorative vintage flowers',
+              position: 'bottom-left',
+              width: 'clamp(140px, 55vw, 750px)',
+            },
+            {
+              src: '/assets/images/couple-right.png',
+              alt: 'Decorative purple flowers with butterfly',
+              position: 'bottom-right',
+              width: 'clamp(140px,60vw, 780px)',
+            },
+          ]}
+        />
         <CoupleIntroduction
           bride={WEDDING_CONFIG.bride}
           groom={WEDDING_CONFIG.groom}
@@ -103,12 +126,56 @@ export default function HomeView() {
       </section>
 
       {/* Attire Guide Section */}
-      <section id="attire" className="relative">
+      <section id="attire" className="relative overflow-hidden">
+        <SectionFlowers
+          flowers={[
+            {
+              src: '/assets/images/attire-left.png',
+              alt: 'Decorative purple watercolor flowers',
+              position: 'bottom-left',
+              width: 'clamp(140px, 55vw, 750px)',
+            },
+            {
+              src: '/assets/images/attire-right.png',
+              alt: 'Decorative peach flowers',
+              position: 'bottom-right',
+              width: 'clamp(140px, 50vw, 700px)',
+            },
+          ]}
+        />
         <AttireGuide />
       </section>
 
       {/* RSVP Section */}
-      <section id="rsvp" className="relative">
+      <section id="rsvp" className="relative overflow-hidden">
+        <SectionFlowers
+          flowers={[
+            {
+              src: '/assets/images/RSVP-upper-left.png',
+              alt: 'Decorative gold flowers top left',
+              position: 'top-left',
+              width: 'clamp(100px, 50vw, 500px)',
+            },
+            {
+              src: '/assets/images/RSVP-upper-right.png',
+              alt: 'Decorative gold leaves top right',
+              position: 'top-right',
+              width: 'clamp(100px, 30vw, 450px)',
+            },
+            {
+              src: '/assets/images/RSVP-left.png',
+              alt: 'Decorative gold botanical left',
+              position: 'bottom-left',
+              width: 'clamp(100px, 20vw, 300px)',
+            },
+            {
+              src: '/assets/images/RSVP-right.png',
+              alt: 'Decorative gold botanical right',
+              position: 'bottom-right',
+              width: 'clamp(100px, 40vw, 450px)',
+            },
+          ]}
+        />
         <RSVP />
       </section>
 
@@ -120,14 +187,7 @@ export default function HomeView() {
         />
       </section>
 
-      {/* Unified Mobile FAB (Music + Navigation) */}
-      <UnifiedFAB
-        activeSection={activeSection}
-        onScrollToSection={scrollToSection}
-      />
-
-      {/* Scroll Progress Indicator */}
-      <ScrollProgressIndicator activeSection={activeSection} />
+      </NavigationOverlay>
     </div>
   );
 }

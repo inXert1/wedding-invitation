@@ -1,5 +1,5 @@
 export const WEDDING_CONFIG = {
-  date: new Date('2026-07-27T16:00:00'),
+  date: new Date('2026-07-27T14:00:00'),
   bride: {
     name: 'Joefren',
     fullName: 'Maris Joefren',

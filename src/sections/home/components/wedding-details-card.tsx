@@ -32,7 +32,7 @@ export const WeddingDetailsCard = ({
   };
 
   return (
-    <div className="py-20 bg-gradient-to-br from-snow to-snow-warm">
+    <div className="py-20 bg-snow">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -167,7 +167,7 @@ export const WeddingDetailsCard = ({
                     </p>
                     <CalendarDays className="w-6 h-6 sm:w-7 sm:h-7 text-amethyst hidden sm:block" />
                   </div>
-                  <div className="w-16 sm:w-20 md:w-24 h-px bg-gradient-to-r from-transparent via-amethyst to-transparent mx-auto mb-3"></div>
+                  <div className="w-16 sm:w-20 md:w-24 h-px bg-amethyst/30 mx-auto mb-3"></div>
                   <p className="text-sm sm:text-base md:text-lg lg:text-xl text-midnight/60 font-medium font-cormorant">
                     {date.toLocaleDateString(currentLang.numberFormat.code, {
                       month: 'long',
@@ -319,37 +319,7 @@ export const WeddingDetailsCard = ({
           </motion.div>
         </div>
 
-        {/* Additional Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-12 text-center"
-        >
-          <div className="bg-snow-warm rounded-2xl p-8 border border-amethyst/10">
-            <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-midnight mb-4 font-bruney">
-              {t('details.please-note')}
-            </h4>
-            <div className="grid md:grid-cols-3 gap-6 text-xs sm:text-sm text-midnight/60 font-dm-sans">
-              <div className="flex flex-col items-center">
-                <Shirt className="w-6 h-6 mb-2 text-amethyst" />
-                <p className="font-medium">{t('details.dress-code')}</p>
-                <p>{t('details.formal-attire')}</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <Car className="w-6 h-6 mb-2 text-amethyst" />
-                <p className="font-medium">{t('details.parking')}</p>
-                <p>{t('details.valet-available')}</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <Smartphone className="w-6 h-6 mb-2 text-amethyst" />
-                <p className="font-medium">{t('details.contact')}</p>
-                <p>+63 XXX XXX XXXX</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+
       </div>
     </div>
   );

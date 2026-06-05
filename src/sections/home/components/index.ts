@@ -10,3 +10,5 @@ export { default as FloatingNavigation } from './floating-navigation';
 export { default as UnifiedFAB } from './unified-fab';
 export { default as ScrollProgressIndicator } from './scroll-progress-indicator';
 export { AttireGuide } from './attire-guide';
+export { SectionFlowers } from './section-flowers';
+export { NavigationOverlay } from './navigation-overlay';

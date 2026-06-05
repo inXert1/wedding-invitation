@@ -31,43 +31,31 @@ export const EventSchedule = () => {
 
   const scheduleItems: ScheduleItem[] = [
     {
-      time: '3:30 PM',
+      time: '1:30 PM',
       event: t('schedule.guest-arrival'),
       description: t('schedule.welcome-drinks'),
       icon: Users,
     },
     {
-      time: '4:00 PM',
+      time: '2:00 PM',
       event: t('schedule.wedding-ceremony'),
       description: t('schedule.vows'),
       icon: Church,
     },
     {
-      time: '4:30 PM',
+      time: '3:00 PM',
       event: t('schedule.photography'),
       description: t('schedule.welcome-drink'),
       icon: Camera,
     },
     {
-      time: '6:30 PM',
+      time: '4:00 PM',
       event: t('schedule.reception-begins'),
       description: t('schedule.dinner-celebration'),
       icon: UtensilsCrossed,
     },
     {
-      time: '7:30 PM',
-      event: t('schedule.first-dance'),
-      description: t('schedule.special-moment'),
-      icon: Music,
-    },
-    {
-      time: '8:00 PM',
-      event: t('schedule.dancing-party'),
-      description: t('schedule.celebration-continues'),
-      icon: PartyPopper,
-    },
-    {
-      time: '12:00 AM',
+      time: '11:00 PM',
       event: t('schedule.send-off'),
       description: t('schedule.sparkler-farewell'),
       icon: Sparkles,
@@ -77,7 +65,7 @@ export const EventSchedule = () => {
   return (
     <div
       ref={ref}
-      className="py-16 px-4 bg-gradient-to-b from-snow to-snow-warm"
+      className="py-16 px-4 bg-snow"
     >
       <div className="max-w-4xl mx-auto overflow-hidden px-4">
         <motion.div
@@ -86,7 +74,7 @@ export const EventSchedule = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bruney text-midnight mb-4">
+          <h3 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-4">
             {t('schedule.title')}
           </h3>
           <div className="w-20 h-px bg-amethyst mx-auto"></div>

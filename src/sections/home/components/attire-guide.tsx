@@ -20,7 +20,7 @@ export const AttireGuide = () => {
   return (
     <div
       ref={ref}
-      className="py-20 sm:py-28 px-4 bg-gradient-to-b from-snow-warm to-snow"
+      className="py-20 sm:py-28 px-4 bg-snow-warm"
     >
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
@@ -56,7 +56,7 @@ export const AttireGuide = () => {
           >
             <div className="bg-snow rounded-3xl shadow-xl border border-amethyst/10 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
               {/* Illustration */}
-              <div className="relative overflow-hidden bg-gradient-to-b from-amethyst/5 to-snow-warm/50 flex-shrink-0 h-[300px] sm:h-[360px] md:h-[400px]">
+              <div className="relative overflow-hidden bg-amethyst/5 flex-shrink-0 h-[300px] sm:h-[360px] md:h-[400px]">
                 <motion.div
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -71,8 +71,7 @@ export const AttireGuide = () => {
                     priority
                   />
                 </motion.div>
-                {/* Subtle gradient overlay at bottom for blending */}
-                <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-snow to-transparent pointer-events-none" />
+
               </div>
 
               {/* Label & Colors */}
@@ -116,7 +115,7 @@ export const AttireGuide = () => {
           >
             <div className="bg-snow rounded-3xl shadow-xl border border-amethyst/10 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
               {/* Illustration */}
-              <div className="relative overflow-hidden bg-gradient-to-b from-amethyst/5 to-snow-warm/50 flex-shrink-0 h-[300px] sm:h-[360px] md:h-[400px]">
+              <div className="relative overflow-hidden bg-amethyst/5 flex-shrink-0 h-[300px] sm:h-[360px] md:h-[400px]">
                 <motion.div
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -131,8 +130,7 @@ export const AttireGuide = () => {
                     priority
                   />
                 </motion.div>
-                {/* Subtle gradient overlay at bottom for blending */}
-                <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-snow to-transparent pointer-events-none" />
+
               </div>
 
               {/* Label & Colors */}

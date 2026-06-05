@@ -142,8 +142,8 @@ export default function UnifiedFAB({
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             className="bg-snow rounded-2xl shadow-2xl max-w-md w-full p-6 relative overflow-hidden"
           >
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-amethyst/5 to-midnight/5 opacity-50"></div>
+            {/* Background solid color */}
+            <div className="absolute inset-0 bg-amethyst/5 opacity-50"></div>
 
             {/* Content */}
             <div className="relative z-10">
@@ -262,12 +262,12 @@ export default function UnifiedFAB({
           ref={audioRef}
           loop
           preload="auto"
-          src="/assets/audio/jabili.mp3"
+          src="/assets/audio/itsbeenalongtime.mp3"
           aria-label="Wedding background music"
         >
           <track
             kind="captions"
-            src="/assets/audio/jabili.mp3"
+            src="/assets/audio/itsbeenalongtime.mp3"
             label="No captions available"
           />
         </audio>
@@ -290,12 +290,12 @@ export default function UnifiedFAB({
                   onClick={togglePlayPause}
                   className="w-12 h-12 rounded-full bg-snow/95 backdrop-blur-md border border-amethyst/20 shadow-lg flex items-center justify-center text-amethyst-dark cursor-pointer overflow-hidden relative"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-amethyst/5 to-midnight/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-amethyst/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   {isPlaying ? (
                     <div className="flex items-center space-x-0.5 relative z-10">
-                      <motion.div animate={{ scaleY: [1, 1.5, 1, 2, 1] }} transition={{ duration: 1.5, repeat: Infinity }} className="w-1 h-3 bg-gradient-to-t from-amethyst to-amethyst-dark rounded-full" />
-                      <motion.div animate={{ scaleY: [1, 2, 1, 1.5, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }} className="w-1 h-4 bg-gradient-to-t from-amethyst-dark to-midnight rounded-full" />
-                      <motion.div animate={{ scaleY: [1, 1.5, 2, 1, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }} className="w-1 h-3 bg-gradient-to-t from-midnight to-amethyst rounded-full" />
+                      <motion.div animate={{ scaleY: [1, 1.5, 1, 2, 1] }} transition={{ duration: 1.5, repeat: Infinity }} className="w-1 h-3 bg-amethyst rounded-full" />
+                      <motion.div animate={{ scaleY: [1, 2, 1, 1.5, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }} className="w-1 h-4 bg-amethyst-dark rounded-full" />
+                      <motion.div animate={{ scaleY: [1, 1.5, 2, 1, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }} className="w-1 h-3 bg-midnight rounded-full" />
                     </div>
                   ) : (
                     <Music className="w-5 h-5 relative z-10" />
@@ -316,7 +316,7 @@ export default function UnifiedFAB({
                   onClick={handleNextSection}
                   className="w-12 h-12 rounded-full bg-snow/95 backdrop-blur-md border border-amethyst/20 shadow-lg flex items-center justify-center text-amethyst-dark cursor-pointer overflow-hidden relative"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-amethyst/5 to-midnight/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-amethyst/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <Heart className="w-5 h-5 relative z-10" fill="currentColor" />
                 </motion.button>
                 {/* Tooltip */}
@@ -337,7 +337,7 @@ export default function UnifiedFAB({
               cy="32"
               r="28"
               fill="none"
-              stroke="url(#gradientMain)"
+              stroke="#B57F86"
               strokeWidth="2"
               strokeLinecap="round"
               initial={{ pathLength: 0 }}
@@ -345,13 +345,6 @@ export default function UnifiedFAB({
               transition={{ duration: 0.8, ease: 'easeInOut' }}
               style={{ strokeDasharray: '175.93', strokeDashoffset: 0 }}
             />
-            <defs>
-              <linearGradient id="gradientMain" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#C087B0" />
-                <stop offset="50%" stopColor="#A06B94" />
-                <stop offset="100%" stopColor="#31081F" />
-              </linearGradient>
-            </defs>
           </svg>
 
           <motion.button
@@ -361,7 +354,7 @@ export default function UnifiedFAB({
             className={`relative w-14 h-14 bg-snow/95 backdrop-blur-md border border-amethyst/20 rounded-full shadow-2xl hover:shadow-amethyst/20 transition-all duration-300 group overflow-hidden cursor-pointer ${autoplayBlocked && !hasInteracted && !isOpen ? 'animate-pulse' : ''
               }`}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-amethyst/5 to-midnight/5 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-amethyst/5 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
 
             <div className="relative z-10 flex items-center justify-center w-full h-full text-amethyst-dark">
               <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>

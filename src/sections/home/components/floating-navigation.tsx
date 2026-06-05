@@ -3,7 +3,6 @@
 import { motion } from 'motion/react';
 import {
   FloatingParticles,
-  LanguageToggle,
   NavigationButton,
 } from '@/components';
 import { NAVIGATION_SECTIONS } from '@/constants';
@@ -39,10 +38,6 @@ export default function FloatingNavigation({
               onClick={() => onScrollToSection(section.id)}
             />
           ))}
-
-          {/* Language Toggle */}
-          <div className="w-px h-6 bg-midnight/10 mx-1 sm:mx-2"></div>
-          <LanguageToggle />
         </div>
 
         <FloatingParticles />
@@ -50,3 +45,4 @@ export default function FloatingNavigation({
     </motion.nav>
   );
 }
+

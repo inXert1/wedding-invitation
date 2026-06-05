@@ -41,13 +41,13 @@ export const HeroSection = ({
               <div className="text-sm sm:text-base md:text-lg lg:text-xl text-midnight/50 mb-4 font-medium font-cormorant tracking-widest uppercase">
                 {t('hero.welcome')}
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bruney text-midnight mb-6 leading-tight">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-bruney text-midnight mb-6 leading-tight">
                 Our
                 <span className="block text-amethyst">
                   Wedding
                 </span>
               </h1>
-              <div className="w-32 h-px bg-gradient-to-r from-transparent via-amethyst to-transparent mx-auto"></div>
+              <div className="w-32 h-px bg-amethyst/30 mx-auto"></div>
             </motion.div>
 
             {/* Couple Names */}
@@ -60,7 +60,7 @@ export const HeroSection = ({
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 mb-4 sm:mb-6">
                 {/* Groom Name */}
                 <div className="text-center flex-shrink-0">
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-ballet text-midnight">
+                  <h3 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-ballet text-midnight">
                     {couple.groom.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-amethyst-dark font-cormorant italic mt-1">
@@ -69,13 +69,13 @@ export const HeroSection = ({
                 </div>
 
                 {/* Ampersand */}
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-amethyst font-bruney flex-shrink-0">
+                <div className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl text-amethyst font-bruney flex-shrink-0">
                   <Heart className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 mx-auto" fill="currentColor" />
                 </div>
 
                 {/* Bride Name */}
                 <div className="text-center flex-shrink-0">
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-ballet text-midnight">
+                  <h3 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-ballet text-midnight">
                     {couple.bride.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-amethyst-dark font-cormorant italic mt-1">

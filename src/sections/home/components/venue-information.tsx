@@ -14,7 +14,7 @@ interface VenueInformationProps {
 
 // Map embed URLs for each venue
 const VENUE_EMBEDS = {
-  ceremony: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4091.7755073789094!2d120.8705765133264!3d14.90231012714401!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x339655ed954a7431%3A0xe5b3ca98ad2096fe!2sCasa%20Alpedro!5e1!3m2!1sen!2sph!4v1780486393514!5m2!1sen!2sph',
+  ceremony: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2370.655397273248!2d120.86971019216236!3d14.90229941456296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x339654e90d6b2b15%3A0x78a0778fe25b9e97!2sSto%20Cristo%20Parish%20Church!5e1!3m2!1sen!2sph!4v1780652731391!5m2!1sen!2sph',
   reception: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4091.7755073789094!2d120.8705765133264!3d14.90231012714401!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x339655ed954a7431%3A0xe5b3ca98ad2096fe!2sCasa%20Alpedro!5e1!3m2!1sen!2sph!4v1780486393514!5m2!1sen!2sph',
 };
 
@@ -92,7 +92,7 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-gradient-to-br from-amethyst/5 to-amethyst/10 rounded-3xl p-8 shadow-lg border border-amethyst/10"
+              className="bg-amethyst/5 rounded-3xl p-8 shadow-lg border border-amethyst/10"
             >
               <div className="text-center mb-8">
                 <div className="w-20 h-20 bg-amethyst-dark rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
@@ -146,7 +146,7 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : 50 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="bg-gradient-to-br from-midnight/5 to-midnight/8 rounded-3xl p-8 shadow-lg border border-midnight/10"
+              className="bg-midnight/5 rounded-3xl p-8 shadow-lg border border-midnight/10"
             >
               <div className="text-center mb-8">
                 <div className="w-20 h-20 bg-midnight rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">

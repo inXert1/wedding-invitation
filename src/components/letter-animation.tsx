@@ -4,23 +4,24 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import styles from './letter-animation.module.css';
 
 const CornerOrnament = ({ className }: { className?: string }) => (
   <svg className={`${styles.cornerOrnament} ${className || ''}`} viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10 10 Q80 10 10 80" stroke="#6B2737" strokeWidth="1" fill="none"/>
-    <path d="M10 10 Q60 40 40 90" stroke="#6B2737" strokeWidth="0.7" fill="none"/>
-    <path d="M10 10 Q40 60 90 40" stroke="#6B2737" strokeWidth="0.7" fill="none"/>
-    <circle cx="10" cy="10" r="3" fill="#6B2737"/>
-    <ellipse cx="50" cy="50" rx="18" ry="10" fill="#6B2737" opacity="0.6" transform="rotate(-30 50 50)"/>
-    <ellipse cx="30" cy="70" rx="14" ry="8" fill="#6B2737" opacity="0.5" transform="rotate(-60 30 70)"/>
-    <ellipse cx="70" cy="30" rx="14" ry="8" fill="#6B2737" opacity="0.5" transform="rotate(0 70 30)"/>
-    <circle cx="55" cy="20" r="4" fill="#6B2737" opacity="0.4"/>
-    <circle cx="20" cy="55" r="4" fill="#6B2737" opacity="0.4"/>
-    <circle cx="75" cy="55" r="3" fill="#6B2737" opacity="0.3"/>
-    <circle cx="55" cy="75" r="3" fill="#6B2737" opacity="0.3"/>
-    <path d="M25 80 Q35 65 50 70 Q45 85 25 80Z" fill="#6B2737" opacity="0.5"/>
-    <path d="M80 25 Q65 35 70 50 Q85 45 80 25Z" fill="#6B2737" opacity="0.5"/>
+    <path d="M10 10 Q80 10 10 80" stroke="#6B2737" strokeWidth="1" fill="none" />
+    <path d="M10 10 Q60 40 40 90" stroke="#6B2737" strokeWidth="0.7" fill="none" />
+    <path d="M10 10 Q40 60 90 40" stroke="#6B2737" strokeWidth="0.7" fill="none" />
+    <circle cx="10" cy="10" r="3" fill="#6B2737" />
+    <ellipse cx="50" cy="50" rx="18" ry="10" fill="#6B2737" opacity="0.6" transform="rotate(-30 50 50)" />
+    <ellipse cx="30" cy="70" rx="14" ry="8" fill="#6B2737" opacity="0.5" transform="rotate(-60 30 70)" />
+    <ellipse cx="70" cy="30" rx="14" ry="8" fill="#6B2737" opacity="0.5" transform="rotate(0 70 30)" />
+    <circle cx="55" cy="20" r="4" fill="#6B2737" opacity="0.4" />
+    <circle cx="20" cy="55" r="4" fill="#6B2737" opacity="0.4" />
+    <circle cx="75" cy="55" r="3" fill="#6B2737" opacity="0.3" />
+    <circle cx="55" cy="75" r="3" fill="#6B2737" opacity="0.3" />
+    <path d="M25 80 Q35 65 50 70 Q45 85 25 80Z" fill="#6B2737" opacity="0.5" />
+    <path d="M80 25 Q65 35 70 50 Q85 45 80 25Z" fill="#6B2737" opacity="0.5" />
   </svg>
 );
 
@@ -28,43 +29,43 @@ const Seal = () => (
   <svg viewBox="0 0 82 82" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="sealGrad" cx="38%" cy="35%" r="65%">
-        <stop offset="0%" stopColor="#8B3A4D"/>
-        <stop offset="50%" stopColor="#6B2737"/>
-        <stop offset="100%" stopColor="#3A1020"/>
+        <stop offset="0%" stopColor="#8B3A4D" />
+        <stop offset="50%" stopColor="#6B2737" />
+        <stop offset="100%" stopColor="#3A1020" />
       </radialGradient>
       <radialGradient id="goldRing" cx="50%" cy="50%" r="50%">
-        <stop offset="80%" stopColor="transparent"/>
-        <stop offset="90%" stopColor="#C8A96E" stopOpacity="0.7"/>
-        <stop offset="100%" stopColor="#A88040" stopOpacity="0.5"/>
+        <stop offset="80%" stopColor="transparent" />
+        <stop offset="90%" stopColor="#C8A96E" stopOpacity="0.7" />
+        <stop offset="100%" stopColor="#A88040" stopOpacity="0.5" />
       </radialGradient>
     </defs>
     {/* Outer decorative ring */}
-    <circle cx="41" cy="41" r="40" fill="none" stroke="#C8A96E" strokeWidth="0.5" opacity="0.6"/>
+    <circle cx="41" cy="41" r="40" fill="none" stroke="#C8A96E" strokeWidth="0.5" opacity="0.6" />
     {/* Main seal */}
-    <circle cx="41" cy="41" r="36" fill="url(#sealGrad)"/>
+    <circle cx="41" cy="41" r="36" fill="url(#sealGrad)" />
     {/* Texture ring */}
-    <circle cx="41" cy="41" r="36" fill="url(#goldRing)"/>
+    <circle cx="41" cy="41" r="36" fill="url(#goldRing)" />
     {/* Inner ring */}
-    <circle cx="41" cy="41" r="29" fill="none" stroke="#C8A96E" strokeWidth="0.5" opacity="0.5"/>
+    <circle cx="41" cy="41" r="29" fill="none" stroke="#C8A96E" strokeWidth="0.5" opacity="0.5" />
     {/* Monogram */}
     <text x="41" y="36" textAnchor="middle" fontFamily="var(--font-ballet)" fontSize="13" fill="#F0D8A0" opacity="0.95">J &amp; A</text>
     {/* Star ornaments */}
     <g fill="#C8A96E" opacity="0.5">
-      <polygon points="41,13 42.2,16.6 46,16.6 43,18.8 44.2,22.4 41,20.2 37.8,22.4 39,18.8 36,16.6 39.8,16.6" transform="scale(0.55) translate(33,17)"/>
+      <polygon points="41,13 42.2,16.6 46,16.6 43,18.8 44.2,22.4 41,20.2 37.8,22.4 39,18.8 36,16.6 39.8,16.6" transform="scale(0.55) translate(33,17)" />
     </g>
     {/* Small dots ring */}
     <g fill="#C8A96E" opacity="0.45">
-      <circle cx="41" cy="12" r="1.2"/>
-      <circle cx="41" cy="70" r="1.2"/>
-      <circle cx="12" cy="41" r="1.2"/>
-      <circle cx="70" cy="41" r="1.2"/>
-      <circle cx="20" cy="20" r="1"/>
-      <circle cx="62" cy="20" r="1"/>
-      <circle cx="20" cy="62" r="1"/>
-      <circle cx="62" cy="62" r="1"/>
+      <circle cx="41" cy="12" r="1.2" />
+      <circle cx="41" cy="70" r="1.2" />
+      <circle cx="12" cy="41" r="1.2" />
+      <circle cx="70" cy="41" r="1.2" />
+      <circle cx="20" cy="20" r="1" />
+      <circle cx="62" cy="20" r="1" />
+      <circle cx="20" cy="62" r="1" />
+      <circle cx="62" cy="62" r="1" />
     </g>
     {/* Light reflection */}
-    <ellipse cx="32" cy="28" rx="10" ry="6" fill="white" opacity="0.06" transform="rotate(-30 32 28)"/>
+    <ellipse cx="32" cy="28" rx="10" ry="6" fill="white" opacity="0.06" transform="rotate(-30 32 28)" />
   </svg>
 );
 
@@ -136,7 +137,7 @@ export const LetterAnimation = ({
   const handleOpen = () => {
     if (isOpen) return;
     setIsOpen(true);
-    
+
     setTimeout(() => {
       setShowPetals(true);
     }, 400);
@@ -148,10 +149,47 @@ export const LetterAnimation = ({
 
   return (
     <div className={styles.container}>
-      <CornerOrnament className={styles.tl} />
-      <CornerOrnament className={styles.tr} />
-      <CornerOrnament className={styles.bl} />
-      <CornerOrnament className={styles.br} />
+      {/* Decorative corner flowers */}
+      <div className="absolute top-0 left-0 pointer-events-none z-10 w-[80px] sm:w-[130px] md:w-[300px]">
+        <Image
+          src="/assets/images/RSVP-upper-left.png"
+          alt="Flower ornament top left"
+          width={300}
+          height={500}
+          className="w-full h-auto opacity-75"
+          priority
+        />
+      </div>
+      <div className="absolute top-0 right-0 pointer-events-none z-10 w-[80px] sm:w-[130px] md:w-[300px]">
+        <Image
+          src="/assets/images/RSVP-upper-right.png"
+          alt="Flower ornament top right"
+          width={250}
+          height={250}
+          className="w-full h-auto opacity-75"
+          priority
+        />
+      </div>
+      <div className="absolute bottom-0 left-0 pointer-events-none z-10 w-[110px] sm:w-[180px] md:w-[480px]">
+        <Image
+          src="/assets/images/home-left.png"
+          alt="Flower ornament bottom left"
+          width={500}
+          height={350}
+          className="w-full h-auto opacity-90"
+          priority
+        />
+      </div>
+      <div className="absolute bottom-0 right-0 pointer-events-none z-10 w-[110px] sm:w-[180px] md:w-[480px]">
+        <Image
+          src="/assets/images/home-right.png"
+          alt="Flower ornament bottom right"
+          width={350}
+          height={350}
+          className="w-full h-auto opacity-90"
+          priority
+        />
+      </div>
 
       <header className={styles.pageHeader}>
         <p className={styles.eyebrow}>{t('letter.invitation-title') || 'Welcome to our wedding'}</p>
@@ -166,11 +204,11 @@ export const LetterAnimation = ({
       </header>
 
       <div className={styles.scene}>
-        <div 
-          className={`${styles.envelopeWrap} ${isOpen ? styles.isOpen : ''}`} 
-          id="envelope" 
-          onClick={handleOpen} 
-          role="button" 
+        <div
+          className={`${styles.envelopeWrap} ${isOpen ? styles.isOpen : ''}`}
+          id="envelope"
+          onClick={handleOpen}
+          role="button"
           aria-label="Click to open invitation"
         >
           <div className={styles.envelopeBody}>

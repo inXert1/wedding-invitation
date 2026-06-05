@@ -21,7 +21,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
   return (
     <div
       ref={ref}
-      className="py-20 px-4 bg-gradient-to-br from-amethyst/10 to-midnight/5"
+      className="py-20 px-4 bg-snow-warm"
     >
       <div className="max-w-4xl mx-auto text-center">
         <motion.div

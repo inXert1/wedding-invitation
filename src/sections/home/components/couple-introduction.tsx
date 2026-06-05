@@ -27,7 +27,7 @@ export const CoupleIntroduction = ({
   return (
     <div
       ref={ref}
-      className="py-20 px-4 bg-gradient-to-b from-snow to-snow-warm"
+      className="py-20 px-4 bg-snow"
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
@@ -71,7 +71,7 @@ export const CoupleIntroduction = ({
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-ballet text-midnight mb-2">
+            <h3 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-ballet text-midnight mb-2">
               {groom.fullName}
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-midnight-light mb-4 font-medium font-cormorant">
@@ -136,7 +136,7 @@ export const CoupleIntroduction = ({
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-ballet text-midnight mb-2">
+            <h3 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-ballet text-midnight mb-2">
               {bride.fullName}
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-amethyst-dark mb-4 font-medium font-cormorant">
@@ -155,20 +155,7 @@ export const CoupleIntroduction = ({
           </motion.div>
         </div>
 
-        {/* Love Quote */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center mt-16"
-        >
-          <div className="bg-snow-warm/60 rounded-2xl p-8 max-w-2xl mx-auto shadow-lg border border-amethyst/10">
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-cormorant text-midnight/80 italic mb-4">
-              {t('couple.love-quote')}
-            </p>
-            <p className="text-midnight/40 text-xs sm:text-sm font-dm-sans">— Clannad</p>
-          </div>
-        </motion.div>
+
       </div>
     </div>
   );

@@ -58,22 +58,26 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
     {
       label: t('details.day'),
       value: timeLeft.days,
-      color: 'from-midnight to-midnight-light',
+      bgColor: 'bg-midnight',
+      textColor: 'text-midnight',
     },
     {
       label: t('details.hours'),
       value: timeLeft.hours,
-      color: 'from-amethyst-dark to-midnight-light',
+      bgColor: 'bg-amethyst-dark',
+      textColor: 'text-amethyst-dark',
     },
     {
       label: t('details.minutes'),
       value: timeLeft.minutes,
-      color: 'from-amethyst to-amethyst-dark',
+      bgColor: 'bg-amethyst',
+      textColor: 'text-amethyst',
     },
     {
       label: t('details.seconds'),
       value: timeLeft.seconds,
-      color: 'from-amethyst-light to-amethyst',
+      bgColor: 'bg-amethyst-light',
+      textColor: 'text-amethyst-light',
     },
   ], [timeLeft.days, timeLeft.hours, timeLeft.minutes, timeLeft.seconds, t]);
 
@@ -90,7 +94,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bruney text-midnight mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-4">
             {t('details.countdown-title')}
           </h2>
           <div className="w-24 h-px bg-amethyst mx-auto mb-4"></div>
@@ -119,15 +123,15 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
               className="relative group"
             >
               <div className="bg-snow rounded-2xl p-6 shadow-lg border border-amethyst/10 hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2">
-                {/* Background Gradient */}
+                {/* Background Solid Color */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${unit.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}
+                  className={`absolute inset-0 ${unit.bgColor} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}
                 ></div>
 
                 {/* Content */}
                 <div className="relative z-10">
                   <div
-                    className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-br ${unit.color} bg-clip-text text-transparent mb-2 font-bruney`}
+                    className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold ${unit.textColor} mb-2 font-bruney`}
                   >
                     {unit.value.toString().padStart(2, '0')}
                   </div>
@@ -138,7 +142,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
 
                 {/* Decorative Corner */}
                 <div
-                  className={`absolute top-0 right-0 w-8 h-8 bg-gradient-to-br ${unit.color} opacity-20 rounded-bl-full rounded-tr-2xl`}
+                  className={`absolute top-0 right-0 w-8 h-8 ${unit.bgColor} opacity-20 rounded-bl-full rounded-tr-2xl`}
                 ></div>
               </div>
             </motion.div>

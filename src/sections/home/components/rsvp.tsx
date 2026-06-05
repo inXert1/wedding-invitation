@@ -80,7 +80,7 @@ export const RSVP = () => {
 
   if (isSubmitted) {
     return (
-      <div className="py-20 px-4 bg-gradient-to-br from-snow to-snow-warm">
+      <div className="py-20 px-4 bg-snow">
         <div className="max-w-2xl mx-auto text-center">
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
@@ -109,7 +109,7 @@ export const RSVP = () => {
   return (
     <div
       ref={ref}
-      className="py-20 px-4 bg-gradient-to-br from-snow to-snow-warm"
+      className="py-20 px-4 bg-snow"
     >
       <div className="max-w-4xl mx-auto">
         {/* Header */}
