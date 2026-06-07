@@ -80,7 +80,7 @@ export const RSVP = () => {
 
   if (isSubmitted) {
     return (
-      <div className="py-20 px-4 bg-snow">
+      <div className="py-14 px-4 bg-snow">
         <div className="max-w-2xl mx-auto text-center">
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
@@ -109,7 +109,7 @@ export const RSVP = () => {
   return (
     <div
       ref={ref}
-      className="py-20 px-4 bg-snow"
+      className="py-14 px-4 bg-snow"
     >
       <div className="max-w-4xl mx-auto">
         {/* Header */}
@@ -117,7 +117,7 @@ export const RSVP = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-4">
             {t('rsvp.title')}
@@ -128,19 +128,19 @@ export const RSVP = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* RSVP Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-snow rounded-3xl p-8 shadow-xl border border-amethyst/10">
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bruney text-midnight mb-6 text-center">
+            <div className="bg-snow rounded-3xl p-6 shadow-xl border border-amethyst/10">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bruney text-midnight mb-4 text-center">
                 {t('rsvp.confirm-attendance')}
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Name */}
                 <div>
                   <label
@@ -267,7 +267,7 @@ export const RSVP = () => {
             className="space-y-8"
           >
             {/* RSVP Deadline */}
-            <div className="bg-snow rounded-2xl p-6 shadow-lg border border-amethyst/10">
+            <div className="bg-snow rounded-2xl p-5 shadow-lg border border-amethyst/10">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-amethyst/10 rounded-full flex items-center justify-center mr-4">
                   <Clock className="w-5 h-5 text-amethyst-dark" />
@@ -287,7 +287,7 @@ export const RSVP = () => {
             </div>
 
             {/* Contact Info */}
-            <div className="bg-snow rounded-2xl p-6 shadow-lg border border-amethyst/10">
+            <div className="bg-snow rounded-2xl p-5 shadow-lg border border-amethyst/10">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-midnight/10 rounded-full flex items-center justify-center mr-4">
                   <Phone className="w-5 h-5 text-midnight" />
@@ -313,36 +313,6 @@ export const RSVP = () => {
               </div>
             </div>
 
-            {/* Gift Registry */}
-            <div className="bg-snow-warm rounded-2xl p-6 shadow-lg border border-amethyst/10">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-amethyst/10 rounded-full flex items-center justify-center mr-4">
-                  <Gift className="w-5 h-5 text-amethyst-dark" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-midnight text-sm sm:text-base font-dm-sans">
-                    {t('rsvp.gift-registry')}
-                  </h4>
-                  <p className="text-midnight/60 text-xs sm:text-sm font-dm-sans">
-                    {t('rsvp.presence-present')}
-                  </p>
-                </div>
-              </div>
-              <p className="text-midnight/60 text-xs sm:text-sm mb-4 font-dm-sans">
-                {t('rsvp.registry-text')}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="bg-snow/60 px-3 py-1 rounded-full text-xs font-medium text-midnight/70 font-dm-sans border border-amethyst/10">
-                  Gank Now
-                </span>
-                <span className="bg-snow/60 px-3 py-1 rounded-full text-xs font-medium text-midnight/70 font-dm-sans border border-amethyst/10">
-                  Fantia
-                </span>
-                <span className="bg-snow/60 px-3 py-1 rounded-full text-xs font-medium text-midnight/70 font-dm-sans border border-amethyst/10">
-                  Trakteer
-                </span>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

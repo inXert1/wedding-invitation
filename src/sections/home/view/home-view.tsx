@@ -20,14 +20,16 @@ import { WEDDING_CONFIG } from '@/constants';
 export default function HomeView() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showLetter, setShowLetter] = useState(true);
+  const [fadeOutLetter, setFadeOutLetter] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 300);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+    if (!showLetter) {
+      const timer = setTimeout(() => setIsLoaded(true), 300);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [showLetter]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -41,19 +43,12 @@ export default function HomeView() {
   };
 
   const handleLetterOpen = () => {
-    setShowLetter(false);
-    setTimeout(() => setIsLoaded(true), 300);
+    setFadeOutLetter(true);
+    setIsLoaded(true);
+    setTimeout(() => {
+      setShowLetter(false);
+    }, 600); // Allow overlay fade-out animation to complete
   };
-
-  // Show letter animation first
-  if (showLetter) {
-    return (
-      <LetterAnimation
-        onOpen={handleLetterOpen}
-        coupleName={`${WEDDING_CONFIG.groom.name} & ${WEDDING_CONFIG.bride.name}`}
-      />
-    );
-  }
 
   return (
     <div className="min-h-screen bg-snow relative">
@@ -189,6 +184,18 @@ export default function HomeView() {
         </section>
 
       </NavigationOverlay>
+
+      {showLetter && (
+        <div
+          className={`fixed inset-0 z-50 transition-opacity duration-600 ${fadeOutLetter ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            }`}
+        >
+          <LetterAnimation
+            onOpen={handleLetterOpen}
+            coupleName={`${WEDDING_CONFIG.groom.name} & ${WEDDING_CONFIG.bride.name}`}
+          />
+        </div>
+      )}
     </div>
   );
 }

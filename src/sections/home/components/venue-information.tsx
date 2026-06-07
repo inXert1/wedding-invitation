@@ -68,33 +68,33 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
 
   return (
     <>
-      <div ref={ref} className="py-20 px-4 bg-snow">
+      <div ref={ref} className="py-14 px-4 bg-snow">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-4">
               {t('venue.location-title')}
             </h2>
             <div className="w-24 h-px bg-amethyst mx-auto"></div>
-            <p className="text-base sm:text-lg md:text-xl text-midnight/60 mt-6 max-w-2xl mx-auto font-cormorant">
+            <p className="text-base sm:text-lg md:text-xl text-midnight/60 mt-4 max-w-2xl mx-auto font-cormorant">
               {t('venue.location-subtitle')}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Ceremony Venue */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-amethyst/5 rounded-3xl p-8 shadow-lg border border-amethyst/10"
+              className="bg-amethyst/5 rounded-3xl p-6 shadow-lg border border-amethyst/10"
             >
-              <div className="text-center mb-8">
+              <div className="text-center mb-6">
                 <div className="w-20 h-20 bg-amethyst-dark rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Church className="w-8 h-8 text-snow" />
                 </div>
@@ -146,9 +146,9 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : 50 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="bg-midnight/5 rounded-3xl p-8 shadow-lg border border-midnight/10"
+              className="bg-midnight/5 rounded-3xl p-6 shadow-lg border border-midnight/10"
             >
-              <div className="text-center mb-8">
+              <div className="text-center mb-6">
                 <div className="w-20 h-20 bg-midnight rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Wine className="w-8 h-8 text-snow" />
                 </div>

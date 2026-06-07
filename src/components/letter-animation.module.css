@@ -1,7 +1,19 @@
+/* ================================================================
+   LETTER ANIMATION — DARK BURGUNDY ENVELOPE WITH WAX SEAL
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   Design Tokens
+   ---------------------------------------------------------------- */
 .container {
-  --burgundy: #6B2737;
-  --burgundy-deep: #4A1525;
-  --burgundy-light: #8B3A4D;
+  --env-dark: #2A1220;
+  --env-base: #3D1A2E;
+  --env-mid: #4A2238;
+  --env-light: #5A2D42;
+  --fold-line: rgba(160, 105, 125, 0.25);
+  --seal-cream: #C8C0A8;
+  --seal-light: #DAD4BE;
+  --seal-shadow: #A8A088;
   --cream: #F7F0E8;
   --cream-warm: #EFE4D4;
   --cream-deep: #E2D2BF;
@@ -12,14 +24,14 @@
   --text-mid: #7A4A52;
 
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
-  background: var(--cream);
-  overflow-x: hidden;
+  background: #ede3d9;
+  overflow: hidden;
   font-family: var(--font-cormorant), Georgia, serif;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -27,104 +39,74 @@
   contain: layout style;
 }
 
+/* Ambient burgundy glow behind envelope */
 .container::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(var(--color-amethyst) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.04;
+  background: radial-gradient(ellipse 70% 60% at 50% 48%, rgba(80, 35, 55, 0.18) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
+/* Warm golden accent glow */
 .container::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: radial-gradient(ellipse 80% 70% at 50% 40%, transparent 40%, rgba(106, 39, 55, 0.08) 100%);
+  background: radial-gradient(ellipse 35% 30% at 50% 46%, rgba(200, 169, 110, 0.03) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
 
-.cornerOrnament {
-  position: fixed;
-  width: min(180px, 25vw);
-  height: min(180px, 25vw);
-  opacity: 0.12;
-  pointer-events: none;
-  z-index: 1;
-}
-.tl { top: 0; left: 0; }
-.tr { top: 0; right: 0; transform: scaleX(-1); }
-.bl { bottom: 0; left: 0; transform: scaleY(-1); }
-.br { bottom: 0; right: 0; transform: scale(-1); }
-
+/* ----------------------------------------------------------------
+   Page Header (hidden per user request)
+   ---------------------------------------------------------------- */
 .pageHeader {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 56px 24px 24px;
-  width: 100%;
-  animation: fadeUp 0.9s ease both;
+  display: none;
 }
 
 .eyebrow {
-  font-family: 'Cormorant SC', serif;
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.35em;
-  color: var(--rose-muted);
-  text-transform: uppercase;
-  margin-bottom: 18px;
+  display: none;
 }
 
 .titleBlock {
-  position: relative;
-  line-height: 1;
-  margin-bottom: 28px;
+  display: none;
 }
 
 .titleOur {
-  font-family: var(--font-cormorant), serif;
-  font-size: clamp(72px, 10vw, 112px);
-  font-weight: 300;
-  color: var(--text-dark);
-  display: block;
-  letter-spacing: -0.02em;
+  display: none;
 }
 
 .titleWedding {
-  font-family: 'Cormorant SC', serif;
-  font-size: clamp(58px, 8.5vw, 96px);
-  font-weight: 300;
-  color: var(--rose-muted);
-  display: block;
-  letter-spacing: 0.08em;
-  margin-top: -8px;
+  display: none;
 }
 
 .headerRule {
-  width: 80px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 0 auto 20px;
+  display: none;
 }
 
 .inviteLine {
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--text-mid);
-  font-style: italic;
-  letter-spacing: 0.03em;
+  display: none;
 }
 
-.inviteLine strong {
-  font-style: normal;
-  font-weight: 500;
-  color: var(--text-dark);
+/* ----------------------------------------------------------------
+   Corner Ornaments (unused SVG component — hidden)
+   ---------------------------------------------------------------- */
+.cornerOrnament {
+  display: none;
 }
 
+.tl,
+.tr,
+.bl,
+.br {
+  display: none;
+}
+
+/* ----------------------------------------------------------------
+   Scene
+   ---------------------------------------------------------------- */
 .scene {
   position: relative;
   z-index: 2;
@@ -132,96 +114,140 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 24px 80px;
+  justify-content: center;
+  padding: 0 24px;
   perspective: 1400px;
-  animation: fadeUp 0.9s 0.2s ease both;
 }
 
+/* ----------------------------------------------------------------
+   Envelope Wrap
+   ---------------------------------------------------------------- */
 .envelopeWrap {
   position: relative;
-  width: min(520px, 90vw);
+  width: min(520px, 88vw);
   cursor: pointer;
   user-select: none;
+  animation: envelopeEnter 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.envelopeWrap:hover:not(.isOpen) {
+  transform: scale(1.012);
+}
+
+/* ----------------------------------------------------------------
+   Envelope Body
+   ---------------------------------------------------------------- */
 .envelopeBody {
   position: relative;
   width: 100%;
-  padding-bottom: 63%; 
-  border-radius: 4px 4px 6px 6px;
+  padding-bottom: 63%;
+  border-radius: 4px 4px 5px 5px;
   overflow: hidden;
 }
 
+/* ----------------------------------------------------------------
+   Envelope Back (Base Panel — dark burgundy with suede texture)
+   ---------------------------------------------------------------- */
 .envBack {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, #F2E8DC 0%, #EAD9C8 40%, #E0CDB8 100%);
+  background: linear-gradient(160deg, var(--env-mid) 0%, var(--env-base) 35%, var(--env-dark) 100%);
   border-radius: inherit;
   box-shadow:
-  0 2px 6px rgba(74,21,37,0.10),
-  0 12px 40px rgba(74,21,37,0.14),
-  0 40px 80px rgba(74,21,37,0.10),
-  inset 0 1px 0 rgba(255,255,255,0.6),
-  inset 0 -1px 0 rgba(0,0,0,0.06);
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 16px 48px rgba(0, 0, 0, 0.3),
+    0 32px 80px rgba(0, 0, 0, 0.15);
 }
 
+/* Fabric / suede noise texture */
 .envBack::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
-  0deg,
-  transparent,
-  transparent 18px,
-  rgba(200,169,110,0.06) 18px,
-  rgba(200,169,110,0.06) 19px
-  );
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
   border-radius: inherit;
+  mix-blend-mode: overlay;
+  pointer-events: none;
 }
 
+/* Vignette and subtle top-left light splash */
 .envBack::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-  linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 35%),
-  linear-gradient(225deg, rgba(255,255,255,0.2) 0%, transparent 30%);
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 25%, rgba(255, 255, 255, 0.025) 0%, transparent 50%),
+    radial-gradient(ellipse at center, transparent 25%, rgba(0, 0, 0, 0.22) 100%);
   border-radius: inherit;
   pointer-events: none;
 }
 
+/* ----------------------------------------------------------------
+   Fold Panels (Left, Right, Bottom — static visual triangles)
+   ---------------------------------------------------------------- */
 .envSide {
   position: absolute;
-  bottom: 0;
-  width: 50%;
-  height: 100%;
+  inset: 0;
   pointer-events: none;
+  z-index: 6;
 }
+
 .envSide.left {
-  left: 0;
-  clip-path: polygon(0 100%, 0 18%, 50% 55%, 50% 100%);
-  background: linear-gradient(135deg, #DCC8B0 0%, #E5D4BF 100%);
+  width: auto;
+  height: auto;
+  bottom: auto;
+  clip-path: polygon(0 0, 0 100%, 50% 50%);
+  background: linear-gradient(135deg,
+      rgba(45, 20, 33, 0.75) 0%,
+      rgba(58, 26, 42, 0.45) 50%,
+      rgba(65, 30, 48, 0.2) 100%);
 }
+
 .envSide.right {
-  right: 0;
-  clip-path: polygon(100% 100%, 100% 18%, 50% 55%, 50% 100%);
-  background: linear-gradient(225deg, #DCC8B0 0%, #E5D4BF 100%);
+  width: auto;
+  height: auto;
+  bottom: auto;
+  clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+  background: linear-gradient(225deg,
+      rgba(45, 20, 33, 0.75) 0%,
+      rgba(58, 26, 42, 0.45) 50%,
+      rgba(65, 30, 48, 0.2) 100%);
 }
 
 .envBottom {
   position: absolute;
-  bottom: 0;
-  left: 0; right: 0;
-  height: 55%;
-  clip-path: polygon(0 100%, 50% 0%, 100% 100%);
-  background: linear-gradient(180deg, #E8D8C4 0%, #DCC8AE 100%);
+  inset: 0;
+  height: auto;
+  clip-path: polygon(0 100%, 50% 50%, 100% 100%);
+  background: linear-gradient(0deg,
+      rgba(38, 16, 28, 0.85) 0%,
+      rgba(52, 24, 38, 0.5) 50%,
+      rgba(60, 28, 44, 0.2) 100%);
   pointer-events: none;
+
 }
 
+/* ----------------------------------------------------------------
+   Fold Lines (SVG overlay — diagonal ridges from corners to center)
+   ---------------------------------------------------------------- */
+.foldLines {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+  filter: drop-shadow(0 0 1.5px rgba(120, 70, 90, 0.08));
+}
+
+/* ----------------------------------------------------------------
+   Flap (Top Triangle — Opens on Click)
+   ---------------------------------------------------------------- */
 .flapWrap {
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 58%;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
   transform-origin: top center;
   transform-style: preserve-3d;
   transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
@@ -229,130 +255,326 @@
   will-change: transform;
 }
 
+/* Front face of flap */
 .envFlap {
   position: absolute;
   inset: 0;
-  clip-path: polygon(0 0, 50% 75%, 100% 0);
-  background: linear-gradient(160deg, var(--burgundy) 0%, var(--burgundy-deep) 60%, #3A1020 100%);
-  box-shadow: inset 0 -3px 12px rgba(0,0,0,0.25);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: linear-gradient(180deg,
+      var(--env-mid) 0%,
+      var(--env-base) 40%,
+      rgba(50, 22, 36, 0.95) 100%);
   backface-visibility: hidden;
 }
 
+/* Light catch on flap */
 .envFlap::before {
   content: '';
   position: absolute;
   inset: 0;
   clip-path: inherit;
-  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 40%);
 }
 
+/* Flap texture */
+.envFlap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Back face of flap (visible when opened) */
 .envFlapInner {
   position: absolute;
   inset: 0;
-  clip-path: polygon(0 0, 50% 75%, 100% 0);
-  background: linear-gradient(180deg, #E0D0C0 0%, #D4C4B0 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: linear-gradient(180deg, #E0D4C4 0%, #D4C4B0 50%, #C8B8A0 100%);
   transform: rotateY(180deg);
   backface-visibility: hidden;
 }
 
+/* Open state: flap rotates upward */
 .envelopeWrap.isOpen .flapWrap {
   transform: rotateX(-178deg);
+  z-index: 2;
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s linear;
+  transition-delay: 0s, 0.5s;
 }
 
+/* ----------------------------------------------------------------
+   Wax Seal (Cream 3D blob with play button)
+   ---------------------------------------------------------------- */
 .sealWrap {
   position: absolute;
   left: 50%;
-  top: 54%;
+  top: 50%;
   transform: translate(-50%, -50%);
   z-index: 20;
+  animation: sealAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s both;
   transition:
-  transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
-  opacity 0.4s ease;
+    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.4s ease;
   will-change: transform;
 }
 
+/* Open state: seal shrinks away */
 .envelopeWrap.isOpen .sealWrap {
-  transform: translate(-50%, -50%) scale(0.5) rotate(15deg);
+  animation: none;
+  transform: translate(-50%, -50%) scale(0.4) rotate(20deg);
   opacity: 0;
   pointer-events: none;
   transition-delay: 0s;
 }
 
 .seal {
-  width: 82px;
-  height: 82px;
+  width: clamp(72px, 17vw, 105px);
+  height: clamp(72px, 17vw, 105px);
   position: relative;
+  cursor: pointer;
 }
 
-.seal svg {
+/* 3D wax seal body — organic blob shape */
+.sealBody {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 4px 12px rgba(74,21,37,0.5)) drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-  transition: filter 0.3s ease;
+  position: relative;
+  border-radius: 52% 48% 46% 54% / 49% 53% 47% 51%;
+  background: radial-gradient(ellipse at 38% 32%,
+      #E0DAC6 0%,
+      #D4CEB4 25%,
+      #C8C0A4 50%,
+      #BEB894 75%,
+      #B8B08C 100%);
+  box-shadow:
+    inset 5px 5px 14px rgba(255, 255, 255, 0.25),
+    inset -3px -4px 10px rgba(0, 0, 0, 0.12),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.06),
+    0 3px 8px rgba(0, 0, 0, 0.3),
+    0 8px 20px rgba(0, 0, 0, 0.25),
+    0 16px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sealWrap:hover .seal svg {
-  filter: drop-shadow(0 6px 16px rgba(106,39,55,0.6)) drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+/* Pulsing aura ring */
+.sealBody::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: inherit;
+  border: 1px solid rgba(200, 192, 168, 0.12);
+  animation: sealPulse 3s ease-in-out infinite;
+}
+
+/* Seal surface texture */
+.sealBody::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Inner recessed circle of seal */
+.sealInner {
+  position: absolute;
+  top: 18%;
+  left: 18%;
+  right: 18%;
+  bottom: 18%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 42% 38%,
+      #D8D2BA 0%,
+      #CCC6A8 40%,
+      #C4BE9C 100%);
+  box-shadow:
+    inset 0 2px 6px rgba(255, 255, 255, 0.18),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Play triangle icon */
+.playIcon {
+  width: 35%;
+  height: 35%;
+  color: rgba(150, 145, 128, 0.55);
+  margin-left: 6%;
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.15));
+}
+
+/* Hover: seal grows slightly */
+.envelopeWrap:hover:not(.isOpen) .sealBody {
+  transform: scale(1.06);
+  box-shadow:
+    inset 5px 5px 16px rgba(255, 255, 255, 0.3),
+    inset -3px -4px 10px rgba(0, 0, 0, 0.12),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.06),
+    0 4px 10px rgba(0, 0, 0, 0.35),
+    0 10px 28px rgba(0, 0, 0, 0.3),
+    0 20px 48px rgba(0, 0, 0, 0.18);
+}
+
+/* ----------------------------------------------------------------
+   Card Slot & Invite Card
+   ---------------------------------------------------------------- */
+/* Base transitions for envelope elements to allow smooth fade out during card zoom */
+.envBack,
+.envSide,
+.envBottom {
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cardSlot {
   position: absolute;
-  bottom: 0; left: 6%; right: 6%;
+  bottom: 0;
+  left: 6%;
+  right: 6%;
   height: 88%;
   z-index: 5;
   overflow: hidden;
 }
 
+/* Allow card to slide outside slot when envelope is open */
+.envelopeWrap.isOpen .cardSlot {
+  overflow: visible;
+}
+
+/* Allow card to slide out of the envelope body when open */
+.envelopeWrap.isOpen .envelopeBody {
+  overflow: visible;
+}
+
 .inviteCard {
   position: absolute;
-  bottom: -100%;
-  left: 0; right: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 100%;
   background: linear-gradient(170deg, #FDFAF6 0%, #F7F0E8 100%);
-  border: 0.5px solid rgba(200,169,110,0.25);
+  border: 0.5px solid rgba(200, 169, 110, 0.25);
   border-radius: 3px;
   box-shadow:
-  0 -2px 8px rgba(74,21,37,0.08),
-  inset 0 1px 0 rgba(255,255,255,0.9);
+    0 -2px 8px rgba(74, 21, 37, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 28px 32px;
-  transition: bottom 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: 0.5s;
+  opacity: 0;
+  transition:
+    bottom 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.5s, 0.3s, 0s, 0s, 0s;
   text-align: center;
   gap: 14px;
+  cursor: pointer;
 }
 
 .envelopeWrap.isOpen .inviteCard {
-  bottom: 4%;
+  bottom: 35%;
+  opacity: 1;
 }
 
+/* Hover style to make card feel physical and clickable */
+.envelopeWrap.isOpen .inviteCard:hover:not(.cardZoomed) {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow:
+    0 16px 36px rgba(74, 21, 37, 0.16),
+    0 6px 16px rgba(200, 169, 110, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: rgba(200, 169, 110, 0.45);
+}
+
+/* Zoomed Card styles */
+.inviteCard.cardZoomed {
+  bottom: 55%;
+  opacity: 1;
+  transform: translateY(-10%) scale(1.6);
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.35),
+    0 12px 32px rgba(200, 169, 110, 0.25);
+  z-index: 100;
+  pointer-events: none;
+  transition:
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s;
+}
+
+/* Responsive adjustment for Zoomed Card */
+@media (max-width: 768px) {
+  .inviteCard {
+    padding: 14px 18px;
+    gap: 6px;
+  }
+
+  .envelopeWrap.isOpen .inviteCard {
+    bottom: 45%;
+  }
+
+  .inviteCard.cardZoomed {
+    bottom: 45%;
+    transform: translateY(-8%) scale(1.28);
+  }
+}
+
+/* Fade out envelope wrap elements when zoomed */
+.envelopeWrap.envelopeZoomed .envBack,
+.envelopeWrap.envelopeZoomed .envSide,
+.envelopeWrap.envelopeZoomed .envBottom,
+.envelopeWrap.envelopeZoomed .flapWrap,
+.envelopeWrap.envelopeZoomed .sealWrap {
+  opacity: 0;
+  transform: scale(0.94) translateY(12px);
+  pointer-events: none;
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Inner border frame */
 .inviteCard::before {
   content: '';
   position: absolute;
   inset: 10px;
-  border: 0.5px solid rgba(200,169,110,0.35);
+  border: 0.5px solid rgba(200, 169, 110, 0.35);
   border-radius: 2px;
   pointer-events: none;
 }
 
+/* Corner dots */
 .inviteCard::after {
   content: '';
   position: absolute;
   inset: 10px;
   background-image:
-  radial-gradient(circle at 0% 0%, var(--gold) 1px, transparent 1px),
-  radial-gradient(circle at 100% 0%, var(--gold) 1px, transparent 1px),
-  radial-gradient(circle at 0% 100%, var(--gold) 1px, transparent 1px),
-  radial-gradient(circle at 100% 100%, var(--gold) 1px, transparent 1px);
+    radial-gradient(circle at 0% 0%, var(--gold) 1px, transparent 1px),
+    radial-gradient(circle at 100% 0%, var(--gold) 1px, transparent 1px),
+    radial-gradient(circle at 0% 100%, var(--gold) 1px, transparent 1px),
+    radial-gradient(circle at 100% 100%, var(--gold) 1px, transparent 1px);
   background-size: 8px 8px;
   background-repeat: no-repeat;
   background-position: 0 0, 100% 0, 0 100%, 100% 100%;
   pointer-events: none;
 }
 
+/* ----------------------------------------------------------------
+   Card Content
+   ---------------------------------------------------------------- */
 .cardTo {
   font-size: 11px;
   letter-spacing: 0.25em;
@@ -364,7 +586,8 @@
   gap: 8px;
 }
 
-.cardTo::before, .cardTo::after {
+.cardTo::before,
+.cardTo::after {
   content: '';
   width: 20px;
   height: 0.5px;
@@ -418,8 +641,8 @@
   font-size: 12px;
   font-style: italic;
   color: var(--rose-muted);
-  background: rgba(200,169,110,0.08);
-  border: 0.5px solid rgba(200,169,110,0.2);
+  background: rgba(200, 169, 110, 0.08);
+  border: 0.5px solid rgba(200, 169, 110, 0.2);
   border-radius: 2px;
   padding: 8px 14px;
   width: 90%;
@@ -447,11 +670,15 @@
   background: var(--gold);
 }
 
+/* ----------------------------------------------------------------
+   Click Hint (light text for dark background)
+   ---------------------------------------------------------------- */
 .clickHint {
   margin-top: 28px;
   text-align: center;
   z-index: 2;
   transition: opacity 0.4s ease;
+  animation: hintAppear 0.6s ease 1.2s both;
 }
 
 .clickHintText {
@@ -459,7 +686,7 @@
   font-size: 14px;
   font-style: italic;
   font-weight: 300;
-  color: var(--rose-muted);
+  color: var(--env-base);
   letter-spacing: 0.08em;
   display: block;
   margin-bottom: 10px;
@@ -468,16 +695,11 @@
 .clickHintChevron {
   width: 14px;
   height: 14px;
-  border-right: 1px solid var(--rose-muted);
-  border-bottom: 1px solid var(--rose-muted);
+  border-right: 1px solid var(--env-base);
+  border-bottom: 1px solid var(--env-base);
   transform: rotate(45deg);
   margin: 0 auto;
   animation: bob 2.2s ease-in-out infinite;
-}
-
-@keyframes bob {
-  0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.6; }
-  50% { transform: rotate(45deg) translateY(5px); opacity: 1; }
 }
 
 .clickHint.hidden {
@@ -485,13 +707,90 @@
   pointer-events: none;
 }
 
-.petal {
-  position: fixed;
-  pointer-events: none;
-  z-index: 100;
+
+
+/* ----------------------------------------------------------------
+   Animations
+   ---------------------------------------------------------------- */
+
+/* Envelope slides in with scale */
+@keyframes envelopeEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
+/* Seal pops in with bounce */
+@keyframes sealAppear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Seal aura pulse */
+@keyframes sealPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0;
+  }
+}
+
+/* Hint fades in from below */
+@keyframes hintAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Chevron bob */
+@keyframes bob {
+
+  0%,
+  100% {
+    transform: rotate(45deg) translateY(0);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: rotate(45deg) translateY(5px);
+    opacity: 0.9;
+  }
+}
+
+/* General fade up (used by scene) */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

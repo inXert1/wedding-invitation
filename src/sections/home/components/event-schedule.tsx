@@ -55,7 +55,7 @@ export const EventSchedule = () => {
       icon: UtensilsCrossed,
     },
     {
-      time: '11:00 PM',
+      time: '10:00 PM',
       event: t('schedule.send-off'),
       description: t('schedule.sparkler-farewell'),
       icon: Sparkles,
@@ -65,14 +65,14 @@ export const EventSchedule = () => {
   return (
     <div
       ref={ref}
-      className="py-16 px-4 bg-snow"
+      className="py-12 px-4 bg-snow"
     >
       <div className="max-w-4xl mx-auto overflow-hidden px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <h3 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-4">
             {t('schedule.title')}
@@ -84,7 +84,7 @@ export const EventSchedule = () => {
           {/* Timeline line */}
           <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-px bg-amethyst/20"></div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {scheduleItems.map((item, index) => {
               const IconComponent = item.icon;
               const isEven = index % 2 === 0;
@@ -95,22 +95,20 @@ export const EventSchedule = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`relative flex items-center ${
-                    isEven ? 'md:flex-row' : 'md:flex-row-reverse'
-                  } flex-row`}
+                  className={`relative flex items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+                    } flex-row`}
                 >
                   {/* Timeline dot */}
                   <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-amethyst rounded-full border-4 border-snow shadow-lg z-10"></div>
 
                   {/* Content side */}
                   <div
-                    className={`flex-1 ${
-                      isEven
+                    className={`flex-1 ${isEven
                         ? 'md:text-right md:pr-8'
                         : 'md:text-left md:pl-8'
-                    } pl-10 sm:pl-12 md:pl-0`}
+                      } pl-10 sm:pl-12 md:pl-0`}
                   >
-                    <div className="bg-snow rounded-2xl p-6 shadow-lg border border-amethyst/10">
+                    <div className="bg-snow rounded-2xl p-5 shadow-lg border border-amethyst/10">
                       <div className="flex items-center mb-2">
                         <span className="bg-amethyst/10 text-amethyst-dark px-3 py-1 rounded-full text-xs sm:text-sm font-medium font-dm-sans">
                           {item.time}
@@ -127,11 +125,10 @@ export const EventSchedule = () => {
 
                   {/* Icon side — visible only on md+ (the opposite empty space) */}
                   <div
-                    className={`hidden md:flex flex-1 ${
-                      isEven
+                    className={`hidden md:flex flex-1 ${isEven
                         ? 'justify-start pl-8'
                         : 'justify-end pr-8'
-                    }`}
+                      }`}
                   >
                     <motion.div
                       initial={{ scale: 0, opacity: 0 }}

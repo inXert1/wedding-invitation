@@ -20,7 +20,7 @@ export const AttireGuide = () => {
   return (
     <div
       ref={ref}
-      className="py-20 sm:py-28 px-4 bg-snow-warm"
+      className="py-14 sm:py-16 px-4 bg-snow-warm"
     >
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
@@ -28,7 +28,7 @@ export const AttireGuide = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 sm:mb-20"
+          className="text-center mb-10 sm:mb-12"
         >
           <div className="inline-block bg-amethyst/10 rounded-full p-4 mb-6">
             <Shirt className="w-8 h-8 text-amethyst-dark" />
@@ -37,7 +37,7 @@ export const AttireGuide = () => {
             {t('attire.title')}
           </h2>
           <div className="w-24 h-px bg-amethyst mx-auto"></div>
-          <p className="text-base sm:text-lg md:text-xl text-midnight/60 mt-6 max-w-2xl mx-auto font-cormorant leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-midnight/60 mt-4 max-w-2xl mx-auto font-cormorant leading-relaxed">
             {t('attire.description')}
           </p>
           <p className="text-sm sm:text-base md:text-lg text-amethyst-dark mt-4 max-w-2xl mx-auto font-cormorant italic font-medium">
@@ -46,7 +46,7 @@ export const AttireGuide = () => {
         </motion.div>
 
         {/* Attire Cards with Illustrations */}
-        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl mx-auto items-stretch">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto items-stretch">
           {/* Female Card */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -56,7 +56,7 @@ export const AttireGuide = () => {
           >
             <div className="bg-snow rounded-3xl shadow-xl border border-amethyst/10 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
               {/* Illustration */}
-              <div className="relative overflow-hidden bg-amethyst/5 flex-shrink-0 h-[300px] sm:h-[360px] md:h-[400px]">
+              <div className="relative overflow-hidden bg-amethyst/5 flex-shrink-0 h-[250px] sm:h-[280px] md:h-[300px]">
                 <motion.div
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -67,7 +67,7 @@ export const AttireGuide = () => {
                     alt={t('attire.female-label')}
                     width={320}
                     height={380}
-                    className="object-contain max-h-[280px] sm:max-h-[340px] md:max-h-[380px] drop-shadow-lg"
+                    className="object-contain max-h-[230px] sm:max-h-[260px] md:max-h-[280px] drop-shadow-lg"
                     priority
                   />
                 </motion.div>
@@ -75,12 +75,12 @@ export const AttireGuide = () => {
               </div>
 
               {/* Label & Colors */}
-              <div className="px-6 sm:px-8 pb-8 pt-4 text-center flex flex-col flex-1 justify-between">
+              <div className="px-5 sm:px-6 pb-6 pt-3 text-center flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-bruney text-midnight mb-2">
                     {t('attire.female-label')}
                   </h3>
-                  <p className="text-sm sm:text-base text-midnight/70 font-cormorant mb-6 leading-relaxed max-w-xs mx-auto">
+                  <p className="text-sm sm:text-base text-midnight/70 font-cormorant mb-4 leading-relaxed max-w-xs mx-auto">
                     {t('attire.female-description')}
                   </p>
                 </div>
@@ -115,7 +115,7 @@ export const AttireGuide = () => {
           >
             <div className="bg-snow rounded-3xl shadow-xl border border-amethyst/10 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
               {/* Illustration */}
-              <div className="relative overflow-hidden bg-amethyst/5 flex-shrink-0 h-[300px] sm:h-[360px] md:h-[400px]">
+              <div className="relative overflow-hidden bg-amethyst/5 flex-shrink-0 h-[250px] sm:h-[280px] md:h-[300px]">
                 <motion.div
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -126,7 +126,7 @@ export const AttireGuide = () => {
                     alt={t('attire.male-label')}
                     width={320}
                     height={380}
-                    className="object-contain max-h-[280px] sm:max-h-[340px] md:max-h-[380px] drop-shadow-lg"
+                    className="object-contain max-h-[230px] sm:max-h-[260px] md:max-h-[280px] drop-shadow-lg"
                     priority
                   />
                 </motion.div>
@@ -134,12 +134,12 @@ export const AttireGuide = () => {
               </div>
 
               {/* Label & Colors */}
-              <div className="px-6 sm:px-8 pb-8 pt-4 text-center flex flex-col flex-1 justify-between">
+              <div className="px-5 sm:px-6 pb-6 pt-3 text-center flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-bruney text-midnight mb-2">
                     {t('attire.male-label')}
                   </h3>
-                  <p className="text-sm sm:text-base text-midnight/70 font-cormorant mb-6 leading-relaxed max-w-xs mx-auto">
+                  <p className="text-sm sm:text-base text-midnight/70 font-cormorant mb-4 leading-relaxed max-w-xs mx-auto">
                     {t('attire.male-description')}
                   </p>
                 </div>

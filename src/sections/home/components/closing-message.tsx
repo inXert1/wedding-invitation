@@ -21,14 +21,14 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
   return (
     <div
       ref={ref}
-      className="py-20 px-4 bg-snow-warm"
+      className="py-14 px-4 bg-snow-warm"
     >
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
           transition={{ duration: 0.8 }}
-          className="mb-12"
+          className="mb-8"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-6">
             {t('closing-message.title')}
@@ -40,7 +40,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.9 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-snow/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl border border-amethyst/10 mb-12"
+          className="bg-snow/60 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-xl border border-amethyst/10 mb-8"
         >
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-midnight/70 leading-relaxed mb-6 font-cormorant font-light">
             &quot;{t('closing-message.quote')}&quot;
@@ -57,7 +57,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="space-y-6"
+          className="space-y-4"
         >
           <div className="flex justify-center space-x-4">
             <motion.div
@@ -93,7 +93,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: inView ? 1 : 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 pt-8 border-t border-amethyst/10"
+          className="mt-10 pt-6 border-t border-amethyst/10"
         >
           <p className="text-xs sm:text-sm text-midnight/40 font-dm-sans">
             {t('closing-message.contact')}

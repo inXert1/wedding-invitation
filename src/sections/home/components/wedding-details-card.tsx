@@ -32,7 +32,7 @@ export const WeddingDetailsCard = ({
   };
 
   return (
-    <div className="py-20 bg-snow">
+    <div className="py-14 bg-snow">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -40,7 +40,7 @@ export const WeddingDetailsCard = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-4">
             {t('details.title')}
@@ -57,7 +57,7 @@ export const WeddingDetailsCard = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative bg-snow rounded-3xl shadow-2xl p-8 sm:p-10 md:p-12 mb-12 border border-amethyst/10 overflow-hidden group"
+          className="relative bg-snow rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 mb-8 border border-amethyst/10 overflow-hidden group"
         >
           {/* Background Decorations */}
           <div className="absolute -top-20 -right-20 w-40 h-40 bg-amethyst/5 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500"></div>
@@ -65,13 +65,13 @@ export const WeddingDetailsCard = ({
 
           <div className="relative z-10">
             {/* Save the Date Header */}
-            <div className="text-center mb-8">
+            <div className="text-center mb-6">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="inline-flex items-center gap-3 bg-amethyst/10 rounded-full px-6 py-3 mb-6 border border-amethyst/20"
+                className="inline-flex items-center gap-3 bg-amethyst/10 rounded-full px-6 py-3 mb-4 border border-amethyst/20"
               >
                 <Heart className="w-5 h-5 text-amethyst" fill="currentColor" />
                 <span className="text-sm sm:text-base font-semibold text-amethyst-dark tracking-wide uppercase font-dm-sans">
@@ -81,7 +81,7 @@ export const WeddingDetailsCard = ({
             </div>
 
             {/* Date Display */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-12 mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 mb-6">
               {/* Day */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -90,7 +90,7 @@ export const WeddingDetailsCard = ({
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
-                <div className="bg-midnight text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-0 min-[400px]:min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
+                <div className="bg-midnight text-snow rounded-2xl p-4 sm:p-5 shadow-lg mb-2 h-20 sm:h-24 md:h-28 lg:h-30 flex flex-col items-center justify-center min-w-0 min-[400px]:min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
                   <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-none font-playfair-display">
                     {date.getDate()}
                   </div>
@@ -108,7 +108,7 @@ export const WeddingDetailsCard = ({
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
-                <div className="bg-amethyst-dark text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-0 min-[400px]:min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
+                <div className="bg-amethyst-dark text-snow rounded-2xl p-4 sm:p-5 shadow-lg mb-2 h-20 sm:h-24 md:h-28 lg:h-30 flex flex-col items-center justify-center min-w-0 min-[400px]:min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
                   <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium leading-none mb-1 font-playfair-display">
                     {date
                       .toLocaleDateString(currentLang.numberFormat.code, {
@@ -133,7 +133,7 @@ export const WeddingDetailsCard = ({
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
-                <div className="bg-amethyst text-snow rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-0 min-[400px]:min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
+                <div className="bg-amethyst text-snow rounded-2xl p-4 sm:p-5 shadow-lg mb-2 h-20 sm:h-24 md:h-28 lg:h-30 flex flex-col items-center justify-center min-w-0 min-[400px]:min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
                   <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-none font-playfair-display">
                     {formatWeddingTime(date, currentLang.numberFormat.code)}
                   </div>
@@ -150,9 +150,9 @@ export const WeddingDetailsCard = ({
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.7 }}
-              className="text-center mb-8 px-2"
+              className="text-center mb-6 px-2"
             >
-              <div className="relative inline-block w-full max-w-sm sm:max-w-md md:max-w-lg bg-snow-warm rounded-2xl sm:rounded-3xl px-4 py-4 sm:px-6 sm:py-5 md:px-8 md:py-6 shadow-xl border border-amethyst/10 group/weekday hover:shadow-2xl transition-all duration-300">
+              <div className="relative inline-block w-full max-w-sm sm:max-w-md md:max-w-lg bg-snow-warm rounded-2xl sm:rounded-3xl px-4 py-3 sm:px-5 sm:py-4 md:px-6 md:py-5 shadow-xl border border-amethyst/10 group/weekday hover:shadow-2xl transition-all duration-300">
                 {/* Decorative elements */}
                 <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6 bg-amethyst rounded-full opacity-60 group-hover/weekday:scale-110 transition-transform duration-300"></div>
                 <div className="absolute -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 w-3 h-3 sm:w-4 sm:h-4 bg-midnight rounded-full opacity-40 group-hover/weekday:scale-110 transition-transform duration-300"></div>
@@ -217,16 +217,16 @@ export const WeddingDetailsCard = ({
         </motion.div>
 
         {/* Venue Cards */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {/* Ceremony Card */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-snow rounded-3xl shadow-xl p-8 border border-amethyst/10 group hover:shadow-2xl transition-all duration-300"
+            className="bg-snow rounded-3xl shadow-xl p-6 border border-amethyst/10 group hover:shadow-2xl transition-all duration-300"
           >
-            <div className="text-center mb-6">
+            <div className="text-center mb-4">
               <div className="inline-block bg-amethyst/10 rounded-full p-4 mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Church className="w-8 h-8 text-amethyst-dark" />
               </div>
@@ -236,7 +236,7 @@ export const WeddingDetailsCard = ({
               <div className="w-16 h-px bg-amethyst mx-auto"></div>
             </div>
 
-            <div className="space-y-4 text-center">
+            <div className="space-y-3 text-center">
               <div>
                 <h4 className="font-semibold text-midnight mb-1 text-sm sm:text-base font-dm-sans">
                   {venue.ceremony.name}
@@ -274,9 +274,9 @@ export const WeddingDetailsCard = ({
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="bg-snow rounded-3xl shadow-xl p-8 border border-amethyst/10 group hover:shadow-2xl transition-all duration-300"
+            className="bg-snow rounded-3xl shadow-xl p-6 border border-amethyst/10 group hover:shadow-2xl transition-all duration-300"
           >
-            <div className="text-center mb-6">
+            <div className="text-center mb-4">
               <div className="inline-block bg-midnight/10 rounded-full p-4 mb-4 group-hover:scale-110 transition-transform duration-300">
                 <PartyPopper className="w-8 h-8 text-midnight" />
               </div>
@@ -286,7 +286,7 @@ export const WeddingDetailsCard = ({
               <div className="w-16 h-px bg-midnight/30 mx-auto"></div>
             </div>
 
-            <div className="space-y-4 text-center">
+            <div className="space-y-3 text-center">
               <div>
                 <h4 className="font-semibold text-midnight mb-1 text-sm sm:text-base font-dm-sans">
                   {venue.reception.name}

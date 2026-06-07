@@ -8,6 +8,7 @@
     "invitation-quote": "You changed my world the moment I met you...",
     "click-to-open-hover": "Click to open the invitation",
     "click-to-open": "Click the invitation to open",
+    "click-to-read": "Click the card to read",
     "opening-the-invitation": "Opening the invitation..."
   },
   "closing-message": {
@@ -26,8 +27,6 @@
   },
   "couple": {
     "title": "Meet the Happy Couple",
-    "bride-description": "A beautiful soul with a heart full of love and dreams of a wonderful future together.",
-    "groom-description": "A kind and caring partner who brings joy and laughter to every day.",
     "our-story": "Our Love Story",
     "story-text": "Our journey began with a simple hello and has blossomed into the most beautiful love story. We're excited to share this special day with all of you.",
     "the-groom": "The Groom",
@@ -155,10 +154,7 @@
     "deadline-date": "July 15, 2026",
     "deadline-help": "Please respond by this date to help us plan the perfect celebration for everyone.",
     "questions": "Questions?",
-    "questions-help": "We're here to help!",
-    "gift-registry": "Gift Registry",
-    "presence-present": "Your presence is the only present we need",
-    "registry-text": "If you wish to honor us with a gift, we've registered at:"
+    "questions-help": "We're here to help!"
   },
   "navigation": {
     "home": "Home",
@@ -172,11 +168,11 @@
   "schedule": {
     "title": "Timeline of Events",
     "guest-arrival": "Guest Arrival & Seating",
-    "welcome-drinks": "Welcome drinks available",
+    "welcome-drinks": "The guests must arrive 30 minutes before the cerermony",
     "wedding-ceremony": "Wedding Ceremony",
     "vows": "Exchange of vows",
     "photography": "Photography Session",
-    "welcome-drink": "Welcome drink for guests",
+    "welcome-drink": "Photography Session with guests and family",
     "reception-begins": "Reception Begins",
     "dinner-celebration": "Dinner & celebration",
     "first-dance": "First Dance",

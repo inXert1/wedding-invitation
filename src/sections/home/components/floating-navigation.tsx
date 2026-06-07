@@ -2,7 +2,6 @@
 
 import { motion } from 'motion/react';
 import {
-  FloatingParticles,
   NavigationButton,
 } from '@/components';
 import { NAVIGATION_SECTIONS } from '@/constants';
@@ -40,7 +39,6 @@ export default function FloatingNavigation({
           ))}
         </div>
 
-        <FloatingParticles />
       </motion.div>
     </motion.nav>
   );

@@ -27,15 +27,45 @@ export const HeroSection = ({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amethyst-light/8 rounded-full blur-3xl"></div>
       </div>
 
+      {/* Decorative corner flowers */}
+      <div className="absolute top-0 left-0 pointer-events-none z-0 w-[clamp(160px,30vw,350px)] opacity-85">
+        <img
+          src="/assets/images/RSVP-upper-left.png"
+          alt="Flower ornament top left"
+          className="w-full h-auto"
+        />
+      </div>
+      <div className="absolute top-0 right-0 pointer-events-none z-0 w-[clamp(140px,25vw,300px)] opacity-85">
+        <img
+          src="/assets/images/RSVP-upper-right.png"
+          alt="Flower ornament top right"
+          className="w-full h-auto"
+        />
+      </div>
+      <div className="absolute bottom-0 left-0 pointer-events-none z-0 w-[clamp(200px,40vw,550px)] opacity-90">
+        <img
+          src="/assets/images/home-left.png"
+          alt="Flower ornament bottom left"
+          className="w-full h-auto"
+        />
+      </div>
+      <div className="absolute bottom-0 right-0 pointer-events-none z-0 w-[clamp(180px,35vw,450px)] opacity-90">
+        <img
+          src="/assets/images/home-right.png"
+          alt="Flower ornament bottom right"
+          className="w-full h-auto"
+        />
+      </div>
+
       {/* Content */}
       <div className="relative z-10 flex flex-col h-full px-6 pt-10 sm:pt-18 md:pt-20">
         <div className="flex-1 flex items-center justify-center">
           <div className="max-w-4xl mx-auto text-center">
             {/* Main Heading */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 50 }}
-              transition={{ duration: 1, delay: 0.2 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
               className="mb-6 sm:mb-8"
             >
               <div className="text-sm sm:text-base md:text-lg lg:text-xl text-midnight/50 mb-4 font-medium font-cormorant tracking-widest uppercase">
@@ -52,9 +82,9 @@ export const HeroSection = ({
 
             {/* Couple Names */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 0.8 }}
-              transition={{ duration: 1, delay: 0.6 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 0.95 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
               className="mb-6 sm:mb-8"
             >
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 mb-4 sm:mb-6">
@@ -87,9 +117,9 @@ export const HeroSection = ({
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
-              transition={{ duration: 1, delay: 1.2 }}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 15 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
             >
               <motion.button
@@ -117,7 +147,7 @@ export const HeroSection = ({
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: isLoaded ? 1 : 0 }}
-            transition={{ duration: 1, delay: 1.5 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
             className="z-20"
           >
             <motion.div

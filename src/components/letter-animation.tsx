@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import { Heart } from 'lucide-react';
+import { WEDDING_CONFIG } from '@/constants';
 import styles from './letter-animation.module.css';
 
 const CornerOrnament = ({ className }: { className?: string }) => (
@@ -25,96 +27,6 @@ const CornerOrnament = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const Seal = () => (
-  <svg viewBox="0 0 82 82" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="sealGrad" cx="38%" cy="35%" r="65%">
-        <stop offset="0%" stopColor="#8B3A4D" />
-        <stop offset="50%" stopColor="#6B2737" />
-        <stop offset="100%" stopColor="#3A1020" />
-      </radialGradient>
-      <radialGradient id="goldRing" cx="50%" cy="50%" r="50%">
-        <stop offset="80%" stopColor="transparent" />
-        <stop offset="90%" stopColor="#C8A96E" stopOpacity="0.7" />
-        <stop offset="100%" stopColor="#A88040" stopOpacity="0.5" />
-      </radialGradient>
-    </defs>
-    {/* Outer decorative ring */}
-    <circle cx="41" cy="41" r="40" fill="none" stroke="#C8A96E" strokeWidth="0.5" opacity="0.6" />
-    {/* Main seal */}
-    <circle cx="41" cy="41" r="36" fill="url(#sealGrad)" />
-    {/* Texture ring */}
-    <circle cx="41" cy="41" r="36" fill="url(#goldRing)" />
-    {/* Inner ring */}
-    <circle cx="41" cy="41" r="29" fill="none" stroke="#C8A96E" strokeWidth="0.5" opacity="0.5" />
-    {/* Monogram */}
-    <text x="40" y="45" textAnchor="middle" fontFamily="var(--font-darleston)" fontSize="18" fill="#F0D8A0" opacity="0.95">A &amp; J</text>
-    {/* Star ornaments */}
-    <g fill="#C8A96E" opacity="0.5">
-      <polygon points="41,13 42.2,16.6 46,16.6 43,18.8 44.2,22.4 41,20.2 37.8,22.4 39,18.8 36,16.6 39.8,16.6" transform="scale(0.55) translate(33,17)" />
-    </g>
-    {/* Small dots ring */}
-    <g fill="#C8A96E" opacity="0.45">
-      <circle cx="41" cy="12" r="1.2" />
-      <circle cx="41" cy="70" r="1.2" />
-      <circle cx="12" cy="41" r="1.2" />
-      <circle cx="70" cy="41" r="1.2" />
-      <circle cx="20" cy="20" r="1" />
-      <circle cx="62" cy="20" r="1" />
-      <circle cx="20" cy="62" r="1" />
-      <circle cx="62" cy="62" r="1" />
-    </g>
-    {/* Light reflection */}
-    <ellipse cx="32" cy="28" rx="10" ry="6" fill="white" opacity="0.06" transform="rotate(-30 32 28)" />
-  </svg>
-);
-
-const Petals = () => {
-  const colors = ['#C8A0A8', '#DEB8C0', '#E8C8C0', '#C8A96E', '#EDD8C8'];
-  const count = 22;
-
-  // We only want to generate these once on client mount to avoid hydration mismatch
-  const [petals, setPetals] = useState<any[]>([]);
-
-  useEffect(() => {
-    const generatedPetals = Array.from({ length: count }).map((_, i) => ({
-      id: i,
-      size: 6 + Math.random() * 10,
-      xPos: 20 + Math.random() * 60,
-      dur: 2.5 + Math.random() * 2.5,
-      delay: Math.random() * 0.4 + (i * 0.08),
-      color: colors[Math.floor(Math.random() * colors.length)],
-      borderRadius: Math.random() > 0.5 ? '50% 0 50% 0' : '0 50% 0 50%'
-    }));
-    setPetals(generatedPetals);
-  }, []);
-
-  return (
-    <>
-      {petals.map((petal) => (
-        <motion.div
-          key={petal.id}
-          className={styles.petal}
-          style={{
-            left: `${petal.xPos}%`,
-            top: '30%',
-            width: petal.size,
-            height: petal.size * 0.65,
-            background: petal.color,
-            borderRadius: petal.borderRadius,
-          }}
-          initial={{ y: -20, rotate: 0, opacity: 0.8 }}
-          animate={{ y: '100vh', rotate: 360, opacity: 0 }}
-          transition={{
-            duration: petal.dur,
-            delay: petal.delay,
-            ease: 'linear',
-          }}
-        />
-      ))}
-    </>
-  );
-};
 
 interface LetterAnimationProps {
   onOpen: () => void;
@@ -132,25 +44,35 @@ export const LetterAnimation = ({
     searchParams.get('to') || searchParams.get('toName') || t('letter.guest');
 
   const [isOpen, setIsOpen] = useState(false);
-  const [showPetals, setShowPetals] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const handleOpen = () => {
     if (isOpen) return;
     setIsOpen(true);
+  };
 
-    setTimeout(() => {
-      setShowPetals(true);
-    }, 400);
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (!isOpen || isZoomed) return;
+    e.stopPropagation(); // Prevent trigger handleOpen again
+    setIsZoomed(true);
 
+    // Give time for zoom animation to play before calling onOpen to fade out overlay
     setTimeout(() => {
       onOpen();
-    }, 3500); // Give the animation time to play out
+    }, 600);
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isZoomed ? styles.isZoomed : ''}`}>
       {/* Decorative corner flowers */}
-      <div className="absolute top-0 left-0 pointer-events-none z-10" style={{ width: 'clamp(160px, 40vw, 300px)' }}>
+      <div
+        className="absolute top-0 left-0 pointer-events-none z-10"
+        style={{
+          width: 'clamp(160px, 40vw, 300px)',
+          opacity: isZoomed ? 0 : 0.75,
+          transition: 'opacity 0.8s ease',
+        }}
+      >
         <Image
           src="/assets/images/RSVP-upper-left.png"
           alt="Flower ornament top left"
@@ -160,7 +82,14 @@ export const LetterAnimation = ({
           priority
         />
       </div>
-      <div className="absolute top-0 right-0 pointer-events-none z-10" style={{ width: 'clamp(160px, 40vw, 300px)' }}>
+      <div
+        className="absolute top-0 right-0 pointer-events-none z-10"
+        style={{
+          width: 'clamp(160px, 40vw, 300px)',
+          opacity: isZoomed ? 0 : 0.75,
+          transition: 'opacity 0.8s ease',
+        }}
+      >
         <Image
           src="/assets/images/RSVP-upper-right.png"
           alt="Flower ornament top right"
@@ -170,7 +99,14 @@ export const LetterAnimation = ({
           priority
         />
       </div>
-      <div className="absolute bottom-0 left-0 pointer-events-none z-10" style={{ width: 'clamp(240px, 60vw, 480px)' }}>
+      <div
+        className="absolute bottom-0 left-0 pointer-events-none z-10"
+        style={{
+          width: 'clamp(240px, 60vw, 480px)',
+          opacity: isZoomed ? 0 : 0.9,
+          transition: 'opacity 0.8s ease',
+        }}
+      >
         <Image
           src="/assets/images/home-left.png"
           alt="Flower ornament bottom left"
@@ -180,7 +116,14 @@ export const LetterAnimation = ({
           priority
         />
       </div>
-      <div className="absolute bottom-0 right-0 pointer-events-none z-10" style={{ width: 'clamp(240px, 60vw, 480px)' }}>
+      <div
+        className="absolute bottom-0 right-0 pointer-events-none z-10"
+        style={{
+          width: 'clamp(240px, 60vw, 480px)',
+          opacity: isZoomed ? 0 : 0.9,
+          transition: 'opacity 0.8s ease',
+        }}
+      >
         <Image
           src="/assets/images/home-right.png"
           alt="Flower ornament bottom right"
@@ -194,8 +137,8 @@ export const LetterAnimation = ({
       <header className={styles.pageHeader}>
         <p className={styles.eyebrow}>{t('letter.invitation-title') || 'Welcome to our wedding'}</p>
         <div className={styles.titleBlock}>
-          <span className={styles.titleOur}>Our</span>
-          <span className={styles.titleWedding}>Wedding</span>
+          <span className={styles.titleOur}>Wedding</span>
+          <span className={styles.titleWedding}>Of</span>
         </div>
         <div className={styles.headerRule}></div>
         <p className={styles.inviteLine}>
@@ -205,7 +148,8 @@ export const LetterAnimation = ({
 
       <div className={styles.scene}>
         <div
-          className={`${styles.envelopeWrap} ${isOpen ? styles.isOpen : ''}`}
+          className={`${styles.envelopeWrap} ${isOpen ? styles.isOpen : ''} ${isZoomed ? styles.envelopeZoomed : ''
+            }`}
           id="envelope"
           onClick={handleOpen}
           role="button"
@@ -226,50 +170,114 @@ export const LetterAnimation = ({
             {/* Wax seal */}
             <div className={styles.sealWrap} id="seal">
               <div className={styles.seal}>
-                <Seal />
+                <Image
+                  src="/assets/images/wax-seal.png"
+                  alt="Wax Seal"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
             </div>
 
             {/* Card slot */}
             <div className={styles.cardSlot}>
-              <div className={styles.inviteCard} id="card">
-                <div className={styles.cardOrnament}>
-                  <div className={styles.cardOrnamentDot}></div>
-                  <div className={styles.cardOrnamentLine}></div>
-                  <div className={styles.cardOrnamentDot}></div>
+              <div
+                className={`${styles.inviteCard} ${isZoomed ? styles.cardZoomed : ''}`}
+                id="card"
+                onClick={handleCardClick}
+                role="button"
+                tabIndex={isOpen && !isZoomed ? 0 : -1}
+                aria-label="Read invitation details"
+              >
+                {/* Flowers inside the card */}
+                <div className="absolute -top-1 -left-1 w-14 sm:w-20 md:w-28 pointer-events-none z-0 opacity-40 sm:opacity-50">
+                  <Image
+                    src="/assets/images/RSVP-upper-left.png"
+                    alt="Flower ornament top left"
+                    width={300}
+                    height={500}
+                    className="w-full h-auto"
+                  />
+                </div>
+                <div className="absolute -top-1 -right-1 w-12 sm:w-18 md:w-24 pointer-events-none z-0 opacity-40 sm:opacity-50">
+                  <Image
+                    src="/assets/images/RSVP-upper-right.png"
+                    alt="Flower ornament top right"
+                    width={250}
+                    height={250}
+                    className="w-full h-auto"
+                  />
+                </div>
+                <div className="absolute -bottom-1 -left-1 w-20 sm:w-28 md:w-36 pointer-events-none z-0 opacity-50 sm:opacity-60">
+                  <Image
+                    src="/assets/images/home-left.png"
+                    alt="Flower ornament bottom left"
+                    width={500}
+                    height={350}
+                    className="w-full h-auto"
+                  />
+                </div>
+                <div className="absolute -bottom-1 -right-1 w-16 sm:w-24 md:w-30 pointer-events-none z-0 opacity-50 sm:opacity-60">
+                  <Image
+                    src="/assets/images/home-right.png"
+                    alt="Flower ornament bottom right"
+                    width={350}
+                    height={350}
+                    className="w-full h-auto"
+                  />
                 </div>
 
-                <div className={styles.cardTo}>{t('letter.to') || 'to'}: {toName}</div>
+                <div className="relative z-10 flex flex-col items-center justify-center h-full w-full">
+                  <div className="text-[7px] sm:text-[10px] md:text-xs text-midnight/50 font-medium font-cormorant tracking-[0.2em] uppercase mb-1 sm:mb-4">
+                    {t('hero.welcome') || 'Together with our Families'}
+                  </div>
+                  <h1 className="font-bruney text-2xl sm:text-5xl md:text-6xl text-midnight leading-none mb-1.5 sm:mb-4 text-center">
+                    Wedding
+                    <span className="block text-amethyst">
+                      Of
+                    </span>
+                  </h1>
+                  <div className="w-12 sm:w-24 h-px bg-amethyst/30 mx-auto mb-2.5 sm:mb-6"></div>
 
-                <div className={styles.cardNames}>{coupleName}</div>
+                  <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 mb-2.5 sm:mb-6">
+                    <div className="text-center">
+                      <h3 className="text-2xl sm:text-4xl md:text-5xl font-ballet text-midnight leading-none">
+                        {WEDDING_CONFIG.groom.name}
+                      </h3>
+                      <p className="text-[7px] sm:text-[10px] text-amethyst-dark font-cormorant italic mt-0.5 leading-none">
+                        {WEDDING_CONFIG.groom.fullName}
+                      </p>
+                    </div>
+                    <div className="text-amethyst mx-1.5 sm:mx-2 flex items-center justify-center">
+                      <Heart className="w-2.5 h-2.5 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="currentColor" />
+                    </div>
+                    <div className="text-center">
+                      <h3 className="text-2xl sm:text-4xl md:text-5xl font-ballet text-midnight leading-none">
+                        {WEDDING_CONFIG.bride.name}
+                      </h3>
+                      <p className="text-[7px] sm:text-[10px] text-amethyst-dark font-cormorant italic mt-0.5 leading-none">
+                        {WEDDING_CONFIG.bride.fullName}
+                      </p>
+                    </div>
+                  </div>
 
-                <div className={styles.cardDivider}>
-                  <div className={styles.cardDividerLine}></div>
-                  <div className={styles.cardDividerDiamond}></div>
-                  <div className={styles.cardDividerLine}></div>
-                </div>
-
-                <p className={styles.cardTagline}>{t('letter.invitation-title') || 'Inviting you to share in the joy of our wedding day'}</p>
-
-                <p className={styles.cardQuote}>&ldquo;{t('letter.invitation-quote') || 'You changed my world the moment I met you...'}&rdquo;</p>
-
-                <div className={styles.cardOrnament}>
-                  <div className={styles.cardOrnamentDot}></div>
-                  <div className={styles.cardOrnamentLine}></div>
-                  <div className={styles.cardOrnamentDot}></div>
+                  <div className="text-[7px] sm:text-[10px] md:text-xs tracking-widest uppercase text-amethyst-dark font-cormorant border-t border-b border-amethyst/10 py-1 sm:py-2 px-3 sm:px-6">
+                    {t('letter.to') || 'to'}: {toName}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className={`${styles.clickHint} ${isOpen ? styles.hidden : ''}`} id="hint">
-          <span className={styles.clickHintText}>{t('letter.click-to-open')}</span>
+        <div className={`${styles.clickHint} ${isZoomed ? styles.hidden : ''}`} id="hint">
+          <span className={styles.clickHintText}>
+            {isOpen ? t('letter.click-to-read') || 'Click the card to read' : t('letter.click-to-open')}
+          </span>
           <div className={styles.clickHintChevron}></div>
         </div>
       </div>
-
-      {showPetals && <Petals />}
     </div>
   );
 };

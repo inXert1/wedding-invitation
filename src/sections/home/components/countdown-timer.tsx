@@ -84,7 +84,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
   return (
     <div
       ref={ref}
-      className="py-16 px-4 bg-snow-warm"
+      className="py-12 px-4 bg-snow-warm"
     >
       <div className="max-w-4xl mx-auto text-center">
         {/* Header */}
@@ -92,7 +92,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
           transition={{ duration: 0.8 }}
-          className="mb-12"
+          className="mb-8"
         >
           <h2 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bruney text-midnight mb-4">
             {t('details.countdown-title')}
@@ -104,7 +104,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
         </motion.div>
 
         {/* Countdown Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           {timeUnits.map((unit, index) => (
             <motion.div
               key={unit.label}
@@ -122,7 +122,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
               }}
               className="relative group"
             >
-              <div className="bg-snow rounded-2xl p-6 shadow-lg border border-amethyst/10 hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2">
+              <div className="bg-snow rounded-2xl p-5 shadow-lg border border-amethyst/10 hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2">
                 {/* Background Solid Color */}
                 <div
                   className={`absolute inset-0 ${unit.bgColor} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}
@@ -154,7 +154,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-12"
+          className="mt-8"
         >
           <div className="inline-block bg-snow rounded-full px-6 py-3 shadow-md border border-amethyst/10">
             <p className="text-midnight/70 font-medium text-sm sm:text-base md:text-lg font-dm-sans">
