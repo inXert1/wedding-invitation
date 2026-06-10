@@ -14,7 +14,6 @@
     "title": "Hindi Na Kami Makapaghintay Na Magdiwang",
     "quote": "Ang iyong presensya sa aming buhay ay isang biyaya, at ang makasama ka sa aming espesyal na araw ay magpapabuo ng aming saya. Salamat sa pagiging bahagi ng aming love story.",
     "with-love": "Nagmamahal,",
-    "hashtags": "#AllysterAndJoefren2026 #LoveWins #ForeverBegins",
     "contact": "Mga Katanungan? Kontakin kami sa wedding@fihaa.my.ph"
   },
   "hero": {
@@ -75,7 +74,16 @@
     "female-label": "Mga Babaeng Bisita",
     "female-description": "Eleganteng mahabang gown o dress sa mga kulay ng plum, amethyst, o wine red.",
     "male-label": "Mga Lalaking Bisita",
-    "male-description": "Tan o beige na suit, o puting long-sleeve shirt na may bow tie at suspenders."
+    "male-description": "Tan o beige na suit, o puting long-sleeve shirt na may bow tie at suspenders.",
+    "warning-text": "Mangyaring iwasan ang pagsuot ng: Puti (White), Ivory, Cream, Itim (Black), Neon na Kulay, at Matitingkad na Pangunahing Kulay.",
+    "warning-thankyou": "Maraming salamat sa inyong pagtulong na maging maganda at maayos ang ating pagdiriwang.",
+    "color-mauve": "Mauve",
+    "color-berry": "Berry",
+    "color-burgundy": "Burgundy",
+    "color-taupe": "Taupe",
+    "color-beige": "Beige",
+    "color-light-gray": "Light Gray",
+    "color-brown": "Brown"
   },
   "venue": {
     "title": "Impormasyon sa Lugar",
@@ -156,7 +164,14 @@
     "deadline-date": "Nobyembre 15, 2025",
     "deadline-help": "Mangyaring tumugon bago ang petsang ito para matulungan kami sa pagpaplano ng perpektong pagdiriwang para sa lahat.",
     "questions": "Mga Katanungan?",
-    "questions-help": "Narito kami para tumulong!"
+    "questions-help": "Narito kami para tumulong!",
+    "guidelines-title": "Gabay sa RSVP",
+    "guidelines-intro": "Ipinapakiusap po namin ang inyong tugon sa o bago ang Hunyo 30, 2026.",
+    "guidelines-item1": "Mangyaring kumpirmahin ang pagdalo ng lahat ng mga inimbitahang bisita na nakalista sa inyong imbitasyon.",
+    "guidelines-item2": "Dahil sa limitadong upuan, magalang po naming hinihiling na ang mga bisitang nakapangalan lamang sa imbitasyon ang dumalo.",
+    "guidelines-item3": "Kung hindi po kayo makakadalo, mangyaring ipagbigay-alam po sa amin sa lalong madaling panahon.",
+    "guidelines-outro": "Ang inyong maagang tugon ay makakatulong sa amin sa paggawa ng mga kinakailangang paghahanda upang sama-sama nating maipagdiwang ang espesyal na araw na ito nang may kaginhawaan.",
+    "guidelines-signature": "Joefren Maris & Allyster Rey"
   },
   "navigation": {
     "home": "Home",

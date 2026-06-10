@@ -53,12 +53,23 @@ export const CoupleIntroduction = ({
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center lg:text-right"
+            className="text-center lg:text-right relative"
           >
+            {/* Groom Flower */}
+            <div className="absolute top-[5%] -left-4 md:-left-[10%] lg:-left-[15%] w-[180px] sm:w-[220px] md:w-[280px] lg:w-[350px] -z-10 pointer-events-none">
+              <Image
+                src="/assets/images/couple-left-v2.png"
+                alt="Decorative vintage flowers"
+                width={600}
+                height={600}
+                className="w-full h-auto max-md:-rotate-6 md:rotate-[160deg]"
+              />
+            </div>
+
             <div className="relative inline-block mb-4">
               <div className="w-36 h-36 min-[400px]:w-40 min-[400px]:h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl border-8 border-snow">
                 <Image
-                   src="/assets/images/tiryu.jpg"
+                  src="/assets/images/tiryu.jpg"
                   alt={groom.fullName}
                   width={256}
                   height={256}
@@ -95,7 +106,19 @@ export const CoupleIntroduction = ({
               transition={{ duration: 1, delay: 0.5 }}
               className="w-16 h-16 bg-snow rounded-full flex items-center justify-center shadow-xl border-4 border-amethyst/20"
             >
-              <Heart className="w-6 h-6 text-amethyst animate-pulse" fill="currentColor" />
+              <motion.div
+                animate={{
+                  scale: [1, 1.15, 1],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="text-amethyst flex items-center justify-center"
+              >
+                <Heart className="w-6 h-6" fill="currentColor" />
+              </motion.div>
             </motion.div>
           </div>
 
@@ -107,7 +130,19 @@ export const CoupleIntroduction = ({
               transition={{ duration: 1, delay: 0.5 }}
               className="w-12 h-12 bg-snow rounded-full flex items-center justify-center shadow-xl border-4 border-amethyst/20"
             >
-              <Heart className="w-5 h-5 text-amethyst animate-pulse" fill="currentColor" />
+              <motion.div
+                animate={{
+                  scale: [1, 1.15, 1],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="text-amethyst flex items-center justify-center"
+              >
+                <Heart className="w-5 h-5" fill="currentColor" />
+              </motion.div>
             </motion.div>
           </div>
 

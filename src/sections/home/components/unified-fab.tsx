@@ -262,12 +262,12 @@ export default function UnifiedFAB({
           ref={audioRef}
           loop
           preload="auto"
-          src="/assets/audio/itsbeenalongtime.mp3"
+          src="/assets/audio/wishlist.mp3"
           aria-label="Wedding background music"
         >
           <track
             kind="captions"
-            src="/assets/audio/itsbeenalongtime.mp3"
+            src="/assets/audio/wishlist.mp3"
             label="No captions available"
           />
         </audio>

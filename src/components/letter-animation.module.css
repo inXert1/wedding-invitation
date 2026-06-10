@@ -131,6 +131,12 @@
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.envelopeWrap:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 .envelopeWrap:hover:not(.isOpen) {
   transform: scale(1.012);
 }
@@ -482,6 +488,11 @@
   text-align: center;
   gap: 14px;
   cursor: pointer;
+}
+
+.inviteCard:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
 }
 
 .envelopeWrap.isOpen .inviteCard {

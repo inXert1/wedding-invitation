@@ -244,7 +244,7 @@ export const RSVP = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-midnight text-snow py-4 px-6 rounded-xl font-medium text-base sm:text-lg hover:bg-midnight-light transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-dm-sans cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-3"
+                  className="w-full bg-midnight text-snow py-4 px-6 rounded-xl font-medium text-base sm:text-lg hover:bg-midnight-light transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-dm-sans cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-3 touch-manipulation"
                 >
                   {isLoading ? (
                     <>
@@ -304,11 +304,52 @@ export const RSVP = () => {
               <div className="space-y-2 text-xs sm:text-sm text-midnight/60 font-dm-sans">
                 <p className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-amethyst" />
-                  your-email@example.com
+                  marisjoefren@gmail.com
                 </p>
                 <p className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-amethyst" />
-                  +63 XXX XXX XXXX
+                  +63 992 319 1488
+                </p>
+              </div>
+            </div>
+
+            {/* RSVP Guidelines */}
+            <div className="bg-snow rounded-2xl p-5 shadow-lg border border-amethyst/10">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-amethyst/10 rounded-full flex items-center justify-center mr-4">
+                  <Heart className="w-5 h-5 text-amethyst-dark" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-midnight text-sm sm:text-base font-dm-sans">
+                    {t('rsvp.guidelines-title')}
+                  </h4>
+                </div>
+              </div>
+
+              <div className="space-y-3 text-xs sm:text-sm text-midnight/70 font-dm-sans leading-relaxed">
+                <p className="font-medium text-midnight">{t('rsvp.guidelines-intro')}</p>
+
+                <ul className="space-y-2 pl-1 list-none">
+                  <li className="flex items-start gap-2">
+                    <span className="text-amethyst-dark mt-1.5">•</span>
+                    <span>{t('rsvp.guidelines-item1')}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amethyst-dark mt-1.5">•</span>
+                    <span>{t('rsvp.guidelines-item2')}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amethyst-dark mt-1.5">•</span>
+                    <span>{t('rsvp.guidelines-item3')}</span>
+                  </li>
+                </ul>
+
+                <p className="italic text-midnight/60 pt-1">
+                  {t('rsvp.guidelines-outro')}
+                </p>
+
+                <p className="font-bruney text-lg text-amethyst-dark text-right pt-2">
+                  {t('rsvp.guidelines-signature')}
                 </p>
               </div>
             </div>

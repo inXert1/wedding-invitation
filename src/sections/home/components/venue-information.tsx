@@ -44,11 +44,16 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
     };
     if (activeModal) {
       document.addEventListener('keydown', handleKeyDown);
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = 'hidden';
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
     }
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     };
   }, [activeModal, closeModal]);
 

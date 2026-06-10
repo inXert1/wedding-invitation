@@ -27,10 +27,10 @@ function buildEmailHtml(data: RsvpPayload): string {
   const statusText = isAttending ? 'Will Attend' : 'Unable to Attend';
 
   // Enhanced Wedding RSVP Email Template
-// Drop-in replacement — paste this function body where your original return statement was.
-// Requires: statusBg, statusColor, statusText, isAttending, data (same as before)
+  // Drop-in replacement — paste this function body where your original return statement was.
+  // Requires: statusBg, statusColor, statusText, isAttending, data (same as before)
 
-return `
+  return `
   <div style="font-family: Georgia, 'Times New Roman', serif; width: 100%; max-width: 800px; margin: 0 auto; box-shadow: 0 8px 48px rgba(45,18,18,0.22);">
 
     <!-- Gold top accent stripe -->
@@ -386,6 +386,39 @@ function buildGuestConfirmationHtml(data: RsvpPayload): string {
         </p>
         <p style="color: #2d2926; font-size: 15px; margin: 0; font-style: italic;">
           Formal Attire
+        </p>
+      </div>
+
+      <!-- RSVP Guidelines -->
+      <div style="margin-top: 30px; background: #f9f3eb; border: 1px solid #ede4d8; padding: 28px 32px; text-align: left;">
+        <p style="color: #c9a96e; font-size: 9px; text-transform: uppercase; letter-spacing: 4px; margin: 0 0 16px; text-align: center;">
+          &#9670; &nbsp; RSVP Guidelines &nbsp; &#9670;
+        </p>
+        <p style="color: #5a4a3a; font-size: 13.5px; line-height: 1.8; margin: 0 0 12px; text-align: center; font-style: italic;">
+          We kindly request your response on or before June 30, 2026.
+        </p>
+        
+        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 16px; font-size: 13px; color: #5a4a3a; line-height: 1.8;">
+          <tr>
+            <td style="vertical-align: top; padding: 4px 10px 4px 0; color: #c9a96e; font-size: 14px;">&bull;</td>
+            <td style="vertical-align: top; padding: 4px 0;">Please confirm the attendance of all invited guests listed on your invitation.</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; padding: 4px 10px 4px 0; color: #c9a96e; font-size: 14px;">&bull;</td>
+            <td style="vertical-align: top; padding: 4px 0;">Due to limited seating, we respectfully ask that only the guests named on the invitation attend.</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; padding: 4px 10px 4px 0; color: #c9a96e; font-size: 14px;">&bull;</td>
+            <td style="vertical-align: top; padding: 4px 0;">If you are unable to join us, kindly let us know as soon as possible.</td>
+          </tr>
+        </table>
+        
+        <p style="color: #5a4a3a; font-size: 13px; line-height: 1.8; margin: 0 0 16px; text-align: center; font-style: italic;">
+          Your timely response will help us make the necessary arrangements and celebrate this special day with you comfortably.
+        </p>
+        
+        <p style="color: #c9a96e; font-size: 14px; text-align: center; font-family: 'Times New Roman', Georgia, serif; font-style: italic; margin: 0; font-weight: bold;">
+          Joefren Maris &amp; Allyster Rey
         </p>
       </div>
       ` : `

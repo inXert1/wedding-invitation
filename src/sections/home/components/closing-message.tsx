@@ -83,9 +83,6 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
             </motion.div>
           </div>
 
-          <p className="text-sm sm:text-base text-midnight/40 font-dm-sans">
-            {t('closing-message.hashtags')}
-          </p>
         </motion.div>
 
         {/* Footer */}
@@ -95,9 +92,7 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-10 pt-6 border-t border-amethyst/10"
         >
-          <p className="text-xs sm:text-sm text-midnight/40 font-dm-sans">
-            {t('closing-message.contact')}
-          </p>
+
         </motion.div>
       </div>
     </div>

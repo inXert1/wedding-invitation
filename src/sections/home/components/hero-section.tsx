@@ -4,6 +4,7 @@ import type { WeddingConfigType } from '@/types';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Heart, ChevronDown } from 'lucide-react';
+import Image from 'next/image';
 
 interface HeroSectionProps {
   isLoaded: boolean;
@@ -29,31 +30,47 @@ export const HeroSection = ({
 
       {/* Decorative corner flowers */}
       <div className="absolute top-0 left-0 pointer-events-none z-0 w-[clamp(160px,30vw,350px)] opacity-85">
-        <img
+        <Image
           src="/assets/images/RSVP-upper-left.png"
           alt="Flower ornament top left"
+          width={2500}
+          height={2000}
           className="w-full h-auto"
+          priority
+          sizes="(max-width: 768px) 30vw, 350px"
         />
       </div>
       <div className="absolute top-0 right-0 pointer-events-none z-0 w-[clamp(140px,25vw,300px)] opacity-85">
-        <img
+        <Image
           src="/assets/images/RSVP-upper-right.png"
           alt="Flower ornament top right"
+          width={2500}
+          height={2000}
           className="w-full h-auto"
+          priority
+          sizes="(max-width: 768px) 25vw, 300px"
         />
       </div>
       <div className="absolute bottom-0 left-0 pointer-events-none z-0 w-[clamp(200px,40vw,550px)] opacity-90">
-        <img
+        <Image
           src="/assets/images/home-left.png"
           alt="Flower ornament bottom left"
+          width={2500}
+          height={2000}
           className="w-full h-auto"
+          priority
+          sizes="(max-width: 768px) 40vw, 550px"
         />
       </div>
       <div className="absolute bottom-0 right-0 pointer-events-none z-0 w-[clamp(180px,35vw,450px)] opacity-90">
-        <img
+        <Image
           src="/assets/images/home-right.png"
           alt="Flower ornament bottom right"
+          width={2500}
+          height={2000}
           className="w-full h-auto"
+          priority
+          sizes="(max-width: 768px) 35vw, 450px"
         />
       </div>
 
@@ -150,17 +167,18 @@ export const HeroSection = ({
             transition={{ duration: 0.8, delay: 0.7 }}
             className="z-20"
           >
-            <motion.div
+            <motion.button
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="text-midnight/40 text-center cursor-pointer"
+              className="text-midnight/40 hover:text-midnight/60 text-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amethyst/50 rounded-lg px-3 py-2 min-h-[44px] min-w-[44px] flex flex-col items-center justify-center transition-colors"
               onClick={() => onScrollToSection('couple')}
+              aria-label={t('hero.scroll-down')}
             >
-              <div className="text-xs mb-1 sm:mb-2 font-dm-sans">
+              <span className="text-xs mb-1 sm:mb-2 font-dm-sans block">
                 {t('hero.scroll-down')}
-              </div>
-              <ChevronDown className="w-5 h-5 mx-auto" />
-            </motion.div>
+              </span>
+              <ChevronDown className="w-5 h-5" />
+            </motion.button>
           </motion.div>
         </div>
       </div>

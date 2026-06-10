@@ -51,6 +51,13 @@ export const LetterAnimation = ({
     setIsOpen(true);
   };
 
+  const handleKeyDownOpen = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleOpen();
+    }
+  };
+
   const handleCardClick = (e: React.MouseEvent) => {
     if (!isOpen || isZoomed) return;
     e.stopPropagation(); // Prevent trigger handleOpen again
@@ -60,6 +67,18 @@ export const LetterAnimation = ({
     setTimeout(() => {
       onOpen();
     }, 600);
+  };
+
+  const handleKeyDownCard = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      e.stopPropagation();
+      if (!isOpen || isZoomed) return;
+      setIsZoomed(true);
+      setTimeout(() => {
+        onOpen();
+      }, 600);
+    }
   };
 
   return (
@@ -152,7 +171,9 @@ export const LetterAnimation = ({
             }`}
           id="envelope"
           onClick={handleOpen}
+          onKeyDown={handleKeyDownOpen}
           role="button"
+          tabIndex={isOpen ? -1 : 0}
           aria-label="Click to open invitation"
         >
           <div className={styles.envelopeBody}>
@@ -186,6 +207,7 @@ export const LetterAnimation = ({
                 className={`${styles.inviteCard} ${isZoomed ? styles.cardZoomed : ''}`}
                 id="card"
                 onClick={handleCardClick}
+                onKeyDown={handleKeyDownCard}
                 role="button"
                 tabIndex={isOpen && !isZoomed ? 0 : -1}
                 aria-label="Read invitation details"
@@ -229,7 +251,7 @@ export const LetterAnimation = ({
                 </div>
 
                 <div className="relative z-10 flex flex-col items-center justify-center h-full w-full">
-                  <div className="text-[7px] sm:text-[10px] md:text-xs text-midnight/50 font-medium font-cormorant tracking-[0.2em] uppercase mb-1 sm:mb-4">
+                  <div className="text-[7px] sm:text-[10px] md:text-xs text-midnight/70 font-medium font-cormorant tracking-[0.2em] uppercase mb-1 sm:mb-4">
                     {t('hero.welcome') || 'Together with our Families'}
                   </div>
                   <h1 className="font-bruney text-2xl sm:text-5xl md:text-6xl text-midnight leading-none mb-1.5 sm:mb-4 text-center">

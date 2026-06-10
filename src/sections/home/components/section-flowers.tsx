@@ -37,16 +37,20 @@ export const SectionFlowers = ({ flowers }: SectionFlowersProps) => {
           <div
             key={index}
             className={`${positionClasses} z-10 pointer-events-none ${flower.className || ''}`}
-            style={flower.className ? undefined : { width: flower.width || 'clamp(260px, 25vw, 400px)' }}
+            style={{ width: flower.width || 'clamp(260px, 25vw, 400px)' }}
           >
             <Image
               src={flower.src}
               alt={flower.alt}
-              width={600}
-              height={600}
+              width={2500}
+              height={2000}
               className="w-full h-auto animate-fade-in"
               priority={flower.priority}
-              sizes={flower.className ? undefined : "(max-width: 768px) 50vw, 33vw"}
+              sizes={
+                flower.width
+                  ? `(max-width: 768px) 50vw, (max-width: 1200px) 40vw, 650px`
+                  : `(max-width: 768px) 25vw, 400px`
+              }
             />
           </div>
         );

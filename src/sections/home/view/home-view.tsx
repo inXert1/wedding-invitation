@@ -85,11 +85,11 @@ export default function HomeView() {
           <SectionFlowers
             flowers={[
               {
-                src: '/assets/images/couple-left.png',
+                src: '/assets/images/couple-left-v2.png',
                 alt: 'Decorative vintage flowers',
                 position: 'top-left',
-                width: 'clamp(300px, 80vw, 700px)',
-                className: 'top-[30%] md:top-[40%] md:-left-[1%] rotate-[20deg] ',
+                width: 'clamp(220px, 35vw, 650px)',
+                className: 'max-md:top-[28%] max-md:-left-[16%] md:top-[40%] md:-left-[8%] md:rotate-[160deg]',
               },
               {
                 src: '/assets/images/couple-right.png',
