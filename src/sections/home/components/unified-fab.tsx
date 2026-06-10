@@ -56,7 +56,8 @@ export default function UnifiedFAB({
         setIsPlaying(true);
         setAutoplayBlocked(false);
         setHasInteracted(true);
-      } catch {
+      } catch (error: any) {
+        if (error.name === 'AbortError') return;
         setIsPlaying(false);
         setAutoplayBlocked(true);
         setHasInteracted(false);
@@ -80,6 +81,7 @@ export default function UnifiedFAB({
       audio.removeEventListener('loadedmetadata', updateDuration);
       audio.removeEventListener('ended', handleEnded);
       clearTimeout(timer);
+      audio.pause();
     };
   }, []);
 
@@ -101,7 +103,8 @@ export default function UnifiedFAB({
         setAutoplayBlocked(false);
         setHasInteracted(true);
       }
-    } catch {
+    } catch (error: any) {
+      if (error.name === 'AbortError') return;
       setAutoplayBlocked(true);
       setIsPlaying(false);
     }

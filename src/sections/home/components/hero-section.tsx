@@ -20,7 +20,7 @@ export const HeroSection = ({
   const { t } = useTranslation('home');
 
   return (
-    <div className="h-screen bg-snow relative overflow-hidden">
+    <div className="min-h-screen bg-snow relative overflow-hidden flex flex-col">
       {/* Subtle background accents */}
       <div className="absolute inset-0 hidden md:block">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-amethyst/8 rounded-full blur-3xl"></div>
@@ -75,7 +75,7 @@ export const HeroSection = ({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col h-full px-6 pt-10 sm:pt-18 md:pt-20">
+      <div className="relative z-10 flex flex-col flex-1 px-6 pt-10 sm:pt-18 md:pt-20 hero-pt-adjust">
         <div className="flex-1 flex items-center justify-center">
           <div className="max-w-4xl mx-auto text-center">
             {/* Main Heading */}
@@ -83,12 +83,12 @@ export const HeroSection = ({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="mb-6 sm:mb-8"
+              className="-mb-6 sm:mb-10 hero-title-container"
             >
-              <div className="text-sm sm:text-base md:text-lg lg:text-xl text-midnight/50 mb-4 font-medium font-cormorant tracking-widest uppercase">
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl text-midnight/50 -mb-1 font-medium font-cormorant tracking-widest uppercase">
                 {t('hero.welcome')}
               </div>
-              <h1 className="text-7xl sm:text-8xl md:text-9xl font-bruney text-midnight mb-6 leading-tight">
+              <h1 className="text-7xl sm:text-8xl md:text-9xl font-bruney text-midnight mb-6 leading-tight hero-title">
                 Our
                 <span className="block text-amethyst">
                   Wedding
@@ -102,9 +102,9 @@ export const HeroSection = ({
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 0.95 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-6 sm:mb-8"
+              className="mb-6 sm:mb-8 hero-names-container"
             >
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 mb-4 sm:mb-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 mb-4 sm:mb-6 hero-names-flex">
                 {/* Groom Name */}
                 <div className="text-center flex-shrink-0">
                   <h3 className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl font-ballet text-midnight">
@@ -137,7 +137,7 @@ export const HeroSection = ({
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 15 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-3 justify-center hero-buttons-container"
             >
               <motion.button
                 onClick={() => onScrollToSection('rsvp')}
@@ -160,7 +160,7 @@ export const HeroSection = ({
         </div>
 
         {/* Scroll Indicator */}
-        <div className="flex justify-center pb-6 sm:pb-8">
+        <div className="flex justify-center pb-6 sm:pb-8 hero-scroll-indicator">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: isLoaded ? 1 : 0 }}

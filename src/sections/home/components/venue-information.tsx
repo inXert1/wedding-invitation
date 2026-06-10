@@ -135,6 +135,11 @@ export const VenueInformation = ({ venue }: VenueInformationProps) => {
                     <p>• {t('venue.parking')}</p>
                     <p>• {t('venue.wheelchair')}</p>
                   </div>
+                  <div className="flex items-center justify-center">
+                    <p className="w-full bg-beige border border-amethyst/30 text-amethyst-dark py-3 px-6 rounded-xl font-medium hover:bg-beige-light transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base cursor-pointer font-dm-sans">
+                      {t('venue.promissory')}
+                    </p>
+                  </div>
                 </div>
 
                 <button

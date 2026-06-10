@@ -67,3 +67,61 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Height-responsive adjustments for Hero Section to prevent viewport clipping */
+@media (max-height: 800px) {
+  .hero-pt-adjust {
+    padding-top: clamp(1rem, 3vh, 2.5rem) !important;
+  }
+
+  .hero-title-container {
+    margin-bottom: clamp(0.5rem, 1.5vh, 1.5rem) !important;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 9vh, 5.5rem) !important;
+    margin-bottom: clamp(0.5rem, 1vh, 1rem) !important;
+  }
+
+  .hero-names-container {
+    margin-bottom: clamp(0.5rem, 1.5vh, 1.5rem) !important;
+  }
+
+  .hero-names-flex {
+    gap: clamp(0.5rem, 1.5vh, 1.5rem) !important;
+    margin-bottom: clamp(0.5rem, 1vh, 1rem) !important;
+  }
+
+  .hero-names-flex h3 {
+    font-size: clamp(2.5rem, 7vh, 4rem) !important;
+  }
+
+  .hero-names-flex svg {
+    width: clamp(1.25rem, 4vh, 2rem) !important;
+    height: clamp(1.25rem, 4vh, 2rem) !important;
+  }
+
+  .hero-buttons-container {
+    gap: clamp(0.5rem, 1vh, 1rem) !important;
+  }
+
+  .hero-buttons-container button {
+    padding-top: clamp(0.5rem, 1.5vh, 0.75rem) !important;
+    padding-bottom: clamp(0.5rem, 1.5vh, 0.75rem) !important;
+    font-size: clamp(0.875rem, 2vh, 1rem) !important;
+  }
+
+  .hero-scroll-indicator {
+    padding-bottom: clamp(0.5rem, 1.5vh, 1rem) !important;
+  }
+
+  .hero-scroll-indicator button {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    min-height: auto !important;
+  }
+
+  .hero-scroll-indicator span {
+    margin-bottom: 0.25rem !important;
+  }
+}

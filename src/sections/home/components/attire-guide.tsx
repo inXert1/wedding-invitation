@@ -17,13 +17,12 @@ export const AttireGuide = () => {
     { nameKey: 'attire.color-mauve', hex: '#A58390' },
     { nameKey: 'attire.color-berry', hex: '#91224F' },
     { nameKey: 'attire.color-burgundy', hex: '#6B1F32' },
-    { nameKey: 'attire.color-taupe', hex: '#8E7E73' },
   ] as const;
 
   const maleColors = [
     { nameKey: 'attire.color-beige', hex: '#E3D7C5' },
-    { nameKey: 'attire.color-light-gray', hex: '#C2C6C8' },
-    { nameKey: 'attire.color-brown', hex: '#70594B' },
+    { nameKey: 'attire.color-light-gray', hex: '#CCC5B9' },
+    { nameKey: 'attire.color-taupe', hex: '#8E7E73' },
   ] as const;
 
   return (
@@ -74,29 +73,49 @@ export const AttireGuide = () => {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-y-6 gap-x-8 sm:gap-x-12 justify-items-center justify-center max-w-[240px] sm:max-w-[280px] mx-auto mt-auto">
-                  {femaleColors.map((color, index) => (
-                    <motion.div
-                      key={color.nameKey}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: inView ? 1 : 0, opacity: inView ? 1 : 0 }}
-                      transition={{
-                        duration: 0.4,
-                        delay: 0.4 + index * 0.1,
-                        type: 'spring',
-                      }}
-                      className="flex flex-col items-center"
-                    >
-                      <div
-                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-lg border-2 border-snow-warm transition-transform duration-300 hover:scale-110"
-                        style={{ backgroundColor: color.hex }}
-                        title={t(color.nameKey)}
-                      />
-                      <span className="text-xs sm:text-sm text-midnight/80 font-cormorant font-bold tracking-wide mt-3">
-                        {t(color.nameKey)}
-                      </span>
-                    </motion.div>
-                  ))}
+                <div className="flex flex-col items-center gap-6 mt-auto">
+                  {/* Top Swatch */}
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: inView ? 1 : 0, opacity: inView ? 1 : 0 }}
+                    transition={{ duration: 0.4, delay: 0.5, type: 'spring' }}
+                    className="flex flex-col items-center"
+                  >
+                    <div
+                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-lg border-2 border-snow-warm transition-transform duration-300 hover:scale-110"
+                      style={{ backgroundColor: femaleColors[0].hex }}
+                      title={t(femaleColors[0].nameKey)}
+                    />
+                    <span className="text-xs sm:text-sm text-midnight/80 font-cormorant font-bold tracking-wide mt-3">
+                      {t(femaleColors[0].nameKey)}
+                    </span>
+                  </motion.div>
+
+                  {/* Bottom Swatches */}
+                  <div className="flex gap-8 sm:gap-12 justify-center">
+                    {femaleColors.slice(1).map((color, index) => (
+                      <motion.div
+                        key={color.nameKey}
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: inView ? 1 : 0, opacity: inView ? 1 : 0 }}
+                        transition={{
+                          duration: 0.4,
+                          delay: 0.6 + index * 0.1,
+                          type: 'spring',
+                        }}
+                        className="flex flex-col items-center"
+                      >
+                        <div
+                          className="w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-lg border-2 border-snow-warm transition-transform duration-300 hover:scale-110"
+                          style={{ backgroundColor: color.hex }}
+                          title={t(color.nameKey)}
+                        />
+                        <span className="text-xs sm:text-sm text-midnight/80 font-cormorant font-bold tracking-wide mt-3">
+                          {t(color.nameKey)}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
