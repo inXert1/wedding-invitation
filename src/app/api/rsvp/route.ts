@@ -397,7 +397,7 @@ function buildGuestConfirmationHtml(data: RsvpPayload): string {
                 </div>
                 
                 <div style="font-family: Georgia, serif; font-size: 15px; text-align: center; font-style: italic; color: #8A5A60; font-weight: bold; margin-top: 10px;">
-                  Joefren Maris &amp; Allyster Rey
+                  Allyster Rey &amp; Joefren Maris 
                 </div>
               </td>
             </tr>
@@ -498,7 +498,7 @@ export async function POST(request: Request) {
       ? `You're confirmed! See you at Allyster & Joefren's Wedding `
       : `Thank you for your response — Allyster & Joefren's Wedding`;
 
-    const imageAttachments = [
+    const floralAttachments = [
       {
         filename: 'RSVP-upper-left.png',
         path: path.join(process.cwd(), 'public/assets/images/RSVP-upper-left.png'),
@@ -519,6 +519,10 @@ export async function POST(request: Request) {
         path: path.join(process.cwd(), 'public/assets/images/RSVP-right.png'),
         cid: 'rsvp-right',
       },
+    ];
+
+    const guestAttachments = [
+      ...floralAttachments,
       {
         filename: 'wax-seal.png',
         path: path.join(process.cwd(), 'public/assets/images/wax-seal.png'),
@@ -533,7 +537,7 @@ export async function POST(request: Request) {
         to: process.env.STMP_USER,
         subject: notificationSubject,
         html: buildEmailHtml(body),
-        attachments: imageAttachments,
+        attachments: floralAttachments,
       }),
       // Send confirmation to guest
       transporter.sendMail({
@@ -541,7 +545,7 @@ export async function POST(request: Request) {
         to: body.email,
         subject: confirmationSubject,
         html: buildGuestConfirmationHtml(body),
-        attachments: imageAttachments,
+        attachments: guestAttachments,
       }),
     ]);
 
