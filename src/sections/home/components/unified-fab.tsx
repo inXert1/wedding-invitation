@@ -49,6 +49,8 @@ export default function UnifiedFAB({
     audio.addEventListener('loadedmetadata', updateDuration);
     audio.addEventListener('ended', handleEnded);
 
+    let interactionListener: () => void;
+
     // Auto-play attempt
     const attemptAutoPlay = async () => {
       try {
@@ -61,7 +63,24 @@ export default function UnifiedFAB({
         setIsPlaying(false);
         setAutoplayBlocked(true);
         setHasInteracted(false);
-        setShowAutoplayModal(true);
+        
+        interactionListener = async () => {
+          try {
+            await audio.play();
+            setIsPlaying(true);
+            setAutoplayBlocked(false);
+            setHasInteracted(true);
+            document.removeEventListener('click', interactionListener);
+            document.removeEventListener('touchstart', interactionListener);
+            document.removeEventListener('keydown', interactionListener);
+          } catch (e) {
+            // Keep listening until a valid gesture starts playback
+          }
+        };
+
+        document.addEventListener('click', interactionListener);
+        document.addEventListener('touchstart', interactionListener);
+        document.addEventListener('keydown', interactionListener);
       }
     };
 
@@ -82,6 +101,11 @@ export default function UnifiedFAB({
       audio.removeEventListener('ended', handleEnded);
       clearTimeout(timer);
       audio.pause();
+      if (interactionListener) {
+        document.removeEventListener('click', interactionListener);
+        document.removeEventListener('touchstart', interactionListener);
+        document.removeEventListener('keydown', interactionListener);
+      }
     };
   }, []);
 
@@ -107,6 +131,7 @@ export default function UnifiedFAB({
       if (error.name === 'AbortError') return;
       setAutoplayBlocked(true);
       setIsPlaying(false);
+      setShowAutoplayModal(true);
     }
   };
 
