@@ -41,9 +41,7 @@ export const CoupleIntroduction = ({
             {t('couple.our-story')}
           </h2>
           <div className="w-24 h-px bg-amethyst mx-auto"></div>
-          <p className="text-base sm:text-lg md:text-xl text-midnight/60 mt-4 max-w-2xl mx-auto font-cormorant">
-            {t('couple.story-text')}
-          </p>
+
         </motion.div>
 
         {/* Couple Cards */}
